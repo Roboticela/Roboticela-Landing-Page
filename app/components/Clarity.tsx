@@ -11,10 +11,10 @@ declare global {
 export default function Clarity() {
   useEffect(() => {
     // Replace with your actual Clarity project ID
-    const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID || '';
+    const clarityId = process.env.NEXT_PUBLIC_MICROSOFT_CLARITY_ID || '';
 
     if (!clarityId) {
-      console.warn('Clarity project ID not found. Please set NEXT_PUBLIC_CLARITY_ID environment variable.');
+      console.warn('Clarity project ID not found. Please set NEXT_PUBLIC_MICROSOFT_CLARITY_ID environment variable.');
       return;
     }
 
