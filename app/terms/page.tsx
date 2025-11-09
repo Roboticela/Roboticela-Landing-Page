@@ -578,8 +578,8 @@ export default function TermsPage() {
                     IF ROBOTICELA IS FOUND LIABLE FOR ANY DAMAGES, OUR TOTAL AGGREGATE LIABILITY SHALL NOT EXCEED THE GREATER OF:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
-                    <li>THE AMOUNT YOU PAID TO ROBOTICELA IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, OR</li>
-                    <li>ONE HUNDRED U.S. DOLLARS ($100)</li>
+                    <li>THE AMOUNT YOU PAID TO ROBOTICELA IN THE SIX (6) MONTHS PRECEDING THE CLAIM, OR</li>
+                    <li>FIFTY U.S. DOLLARS ($50)</li>
                   </ul>
 
                   <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">

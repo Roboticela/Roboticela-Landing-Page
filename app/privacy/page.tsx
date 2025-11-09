@@ -528,7 +528,7 @@ export default function PrivacyPage() {
                     12.3 Maximum Liability
                   </h3>
                   <p>
-                    If Roboticela is found liable for any damages, our total liability shall not exceed the amount you paid to Roboticela in the twelve (12) months preceding the claim, or one hundred dollars ($100), whichever is greater.
+                    If Roboticela is found liable for any damages, our total liability shall not exceed the amount you paid to Roboticela in the six (6) months preceding the claim, or fifty U.S. dollars ($50), whichever is greater.
                   </p>
 
                   <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
