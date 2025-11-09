@@ -70,6 +70,22 @@ export default function Footer() {
                   Join Waitlist
                 </a>
               </li>
+              <li>
+                <a
+                  href="/privacy"
+                  className="text-sm text-slate-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
+                >
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/terms"
+                  className="text-sm text-slate-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
+                >
+                  Terms of Service
+                </a>
+              </li>
             </ul>
           </motion.div>
 
