@@ -223,7 +223,8 @@ export default function PrivacyPage() {
                   <p className="mt-4"><strong>A. Service Providers & Vendors:</strong></p>
                   <ul className="list-disc pl-6 space-y-2 mt-2">
                     <li>Cloud service providers, hosting providers, and infrastructure providers</li>
-                    <li>Analytics providers, data processors, and technology vendors</li>
+                    <li>Analytics providers, including Google Analytics and Microsoft Clarity, for website usage analysis, user behavior tracking, and service improvement</li>
+                    <li>Data processors and technology vendors</li>
                     <li>Payment processors, financial institutions, and transaction processors</li>
                     <li>Marketing and advertising partners</li>
                     <li>Customer support and service providers</li>
@@ -396,8 +397,8 @@ export default function PrivacyPage() {
                     7.3 Opt-Out Options
                   </h3>
                   <p><strong>Marketing Communications:</strong> You may opt out of marketing communications by following unsubscribe instructions in communications or by contacting us. Opting out may not affect transactional or administrative communications.</p>
-                  <p className="mt-4"><strong>Cookies and Tracking:</strong> Most browsers allow you to control cookies and tracking technologies through browser settings. However, disabling cookies may affect functionality of the Services.</p>
-                  <p className="mt-4"><strong>Do Not Track:</strong> Roboticela does not currently respond to "Do Not Track" signals. Third parties may continue to track your activities.</p>
+                  <p className="mt-4"><strong>Cookies and Tracking:</strong> Most browsers allow you to control cookies and tracking technologies through browser settings. However, disabling cookies may affect functionality of the Services. We use third-party analytics services, including Google Analytics and Microsoft Clarity, which use cookies and similar technologies to analyze website usage, track user behavior, and improve user experience. You can opt out of Google Analytics by installing the Google Analytics Opt-out Browser Add-on, available at: https://tools.google.com/dlpage/gaoptout. For Microsoft Clarity, you can manage your preferences through your browser settings or by contacting us.</p>
+                  <p className="mt-4"><strong>Do Not Track:</strong> Roboticela does not currently respond to "Do Not Track" signals. We use third-party analytics services (including Google Analytics and Microsoft Clarity) that may continue to track your activities even if you have enabled DNT in your browser settings. These services collect information about your use of the Services in accordance with their respective privacy policies.</p>
 
                   <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
                     7.4 No Guarantee of Rights
