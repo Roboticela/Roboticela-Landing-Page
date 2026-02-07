@@ -1,134 +1,178 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { FaEnvelope, FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
+import { Github, Mail, Twitter, Linkedin } from 'lucide-react';
+import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
 
-  const socialLinks = [
-    { icon: FaEnvelope, href: 'mailto:contact@roboticela.com', label: 'Email' },
-    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/roboticela/', label: 'LinkedIn' },
-    { icon: FaTwitter, href: 'https://x.com/roboticela', label: 'X' },
-    { icon: FaGithub, href: 'https://github.com/Roboticela', label: 'GitHub' },
-  ];
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle newsletter signup
+    console.log('Newsletter signup:', email);
+    setEmail('');
+  };
 
   return (
-    <footer className="border-t border-white/20 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-8">
-          {/* Brand Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col items-center md:items-start"
-          >
-            <div className="relative w-12 h-12 mb-4">
-              <Image
-                src="/Logo.png"
-                alt="Roboticela Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-              Roboticela
-            </h3>
-            <p className="text-sm text-slate-600 dark:text-gray-400 text-center md:text-left max-w-xs">
-              Building the future of business solutions, one innovation at a time.
-            </p>
-          </motion.div>
+    <footer className="relative py-16 px-4 bg-card/30 border-t border-border/40 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        {/* Newsletter Section */}
+        <div className="mb-16 text-center">
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Stay in the Loop</h3>
+          <p className="text-foreground/70 mb-6 max-w-2xl mx-auto">
+            Be the first to know about new products, breakthroughs, and updates from Roboticela.
+          </p>
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="flex-1 px-6 py-3 bg-card/60 border border-border/40 rounded-full text-foreground placeholder:text-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
+              required
+            />
+            <button
+              type="submit"
+              className="px-8 py-3 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold transition-all duration-300"
+            >
+              Subscribe
+            </button>
+          </form>
+          <p className="text-sm text-foreground/50 mt-4">We respect your inbox. No spam, just innovation.</p>
+        </div>
 
-          {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col items-center md:items-start"
-          >
-            <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-              Quick Links
-            </h4>
-            <ul className="space-y-2 text-center md:text-left">
-              <li>
-                <a
-                  href="#features"
-                  className="text-sm text-slate-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#waitlist"
-                  className="text-sm text-slate-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
-                >
-                  Join Waitlist
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/privacy"
-                  className="text-sm text-slate-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
-                >
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/terms"
-                  className="text-sm text-slate-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
-                >
-                  Terms of Service
-                </a>
-              </li>
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-12">
+          {/* Products */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Products</h4>
+            <ul className="space-y-2">
+              <li><a href="#products" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Software</a></li>
+              <li><a href="#products" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Hardware</a></li>
+              <li><a href="#products" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">E-commerce</a></li>
+              <li><a href="#products" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Enterprise</a></li>
+              <li><a href="#products" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Research</a></li>
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col items-center md:items-start"
-          >
-            <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-              Connect With Us
-            </h4>
-            <div className="flex gap-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/60 dark:bg-white/5 border border-white/30 dark:border-white/10 text-slate-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-200"
-                >
-                  <social.icon className="w-5 h-5" />
-                </a>
-              ))}
+          {/* Solutions */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Solutions</h4>
+            <ul className="space-y-2">
+              <li><Link href="/solutions/individuals" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">For Individuals</Link></li>
+              <li><Link href="/solutions/business" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">For Business</Link></li>
+              <li><Link href="/solutions/developers" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">For Developers</Link></li>
+              <li><Link href="/solutions/education" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">For Education</Link></li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Company</h4>
+            <ul className="space-y-2">
+              <li><Link href="/about" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">About Us</Link></li>
+              <li><Link href="/company/vision" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Our Vision</Link></li>
+              <li><Link href="/careers" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Careers</Link></li>
+              <li><Link href="/company/press" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">News & Press</Link></li>
+              <li><Link href="/support" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Contact</Link></li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Resources</h4>
+            <ul className="space-y-2">
+              <li><Link href="/support" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Help Center</Link></li>
+              <li><Link href="/product-request" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Request Product</Link></li>
+              <li><Link href="/resources/documentation" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Documentation</Link></li>
+              <li><Link href="/resources/community" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Community Forum</Link></li>
+              <li><Link href="/resources/blog" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Blog</Link></li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Legal</h4>
+            <ul className="space-y-2">
+              <li><Link href="/privacy" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Terms of Service</Link></li>
+              <li><Link href="/legal/security" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Security</Link></li>
+              <li><Link href="/legal/accessibility" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Accessibility</Link></li>
+            </ul>
+          </div>
+
+          {/* Connect */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Connect</h4>
+            <ul className="space-y-2">
+              <li><a href="#newsletter" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Newsletter</a></li>
+              <li><a href="https://github.com/Roboticela" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Social Media</a></li>
+              <li><Link href="/connect/events" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Events</Link></li>
+              <li><Link href="/connect/partnerships" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Partnerships</Link></li>
+              <li><Link href="/support" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Feedback</Link></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Brand and Social */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-border/40">
+          <div className="flex items-center gap-3">
+            <div className="relative w-8 h-8 shrink-0">
+              <Image src="/Logo.png" alt="Roboticela" fill className="object-contain" />
             </div>
-          </motion.div>
+            <div>
+              <div className="text-lg font-bold text-foreground">Roboticela</div>
+              <div className="text-xs text-foreground/60">Unlimited by design.</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/Roboticela"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-primary transition-colors"
+              aria-label="GitHub"
+            >
+              <Github className="w-5 h-5" />
+            </a>
+            <a
+              href="https://twitter.com/roboticela"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-primary transition-colors"
+              aria-label="Twitter"
+            >
+              <Twitter className="w-5 h-5" />
+            </a>
+            <a
+              href="https://linkedin.com/company/roboticela"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-primary transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a
+              href="mailto:hello@roboticela.com"
+              className="text-foreground/70 hover:text-primary transition-colors"
+              aria-label="Email"
+            >
+              <Mail className="w-5 h-5" />
+            </a>
+          </div>
         </div>
 
         {/* Copyright */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="pt-8 border-t border-white/20 dark:border-white/10 text-center"
-        >
-          <p className="text-sm text-slate-600 dark:text-gray-400">
-            © {currentYear} Roboticela. All rights reserved.
+        <div className="mt-8 text-center">
+          <p className="text-sm text-foreground/60">
+            © {new Date().getFullYear()} Roboticela. Building everything, for everyone.
           </p>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
 }
-

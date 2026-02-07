@@ -4,24 +4,24 @@ import Clarity from "./components/Clarity";
 
 export const metadata: Metadata = {
   title: {
-    default: "Roboticela - Coming Soon",
+    default: "Roboticela - Think Different. Build Everything.",
     template: "%s - Roboticela",
   },
   icons: {
     icon: "/Favicon.png",
   },
-  description: "Roboticela is a technology-driven company building smart, scalable, and meaningful software solutions. Join our waitlist to be the first to experience what's next.",
+  description: "The future doesn't fit in boxes. Neither do we. Innovation without boundaries—software, hardware, research, and experiences that matter.",
   keywords: [
     "Roboticela",
-    "software development",
-    "business solutions",
-    "technology",
     "innovation",
-    "digital transformation",
-    "custom software",
-    "scalable platforms",
-    "open source",
-    "tech solutions",
+    "technology",
+    "software",
+    "hardware",
+    "research",
+    "unlimited potential",
+    "future technology",
+    "design excellence",
+    "breakthrough solutions",
   ],
   authors: [{ name: "Roboticela" }],
   creator: "Roboticela",
@@ -35,21 +35,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://roboticela.com",
     siteName: "Roboticela",
-    title: "Roboticela - Coming Soon",
-    description: "Roboticela is building something amazing. Join our waitlist to be the first to know when we launch.",
+    title: "Roboticela - Think Different. Build Everything.",
+    description: "The future doesn't fit in boxes. Neither do we. Innovation without boundaries—software, hardware, research, and experiences that matter.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Roboticela - Coming Soon",
+        alt: "Roboticela",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Roboticela - Coming Soon",
-    description: "Roboticela is building something amazing. Join our waitlist to be the first to know when we launch.",
+    title: "Roboticela - Think Different. Build Everything.",
+    description: "The future doesn't fit in boxes. Neither do we. Innovation without boundaries.",
     images: ["/og-image.png"],
     creator: "@roboticela",
     site: "@roboticela",
@@ -73,7 +73,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
       <body className="antialiased">
         <Clarity />
         {children}

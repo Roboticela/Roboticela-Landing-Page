@@ -1,0 +1,40 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
+const stats = [
+  { value: '50+', label: 'Projects Delivered' },
+  { value: '10+', label: 'Industries Served' },
+  { value: '100%', label: 'Client Focused' },
+  { value: '24/7', label: 'Support Ready' },
+];
+
+export default function Stats() {
+  return (
+    <section className="py-16 md:py-24 px-4 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
+              <div className="text-foreground/70 text-sm md:text-base">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
