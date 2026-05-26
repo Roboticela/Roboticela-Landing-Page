@@ -34,7 +34,7 @@ export default function Navbar() {
             <span className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-foreground">
               Roboticela
             </span>
-            <span className="text-[8px] sm:text-[9px] md:text-[10px] text-foreground/60 hidden sm:block">
+            <span className="text-[8px] sm:text-[9px] md:text-[10px] text-foreground/60">
               Unlimited by design.
             </span>
           </div>
