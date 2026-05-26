@@ -18,11 +18,11 @@ export default function Footer() {
   return (
     <footer className="relative py-16 px-4 bg-card/30 border-t border-border/40 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Newsletter Section */}
-        <div className="mb-16 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Stay in the Loop</h3>
+        {/* Newsletter Section - Join Community / Empire */}
+        <div id="newsletter" className="mb-16 text-center scroll-mt-24">
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Join the Empire</h3>
           <p className="text-foreground/70 mb-6 max-w-2xl mx-auto">
-            Be the first to know about new products, breakthroughs, and updates from Roboticela.
+            Subscribe to our newsletter and be the first to know about new products, breakthroughs, and updates. Join our community and stay in the loop.
           </p>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <input

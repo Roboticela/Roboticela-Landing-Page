@@ -22,17 +22,27 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ delay: 0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ scale: 1.1, rotate: 360, transition: { duration: 0.6 } }}
-            className="flex justify-center mb-8"
-          >
-            <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40">
-              <Image src="/Logo.png" alt="Roboticela" fill className="object-contain" />
-            </div>
-          </motion.div>
+          <div className="flex justify-center mb-8">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{
+                delay: 0.1,
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1],
+                rotate: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+              }}
+              whileHover={{
+                scale: 1.1,
+                rotate: 360,
+                transition: { duration: 0.6, rotate: { duration: 0.6 } },
+              }}
+              style={{ transformOrigin: 'center center' }}
+              className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40"
+            >
+              <Image src="/Logo.png" alt="Roboticela" fill className="object-contain" priority />
+            </motion.div>
+          </div>
 
           {/* Brand name */}
           <motion.h1

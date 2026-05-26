@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function CTA() {
   return (
-    <section className="relative py-32 md:py-40 px-4 overflow-hidden">
+    <section id="get-started" className="relative py-32 md:py-40 px-4 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-3xl" />

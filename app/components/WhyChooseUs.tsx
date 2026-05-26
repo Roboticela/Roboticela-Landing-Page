@@ -40,7 +40,7 @@ const itemAnimation = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative py-24 md:py-32 px-4 overflow-hidden">
+    <section id="why-us" className="relative py-24 md:py-32 px-4 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/3 rounded-full blur-3xl" />

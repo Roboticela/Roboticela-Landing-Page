@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
-import Clarity from "./components/Clarity";
 
 export const metadata: Metadata = {
   title: {
@@ -74,9 +74,44 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://www.clarity.ms" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
+
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-8NELPL2FXP"
+          strategy="lazyOnload"
+        />
+        <Script
+          id="google-analytics"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-8NELPL2FXP');
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased">
-        <Clarity />
         {children}
+        <Script
+          id="microsoft-clarity"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "viwp403njf");
+            `,
+          }}
+        />
       </body>
     </html>
   );

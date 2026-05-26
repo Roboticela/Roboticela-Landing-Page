@@ -7,7 +7,7 @@ import { FileText, Calendar, Tag } from 'lucide-react';
 
 const blogPosts = [
   { date: '2026-02-05', title: 'Building the Future: Our Approach to Innovation', category: 'Innovation', excerpt: 'How we think different and build everything without boundaries.' },
-  { date: '2026-01-28', title: 'Introducing Our New Product Suite', category: 'Product', excerpt: 'A deep dive into our latest product releases and what's coming next.' },
+  { date: '2026-01-28', title: 'Introducing Our New Product Suite', category: 'Product', excerpt: 'A deep dive into our latest product releases and what\'s coming next.' },
   { date: '2026-01-15', title: 'The Story Behind Roboticela', category: 'Company', excerpt: 'Robot meets Cell: The origin of our name and mission.' },
 ];
 

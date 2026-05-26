@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, X, Github } from 'lucide-react';
+import { Menu, X, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,9 +15,11 @@ export default function Navbar() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
     { href: '/products', label: 'Products' },
-    { href: '#faq', label: 'FAQ' },
+    { href: '/#about', label: 'Story' },
+    { href: '/#why-us', label: 'Why Roboticela' },
+    { href: '/#get-started', label: 'Get Started' },
+    { href: '/#faq', label: 'FAQ' },
     { href: '/support', label: 'Contact' },
   ];
 
@@ -58,6 +60,13 @@ export default function Navbar() {
               </a>
             )
           )}
+          <Link
+            href="/#newsletter"
+            className="flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent/80 rounded-xl transition-colors"
+          >
+            <Mail className="w-5 h-5" />
+            <span className="text-foreground font-semibold">Join Community</span>
+          </Link>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3 shrink-0 relative z-50">
@@ -115,6 +124,14 @@ export default function Navbar() {
                     </a>
                   )
                 )}
+                <Link
+                  href="/#newsletter"
+                  onClick={closeMenu}
+                  className="flex items-center gap-2 px-4 py-3 bg-accent hover:bg-accent/80 rounded-xl transition-colors"
+                >
+                  <Mail className="w-5 h-5" />
+                  <span className="text-foreground font-semibold">Join Community</span>
+                </Link>
               </div>
             </motion.div>
           </>
