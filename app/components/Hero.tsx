@@ -1,12 +1,47 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useCallback, useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { easeOut } from './animations';
 
 export default function Hero() {
+  const logoControls = useAnimation();
+
+  useEffect(() => {
+    logoControls.start({
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        delay: 0.1,
+        duration: 1,
+        ease: easeOut,
+        rotate: { duration: 1, ease: easeOut },
+      },
+    });
+  }, [logoControls]);
+
+  const spinLogo = useCallback(() => {
+    logoControls
+      .start({
+        scale: 1.1,
+        rotate: 360,
+        transition: { duration: 0.6, ease: easeOut },
+      })
+      .then(() => {
+        logoControls.set({ rotate: 0, scale: 1 });
+      });
+  }, [logoControls]);
+
+  const handleLogoHover = useCallback(() => {
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      spinLogo();
+    }
+  }, [spinLogo]);
+
   return (
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4 overflow-hidden">
       {/* Background gradient effect */}
@@ -26,22 +61,23 @@ export default function Hero() {
           <div className="flex justify-center mb-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{
-                delay: 0.1,
-                duration: 1,
-                ease: easeOut,
-                rotate: { duration: 1, ease: easeOut },
-              }}
-              whileHover={{
-                scale: 1.1,
-                rotate: 360,
-                transition: { duration: 0.6, rotate: { duration: 0.6 } },
-              }}
+              animate={logoControls}
+              onClick={spinLogo}
+              onMouseEnter={handleLogoHover}
+              whileTap={{ scale: 1.05 }}
               style={{ transformOrigin: 'center center' }}
-              className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40"
+              className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 cursor-pointer touch-manipulation select-none"
+              role="button"
+              tabIndex={0}
+              aria-label="Spin Roboticela logo"
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  spinLogo();
+                }
+              }}
             >
-              <Image src="/Logo.png" alt="Roboticela" fill className="object-contain" priority />
+              <Image src="/Logo.png" alt="Roboticela" fill className="object-contain pointer-events-none" priority />
             </motion.div>
           </div>
 
