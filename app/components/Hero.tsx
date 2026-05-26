@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { easeOut } from './animations';
 
 export default function Hero() {
   return (
@@ -19,7 +20,7 @@ export default function Hero() {
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: easeOut }}
         >
           {/* Logo */}
           <div className="flex justify-center mb-8">
@@ -29,8 +30,8 @@ export default function Hero() {
               transition={{
                 delay: 0.1,
                 duration: 1,
-                ease: [0.22, 1, 0.36, 1],
-                rotate: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+                ease: easeOut,
+                rotate: { duration: 1, ease: easeOut },
               }}
               whileHover={{
                 scale: 1.1,
@@ -49,7 +50,7 @@ export default function Hero() {
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.2, duration: 0.8, ease: easeOut }}
           >
             Roboticela
           </motion.h1>
@@ -59,7 +60,7 @@ export default function Hero() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-4 tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.4, duration: 0.8, ease: easeOut }}
           >
             Think different. Build everything.
           </motion.h2>
@@ -69,7 +70,7 @@ export default function Hero() {
             className="text-xl sm:text-2xl md:text-3xl text-foreground/60 max-w-3xl mx-auto mb-12 font-normal tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.6, duration: 0.8, ease: easeOut }}
           >
             The future doesn&apos;t fit in boxes. Neither do we.
           </motion.p>
@@ -79,7 +80,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.8, duration: 0.8, ease: easeOut }}
           >
             <Link href="/products">
               <motion.button

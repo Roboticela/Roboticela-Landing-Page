@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { ShoppingCart, Heart, GraduationCap, Film, DollarSign, Infinity } from 'lucide-react';
 
+import { easeOut } from './animations';
+
 const industries = [
   {
     icon: ShoppingCart,
@@ -49,7 +51,7 @@ const itemAnimation = {
   show: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.6, ease: easeOut }
   },
 };
 
@@ -61,7 +63,7 @@ export default function Industries() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: easeOut }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">

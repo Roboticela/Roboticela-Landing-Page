@@ -1,8 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Network, Palette, Store, Keyboard, Mouse, Globe, Wrench, ArrowRight, Rocket } from 'lucide-react';
+import { Network, Palette, Store, Keyboard, Mouse, Globe, ArrowRight, Rocket } from 'lucide-react';
 import Link from 'next/link';
+
+import { easeOut } from './animations';
+import ProductLogo from './ProductLogo';
 
 const products = [
   {
@@ -83,7 +86,7 @@ const itemAnimation = {
   show: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.6, ease: easeOut }
   },
 };
 
@@ -95,7 +98,7 @@ export default function Products() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: easeOut }}
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
@@ -115,7 +118,7 @@ export default function Products() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: easeOut }}
         >
           <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">Available Now</h3>
           
@@ -133,9 +136,7 @@ export default function Products() {
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group bg-card/60 backdrop-blur-sm rounded-3xl p-8 border border-border/40 hover:border-primary/40 transition-all duration-300"
               >
-                <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <product.icon className="w-8 h-8 text-primary" />
-                </div>
+                <ProductLogo name={product.name} icon={product.icon} />
                 <h4 className="text-2xl font-semibold text-foreground mb-4">{product.name}</h4>
                 <p className="text-foreground/70 leading-relaxed mb-6">{product.description}</p>
                 <div className="flex flex-wrap gap-3">
@@ -187,7 +188,7 @@ export default function Products() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: easeOut }}
           className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-[3rem] p-12 md:p-16 border border-primary/20"
         >
           <div className="text-center mb-12">
@@ -208,7 +209,7 @@ export default function Products() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: index * 0.1, duration: 0.6, ease: easeOut }}
                 className="bg-card/60 backdrop-blur-sm rounded-2xl p-6 border border-border/40"
               >
                 <h4 className="text-xl font-semibold text-foreground mb-2">{category.name}</h4>
@@ -235,7 +236,7 @@ export default function Products() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: easeOut }}
           className="mt-20 text-center"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Can&apos;t find what you need?</h3>

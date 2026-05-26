@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Target } from 'lucide-react';
+import { easeOut } from './animations';
 
 export default function Vision() {
   return (
@@ -16,7 +17,7 @@ export default function Vision() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: easeOut }}
           className="text-center"
         >
           <div className="inline-flex items-center justify-center bg-primary/10 rounded-full p-4 mb-8">
@@ -40,7 +41,7 @@ export default function Vision() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.3, duration: 0.8, ease: easeOut }}
             className="bg-card/60 backdrop-blur-sm rounded-3xl p-12 border border-border/40"
           >
             <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Our Promise</h3>

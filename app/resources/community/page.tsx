@@ -22,7 +22,7 @@ export default function CommunityPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {[
               { icon: MessageCircle, title: 'Ask Questions', description: 'Get help from experienced community members.' },
-              { icon: Heart, title: 'Share Your Work', description: 'Showcase what you've built with Roboticela.' },
+              { icon: Heart, title: 'Share Your Work', description: "Showcase what you've built with Roboticela." },
               { icon: Users, title: 'Network', description: 'Connect with developers, designers, and innovators.' },
             ].map((feature, index) => (
               <motion.div key={index} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }} className="bg-card/60 backdrop-blur-sm rounded-3xl p-8 border border-border/40 text-center">

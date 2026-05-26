@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { Wrench, Lightbulb, Heart, Rocket } from 'lucide-react';
 
+import { easeOut } from './animations';
+
 const principles = [
   {
     icon: Lightbulb,
@@ -39,7 +41,7 @@ const itemAnimation = {
   show: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.6, ease: easeOut }
   },
 };
 
@@ -56,7 +58,7 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: easeOut }}
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
@@ -80,7 +82,7 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: easeOut }}
           className="mb-16"
         >
           <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center tracking-tight">

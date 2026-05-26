@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import { Network, Palette, Store, Keyboard, Mouse, Globe, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import ProductLogo from '../components/ProductLogo';
 
 const products = [
   {
@@ -93,9 +94,7 @@ export default function ProductsPage() {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 className="bg-card/60 backdrop-blur-sm rounded-3xl p-8 border border-border/40 hover:border-primary/40 transition-all duration-300"
               >
-                <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                  <product.icon className="w-8 h-8 text-primary" />
-                </div>
+                <ProductLogo name={product.name} icon={product.icon} />
                 <h3 className="text-2xl font-semibold text-foreground mb-3">{product.name}</h3>
                 <p className="text-foreground/70 mb-4">{product.description}</p>
                 <div className="mb-6">
