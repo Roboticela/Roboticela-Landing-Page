@@ -1,46 +1,19 @@
 'use client';
 
-import { useCallback, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { useCallback, useState } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { easeOut } from './animations';
 
 export default function Hero() {
-  const logoControls = useAnimation();
-
-  useEffect(() => {
-    logoControls.start({
-      opacity: 1,
-      scale: 1,
-      rotate: 0,
-      transition: {
-        delay: 0.1,
-        duration: 1,
-        ease: easeOut,
-        rotate: { duration: 1, ease: easeOut },
-      },
-    });
-  }, [logoControls]);
+  const [clickRotation, setClickRotation] = useState(0);
+  const spinTransition = { duration: 0.6, ease: easeOut };
 
   const spinLogo = useCallback(() => {
-    logoControls
-      .start({
-        scale: 1.1,
-        rotate: 360,
-        transition: { duration: 0.6, ease: easeOut },
-      })
-      .then(() => {
-        logoControls.set({ rotate: 0, scale: 1 });
-      });
-  }, [logoControls]);
-
-  const handleLogoHover = useCallback(() => {
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      spinLogo();
-    }
-  }, [spinLogo]);
+    setClickRotation((current) => current + 360);
+  }, []);
 
   return (
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4 overflow-hidden">
@@ -61,10 +34,28 @@ export default function Hero() {
           <div className="flex justify-center mb-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
-              animate={logoControls}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                rotate: clickRotation,
+              }}
+              whileHover={{
+                scale: 1.1,
+                rotate: clickRotation + 360,
+                transition: spinTransition,
+              }}
+              transition={
+                clickRotation === 0
+                  ? {
+                      delay: 0.1,
+                      duration: 1,
+                      ease: easeOut,
+                      rotate: { duration: 1, ease: easeOut },
+                    }
+                  : spinTransition
+              }
               onClick={spinLogo}
-              onMouseEnter={handleLogoHover}
-              whileTap={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               style={{ transformOrigin: 'center center' }}
               className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 cursor-pointer touch-manipulation select-none"
               role="button"
@@ -77,7 +68,36 @@ export default function Hero() {
                 }
               }}
             >
-              <Image src="/Logo.png" alt="Roboticela" fill className="object-contain pointer-events-none" priority />
+              <motion.div
+                className="absolute -inset-4 rounded-full bg-primary/20 blur-2xl"
+                animate={{
+                  scale: [1, 1.18, 1],
+                  opacity: [0.25, 0.5, 0.25],
+                }}
+                transition={{
+                  duration: 2.8,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+                aria-hidden
+              />
+              <motion.div
+                className="absolute inset-0 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm"
+                animate={{
+                  scale: [1, 1.08, 1],
+                  opacity: [0.5, 0.85, 0.5],
+                }}
+                transition={{
+                  duration: 2.8,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: 0.35,
+                }}
+                aria-hidden
+              />
+              <div className="relative z-10 w-full h-full">
+                <Image src="/Logo.png" alt="Roboticela" fill className="object-contain pointer-events-none" priority />
+              </div>
             </motion.div>
           </div>
 
