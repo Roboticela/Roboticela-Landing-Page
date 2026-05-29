@@ -96,7 +96,7 @@ export default function Hero() {
                 aria-hidden
               />
               <div className="relative z-10 w-full h-full">
-                <Image src="/Logo.png" alt="Roboticela" fill className="object-contain pointer-events-none" priority />
+                <Image src="/Logo.png" alt="Roboticela" fill sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, 160px" className="object-contain pointer-events-none" priority />
               </div>
             </motion.div>
           </div>

@@ -11,19 +11,19 @@ const solutions = [
     icon: Code2,
     title: 'Developer Tools',
     description: 'Build faster with our suite of development tools and simulators.',
-    products: ['OSI Model Simulator', 'Input Device Simulator', 'Keyboard Simulator'],
+    products: ['OSI Model Simulator'],
   },
   {
     icon: Palette,
     title: 'Creative Tools',
     description: 'Design and create beautiful products with professional-grade tools.',
-    products: ['Roboticela Iconify', 'Site2App'],
+    products: ['Roboticela Iconify'],
   },
   {
     icon: GraduationCap,
     title: 'Learning Resources',
     description: 'Master new skills with our interactive educational platforms.',
-    products: ['All Simulators', 'Documentation', 'Tutorials'],
+    products: ['OSI Model Simulator', 'Documentation', 'Tutorials'],
   },
 ];
 

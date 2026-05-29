@@ -1,68 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Network, Palette, Store, Keyboard, Mouse, Globe, ArrowRight, Rocket } from 'lucide-react';
+import { ArrowRight, Lock, Rocket } from 'lucide-react';
 import Link from 'next/link';
 
 import { easeOut } from './animations';
 import ProductLogo from './ProductLogo';
+import { products } from '../data/products';
 
-const products = [
-  {
-    icon: Network,
-    name: 'OSI Model Simulator',
-    description: 'Master networking concepts with our interactive OSI model simulator. Perfect for students, educators, and professionals.',
-    links: [
-      { label: 'Learn More', href: '/products' },
-      { label: 'Try It Now', href: 'https://osi-simulator.roboticela.com' },
-      { label: 'Classic Version', href: 'https://osi-classic.roboticela.com' },
-    ],
-  },
-  {
-    icon: Palette,
-    name: 'Roboticela Iconify',
-    description: 'Generate perfect icons for every platform in seconds. iOS, Android, web—we\'ve got you covered.',
-    links: [
-      { label: 'Learn More', href: '/products' },
-      { label: 'Start Creating', href: 'https://iconify.roboticela.com' },
-    ],
-  },
-  {
-    icon: Store,
-    name: 'Restaurant Management System',
-    description: 'Run your restaurant smoothly with our comprehensive management solution. Available in both offline and online versions.',
-    links: [
-      { label: 'Offline Version', href: 'https://rms-offline.roboticela.com' },
-      { label: 'Online Version', href: 'https://rms.roboticela.com' },
-    ],
-  },
-  {
-    icon: Keyboard,
-    name: 'Keyboard Simulator',
-    description: 'Practice typing, learn keyboard layouts, and improve your skills with our interactive simulator.',
-    links: [
-      { label: 'Learn More', href: '/products' },
-      { label: 'Start Practicing', href: 'https://keyboard.roboticela.com' },
-    ],
-  },
-  {
-    icon: Mouse,
-    name: 'Input Device Simulator',
-    description: 'Understand how input devices work with our educational simulation tool.',
-    links: [
-      { label: 'Learn More', href: '/products' },
-      { label: 'Try It Now', href: 'https://input-simulator.roboticela.com' },
-    ],
-  },
-  {
-    icon: Globe,
-    name: 'Site2App',
-    description: 'Transform any website into a native mobile app. No coding required.',
-    links: [
-      { label: 'Learn More', href: '/products' },
-    ],
-  },
-];
+const HERO_LIMIT = 6;
+const dummyCount = Math.max(0, HERO_LIMIT - products.length);
 
 const comingSoonCategories = [
   { name: 'Hardware Products', description: 'Physical devices designed with Roboticela precision.' },
@@ -83,10 +30,10 @@ const containerAnimation = {
 
 const itemAnimation = {
   hidden: { opacity: 0, y: 30 },
-  show: { 
-    opacity: 1, 
+  show: {
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: easeOut }
+    transition: { duration: 0.6, ease: easeOut },
   },
 };
 
@@ -121,13 +68,13 @@ export default function Products() {
           transition={{ duration: 0.8, ease: easeOut }}
         >
           <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">Available Now</h3>
-          
+
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={containerAnimation}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
           >
             {products.map((product, index) => (
               <motion.div
@@ -136,12 +83,12 @@ export default function Products() {
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group bg-card/60 backdrop-blur-sm rounded-3xl p-8 border border-border/40 hover:border-primary/40 transition-all duration-300"
               >
-                <ProductLogo name={product.name} icon={product.icon} />
+                <ProductLogo name={product.name} logo={product.logo} />
                 <h4 className="text-2xl font-semibold text-foreground mb-4">{product.name}</h4>
                 <p className="text-foreground/70 leading-relaxed mb-6">{product.description}</p>
                 <div className="flex flex-wrap gap-3">
-                  {product.links.map((link, linkIndex) => (
-                    link.href.startsWith('http') ? (
+                  {product.links.map((link, linkIndex) =>
+                    link.external ? (
                       <a
                         key={linkIndex}
                         href={link.href}
@@ -153,7 +100,7 @@ export default function Products() {
                         <ArrowRight className="w-4 h-4" />
                       </a>
                     ) : (
-                      <Link 
+                      <Link
                         key={linkIndex}
                         href={link.href}
                         className="inline-flex items-center gap-1 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full font-medium text-sm transition-all duration-300"
@@ -162,7 +109,35 @@ export default function Products() {
                         <ArrowRight className="w-4 h-4" />
                       </Link>
                     )
-                  ))}
+                  )}
+                </div>
+              </motion.div>
+            ))}
+
+            {Array.from({ length: dummyCount }).map((_, index) => (
+              <motion.div
+                key={`dummy-${index}`}
+                variants={itemAnimation}
+                className="relative bg-card/60 backdrop-blur-sm rounded-3xl p-8 border border-border/40 overflow-hidden select-none"
+              >
+                <div className="blur-sm pointer-events-none">
+                  <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                    <div className="w-8 h-8 rounded-lg bg-primary/30" />
+                  </div>
+                  <div className="h-6 w-3/4 rounded-lg bg-foreground/20 mb-3" />
+                  <div className="h-4 w-full rounded-md bg-foreground/10 mb-2" />
+                  <div className="h-4 w-5/6 rounded-md bg-foreground/10 mb-2" />
+                  <div className="h-4 w-2/3 rounded-md bg-foreground/10 mb-6" />
+                  <div className="flex gap-2">
+                    <div className="h-8 w-20 rounded-full bg-primary/20" />
+                    <div className="h-8 w-24 rounded-full bg-primary/10" />
+                  </div>
+                </div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-card/30 backdrop-blur-[2px] rounded-3xl">
+                  <div className="flex flex-col items-center gap-2">
+                    <Lock className="w-7 h-7 text-primary/60" />
+                    <p className="text-sm font-medium text-foreground/50">Coming Soon</p>
+                  </div>
                 </div>
               </motion.div>
             ))}

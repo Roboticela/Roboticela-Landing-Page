@@ -9,7 +9,7 @@ import Link from 'next/link';
 const docCategories = [
   { icon: Code, title: 'API Documentation', description: 'Complete API references and code examples.', items: ['REST APIs', 'SDKs', 'Webhooks'] },
   { icon: Book, title: 'Guides & Tutorials', description: 'Step-by-step guides to get you started.', items: ['Quick Start', 'Best Practices', 'Advanced Topics'] },
-  { icon: FileText, title: 'Product Docs', description: 'Detailed documentation for all our products.', items: ['OSI Simulator', 'Iconify', 'Site2App'] },
+  { icon: FileText, title: 'Product Docs', description: 'Detailed documentation for all our products.', items: ['OSI Simulator', 'Iconify'] },
 ];
 
 export default function DocumentationPage() {

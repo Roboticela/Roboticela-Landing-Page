@@ -120,7 +120,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-border/40">
           <div className="flex items-center gap-3">
             <div className="relative w-8 h-8 shrink-0">
-              <Image src="/Logo.png" alt="Roboticela" fill className="object-contain" />
+              <Image src="/Logo.png" alt="Roboticela" fill sizes="32px" className="object-contain" />
             </div>
             <div>
               <div className="text-lg font-bold text-foreground">Roboticela</div>

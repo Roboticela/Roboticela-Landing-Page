@@ -64,6 +64,7 @@ export default function ComingSoon() {
                   src="/Logo.png"
                   alt="Roboticela Logo"
                   fill
+                  sizes="(max-width: 768px) 160px, (max-width: 1024px) 192px, (max-width: 1280px) 224px, 256px"
                   className="object-contain p-4"
                   priority
                 />
@@ -128,6 +129,7 @@ export default function ComingSoon() {
                       src="/Logo.png"
                       alt="Roboticela Logo"
                       fill
+                      sizes="(max-width: 768px) 128px, 160px"
                       className="object-contain p-4"
                     />
                   </div>

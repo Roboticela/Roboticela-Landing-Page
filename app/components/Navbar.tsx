@@ -28,7 +28,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 flex items-center justify-between gap-2 overflow-x-hidden relative z-50">
         <Link href="/" className="flex items-center gap-1.5 sm:gap-2 md:gap-3 min-w-0 flex-1">
           <div className="relative w-5 h-5 sm:w-6 sm:h-6 md:w-10 md:h-10 shrink-0">
-            <Image src="/Logo.png" alt="Roboticela" fill className="object-contain" />
+            <Image src="/Logo.png" alt="Roboticela" fill sizes="(max-width: 640px) 20px, (max-width: 768px) 24px, 40px" className="object-contain" />
           </div>
           <div className="flex flex-col">
             <span className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-foreground">

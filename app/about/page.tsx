@@ -45,7 +45,7 @@ export default function AboutPage() {
           >
             <div className="flex justify-center mb-8">
               <div className="relative w-32 h-32 md:w-40 md:h-40">
-                <Image src="/Logo.png" alt="Roboticela" fill className="object-contain" />
+                <Image src="/Logo.png" alt="Roboticela" fill sizes="(max-width: 768px) 128px, 160px" className="object-contain" />
               </div>
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 tracking-tight">
