@@ -196,7 +196,7 @@ export default function Products() {
           <div className="text-center">
             <Link
               href="/product-request"
-              className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 shadow-lg shadow-primary/20 inline-flex items-center gap-2"
+              className="px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold text-lg transition-all duration-300 shadow-lg shadow-primary/20 inline-flex items-center gap-2"
             >
               Join the Waitlist
             </Link>
@@ -218,7 +218,7 @@ export default function Products() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/product-request"
-              className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2"
+              className="px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2"
             >
               Request a Product
             </Link>

@@ -302,7 +302,7 @@ export default function ProductsCatalog({
         </p>
         <Link href="/product-request">
           <motion.button
-            className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300"
+            className="px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold text-lg transition-all duration-300"
           >
             Request a Product
           </motion.button>

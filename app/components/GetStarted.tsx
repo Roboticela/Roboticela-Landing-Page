@@ -39,7 +39,7 @@ export default function GetStarted() {
           </p>
           <Link href="/support">
             <motion.div
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-xl font-semibold text-lg transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl font-semibold text-lg transition-colors"
             >
               Contact Us
               <ArrowRight className="w-5 h-5" />

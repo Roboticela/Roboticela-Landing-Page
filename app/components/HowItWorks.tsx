@@ -59,7 +59,7 @@ export default function HowItWorks() {
               transition={{ delay: index * 0.1 }}
               className="relative"
             >
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-primary text-background rounded-full flex items-center justify-center font-bold text-xl z-10">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-xl z-10">
                 {index + 1}
               </div>
               <div className="bg-card/40 backdrop-blur-md rounded-xl p-6 pt-8 border border-border/40 h-full">

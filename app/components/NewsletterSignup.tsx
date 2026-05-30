@@ -49,7 +49,7 @@ export default function NewsletterSignup({
       : `flex-1 px-6 py-3 rounded-full ${formInputCardClass}`;
 
   const buttonClass =
-    'inline-flex flex-row flex-nowrap items-center justify-center gap-2 shrink-0 whitespace-nowrap bg-primary hover:bg-primary/90 text-background rounded-full font-semibold transition-all duration-300 disabled:opacity-50 ' +
+    'inline-flex flex-row flex-nowrap items-center justify-center gap-2 shrink-0 whitespace-nowrap bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold transition-all duration-300 disabled:opacity-50 ' +
     (size === 'large' ? 'px-10 py-4 text-lg' : 'px-8 py-3');
 
   return (
