@@ -1,12 +1,13 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import ProductSearch from '../components/ProductSearch';
 import PageCta from '../components/PageCta';
 import PageHero from '../components/PageHero';
 import SitePageLayout from '../components/SitePageLayout';
 import { motion } from 'framer-motion';
-import { BookOpen, Calendar, Search, Tag } from 'lucide-react';
+import { ArrowRight, BookOpen, Calendar, Search, Tag } from 'lucide-react';
 
 import { easeOut } from '../components/animations';
 import {
@@ -51,7 +52,7 @@ export default function BlogsPage() {
       />
 
         {/* Search + posts */}
-        <section className="max-w-4xl mx-auto mb-28">
+        <section className="max-w-5xl mx-auto mb-28">
           <ProductSearch
             value={searchQuery}
             onChange={setSearchQuery}
@@ -114,11 +115,15 @@ export default function BlogsPage() {
               className="space-y-6"
             >
               {filteredPosts.map((post, index) => (
-                <motion.article
+                <Link
                   key={post.id}
+                  href={`/blogs/${post.id}`}
+                  className="block rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                <motion.article
                   variants={itemVariants}
                   whileHover={{ y: -4, transition: { duration: 0.25 } }}
-                  className={`group relative bg-card/50 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-border/40 hover:border-primary/40 transition-all duration-300 overflow-hidden ${
+                  className={`group relative bg-card/50 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-border/40 hover:border-primary/40 transition-all duration-300 overflow-hidden cursor-pointer ${
                     index === 0 && !isSearching ? 'md:p-12' : ''
                   }`}
                 >
@@ -145,7 +150,12 @@ export default function BlogsPage() {
                     {post.title}
                   </h2>
                   <p className="text-foreground/65 text-lg leading-relaxed">{post.excerpt}</p>
+                  <span className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
+                    Read article
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
                 </motion.article>
+                </Link>
               ))}
             </motion.div>
           )}

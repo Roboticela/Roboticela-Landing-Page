@@ -1,43 +1,15 @@
-export type BlogPost = {
-  id: string;
-  date: string;
-  title: string;
-  category: string;
-  excerpt: string;
-};
+import { formatArticleDate, type ArticleBase } from './articleContent';
+
+export type BlogPost = ArticleBase;
 
 /** Add posts here — the blog page lists them automatically. */
-export const blogPosts: BlogPost[] = [
-  {
-    id: 'approach-to-innovation',
-    date: '2026-02-05',
-    title: 'Building the Future: Our Approach to Innovation',
-    category: 'Innovation',
-    excerpt: 'How we think different and build everything without boundaries.',
-  },
-  {
-    id: 'new-product-suite',
-    date: '2026-01-28',
-    title: 'Introducing Our New Product Suite',
-    category: 'Product',
-    excerpt: "A deep dive into our latest product releases and what's coming next.",
-  },
-  {
-    id: 'story-behind-roboticela',
-    date: '2026-01-15',
-    title: 'The Story Behind Roboticela',
-    category: 'Company',
-    excerpt: 'Robot meets Cell: The origin of our name and mission.',
-  },
-];
+export const blogPosts: BlogPost[] = [];
 
-export function formatBlogDate(isoDate: string): string {
-  return new Date(`${isoDate}T00:00:00`).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+export function getBlogById(id: string): BlogPost | undefined {
+  return blogPosts.find((post) => post.id === id);
 }
+
+export const formatBlogDate = formatArticleDate;
 
 export function filterBlogs(items: BlogPost[], query: string): BlogPost[] {
   const normalized = query.trim().toLowerCase();

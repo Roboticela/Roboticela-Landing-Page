@@ -1,21 +1,15 @@
-export type NewsItem = {
-  id: string;
-  date: string;
-  title: string;
-  category: string;
-  excerpt: string;
-};
+import { formatArticleDate, type ArticleBase } from './articleContent';
+
+export type NewsItem = ArticleBase;
 
 /** Add announcements here — the news page lists them automatically. */
 export const newsItems: NewsItem[] = [];
 
-export function formatNewsDate(isoDate: string): string {
-  return new Date(`${isoDate}T00:00:00`).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+export function getNewsById(id: string): NewsItem | undefined {
+  return newsItems.find((item) => item.id === id);
 }
+
+export const formatNewsDate = formatArticleDate;
 
 export function filterNews(items: NewsItem[], query: string): NewsItem[] {
   const normalized = query.trim().toLowerCase();
