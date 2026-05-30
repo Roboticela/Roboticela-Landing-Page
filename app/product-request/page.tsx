@@ -2,9 +2,28 @@
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import CustomSelect from '../components/CustomSelect';
 import { motion } from 'framer-motion';
 import { Lightbulb, Send } from 'lucide-react';
 import { useState } from 'react';
+
+const productTypeOptions = [
+  { value: 'software', label: 'Software / Web Application' },
+  { value: 'mobile', label: 'Mobile Application' },
+  { value: 'hardware', label: 'Hardware Device' },
+  { value: 'ai', label: 'AI-Powered Tool' },
+  { value: 'automation', label: 'Automation / Robotics' },
+  { value: 'enterprise', label: 'Enterprise System' },
+  { value: 'education', label: 'Educational Platform' },
+  { value: 'other', label: 'Other' },
+];
+
+const priorityOptions = [
+  { value: 'low', label: 'Low — Just an idea' },
+  { value: 'medium', label: 'Medium — Planning phase' },
+  { value: 'high', label: 'High — Need it soon' },
+  { value: 'urgent', label: 'Urgent — Need it ASAP' },
+];
 
 export default function ProductRequestPage() {
   const [formData, setFormData] = useState({
@@ -27,11 +46,17 @@ export default function ProductRequestPage() {
     setTimeout(() => setSubmitted(false), 3000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const setField = (name: keyof typeof formData, value: string) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -116,30 +141,16 @@ export default function ProductRequestPage() {
                 />
               </div>
 
-              {/* Product Type */}
-              <div>
-                <label htmlFor="productType" className="block text-sm font-semibold text-foreground mb-2">
-                  Product Type *
-                </label>
-                <select
-                  id="productType"
-                  name="productType"
-                  value={formData.productType}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-background border border-border/40 rounded-xl text-foreground focus:outline-none focus:border-primary/40 transition-colors"
-                >
-                  <option value="">Select a category</option>
-                  <option value="software">Software / Web Application</option>
-                  <option value="mobile">Mobile Application</option>
-                  <option value="hardware">Hardware Device</option>
-                  <option value="ai">AI-Powered Tool</option>
-                  <option value="automation">Automation / Robotics</option>
-                  <option value="enterprise">Enterprise System</option>
-                  <option value="education">Educational Platform</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+              <CustomSelect
+                id="productType"
+                name="productType"
+                label="Product Type *"
+                value={formData.productType}
+                onChange={(value) => setField('productType', value)}
+                options={productTypeOptions}
+                placeholder="Select a category"
+                required
+              />
 
               {/* Description */}
               <div>
@@ -175,24 +186,14 @@ export default function ProductRequestPage() {
                 />
               </div>
 
-              {/* Priority */}
-              <div>
-                <label htmlFor="priority" className="block text-sm font-semibold text-foreground mb-2">
-                  Priority Level
-                </label>
-                <select
-                  id="priority"
-                  name="priority"
-                  value={formData.priority}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-background border border-border/40 rounded-xl text-foreground focus:outline-none focus:border-primary/40 transition-colors"
-                >
-                  <option value="low">Low - Just an idea</option>
-                  <option value="medium">Medium - Planning phase</option>
-                  <option value="high">High - Need it soon</option>
-                  <option value="urgent">Urgent - Need it ASAP</option>
-                </select>
-              </div>
+              <CustomSelect
+                id="priority"
+                name="priority"
+                label="Priority Level"
+                value={formData.priority}
+                onChange={(value) => setField('priority', value)}
+                options={priorityOptions}
+              />
 
               {/* Submit Button */}
               <div className="pt-4">

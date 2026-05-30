@@ -1,15 +1,16 @@
 'use client';
 
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Lock, Rocket } from 'lucide-react';
 import Link from 'next/link';
 
 import { easeOut } from './animations';
 import ProductLogo from './ProductLogo';
-import { products } from '../data/products';
+import ProductSearch from './ProductSearch';
+import { filterProducts, products } from '../data/products';
 
 const HERO_LIMIT = 6;
-const dummyCount = Math.max(0, HERO_LIMIT - products.length);
 
 const comingSoonCategories = [
   { name: 'Hardware Products', description: 'Physical devices designed with Roboticela precision.' },
@@ -38,6 +39,15 @@ const itemAnimation = {
 };
 
 export default function Products() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const filteredProducts = useMemo(
+    () => filterProducts(products, searchQuery),
+    [searchQuery]
+  );
+  const isSearching = searchQuery.trim().length > 0;
+  const displayedProducts = isSearching ? filteredProducts : products;
+  const dummyCount = isSearching ? 0 : Math.max(0, HERO_LIMIT - products.length);
+
   return (
     <section id="products" className="relative py-24 md:py-32 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -67,18 +77,38 @@ export default function Products() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: easeOut }}
         >
-          <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">Available Now</h3>
+          <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-8 text-center">Available Now</h3>
+
+          <ProductSearch
+            value={searchQuery}
+            onChange={setSearchQuery}
+            className="mb-8"
+            placeholder="Search available products..."
+          />
+
+          {isSearching && filteredProducts.length === 0 && (
+            <p className="text-center text-foreground/60 mb-8">
+              No products match your search.{' '}
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="text-primary hover:underline"
+              >
+                Clear search
+              </button>
+            </p>
+          )}
 
           <motion.div
+            key={searchQuery.trim() || 'all'}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={containerAnimation}
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-100px' }}
+            animate="show"
           >
-            {products.map((product, index) => (
+            {displayedProducts.map((product) => (
               <motion.div
-                key={index}
+                key={product.name}
                 variants={itemAnimation}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group bg-card/60 backdrop-blur-sm rounded-3xl p-8 border border-border/40 hover:border-primary/40 transition-all duration-300"
@@ -147,8 +177,6 @@ export default function Products() {
           <div className="text-center mt-12">
             <Link href="/products">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
                 className="px-8 py-4 bg-card/60 hover:bg-card/80 backdrop-blur-sm text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40 inline-flex items-center gap-2"
               >
                 View All Products
@@ -196,8 +224,6 @@ export default function Products() {
           <div className="text-center">
             <Link href="/product-request">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
                 className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 shadow-lg shadow-primary/20"
               >
                 Join the Waitlist
@@ -221,8 +247,6 @@ export default function Products() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/product-request">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
                 className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300"
               >
                 Request a Product
@@ -230,8 +254,6 @@ export default function Products() {
             </Link>
             <Link href="/products">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
                 className="px-8 py-4 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40"
               >
                 Browse All Products

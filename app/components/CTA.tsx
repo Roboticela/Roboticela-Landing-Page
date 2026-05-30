@@ -37,8 +37,6 @@ export default function CTA() {
           >
             <Link href="/products">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
                 className="group px-10 py-5 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-primary/20"
               >
                 Get Started Today
@@ -47,8 +45,6 @@ export default function CTA() {
             </Link>
             <Link href="/support">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
                 className="px-10 py-5 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40"
               >
                 Contact Us

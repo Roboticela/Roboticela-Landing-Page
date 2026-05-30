@@ -39,8 +39,6 @@ export default function GetStarted() {
           </p>
           <Link href="/support">
             <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-xl font-semibold text-lg transition-colors"
             >
               Contact Us

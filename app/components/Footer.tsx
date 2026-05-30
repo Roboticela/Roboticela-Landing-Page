@@ -3,17 +3,10 @@
 import { Github, Mail, Twitter, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import NewsletterSignup from './NewsletterSignup';
+import { productCategories } from '../data/productCategories';
 
 export default function Footer() {
-  const [email, setEmail] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle newsletter signup
-    console.log('Newsletter signup:', email);
-    setEmail('');
-  };
 
   return (
     <footer className="relative py-16 px-4 bg-card/30 border-t border-border/40 overflow-hidden">
@@ -24,47 +17,34 @@ export default function Footer() {
           <p className="text-foreground/70 mb-6 max-w-2xl mx-auto">
             Subscribe to our newsletter and be the first to know about new products, breakthroughs, and updates. Join our community and stay in the loop.
           </p>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="flex-1 px-6 py-3 bg-card/60 border border-border/40 rounded-full text-foreground placeholder:text-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
-              required
-            />
-            <button
-              type="submit"
-              className="px-8 py-3 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold transition-all duration-300"
-            >
-              Subscribe
-            </button>
-          </form>
+          <NewsletterSignup />
           <p className="text-sm text-foreground/50 mt-4">We respect your inbox. No spam, just innovation.</p>
         </div>
 
         {/* Main Footer Content */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
           {/* Products */}
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Products</h4>
             <ul className="space-y-2">
-              <li><a href="#products" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Software</a></li>
-              <li><a href="#products" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Hardware</a></li>
-              <li><a href="#products" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">E-commerce</a></li>
-              <li><a href="#products" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Enterprise</a></li>
-              <li><a href="#products" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Research</a></li>
-            </ul>
-          </div>
-
-          {/* Solutions */}
-          <div>
-            <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Solutions</h4>
-            <ul className="space-y-2">
-              <li><Link href="/solutions/individuals" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">For Individuals</Link></li>
-              <li><Link href="/solutions/business" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">For Business</Link></li>
-              <li><Link href="/solutions/developers" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">For Developers</Link></li>
-              <li><Link href="/solutions/education" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">For Education</Link></li>
+              <li>
+                <Link
+                  href="/products"
+                  className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors"
+                >
+                  All Products
+                </Link>
+              </li>
+              {productCategories.map((category) => (
+                <li key={category.slug}>
+                  <Link
+                    href={`/products/${category.slug}`}
+                    className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors"
+                  >
+                    {category.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -72,10 +52,10 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Company</h4>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">About Us</Link></li>
+              <li><Link href="/about" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">About</Link></li>
               <li><Link href="/company/vision" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Our Vision</Link></li>
               <li><Link href="/careers" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Careers</Link></li>
-              <li><Link href="/company/press" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">News & Press</Link></li>
+              <li><Link href="/news" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">News</Link></li>
               <li><Link href="/support" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Contact</Link></li>
             </ul>
           </div>
@@ -86,9 +66,8 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/support" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Help Center</Link></li>
               <li><Link href="/product-request" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Request Product</Link></li>
-              <li><Link href="/resources/documentation" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Documentation</Link></li>
-              <li><Link href="/resources/community" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Community Forum</Link></li>
-              <li><Link href="/resources/blog" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Blog</Link></li>
+              <li><Link href="/community" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Community</Link></li>
+              <li><Link href="/blogs" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Blog</Link></li>
             </ul>
           </div>
 
@@ -98,8 +77,8 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/privacy" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Terms of Service</Link></li>
-              <li><Link href="/legal/security" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Security</Link></li>
-              <li><Link href="/legal/accessibility" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Accessibility</Link></li>
+              <li><Link href="/security" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Security</Link></li>
+              <li><Link href="/accessibility" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Accessibility</Link></li>
             </ul>
           </div>
 
@@ -107,11 +86,9 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Connect</h4>
             <ul className="space-y-2">
-              <li><a href="#newsletter" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Newsletter</a></li>
-              <li><a href="https://github.com/Roboticela" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Social Media</a></li>
-              <li><Link href="/connect/events" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Events</Link></li>
-              <li><Link href="/connect/partnerships" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Partnerships</Link></li>
-              <li><Link href="/support" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Feedback</Link></li>
+              <li><Link href="/newsletter" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Newsletter</Link></li>
+              <li><Link href="/social-media" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Social Media</Link></li>
+              <li><Link href="/feedback" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Feedback</Link></li>
             </ul>
           </div>
         </div>

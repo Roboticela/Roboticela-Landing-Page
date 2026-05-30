@@ -15,11 +15,10 @@ export default function Navbar() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/products', label: 'Products' },
     { href: '/#about', label: 'Story' },
-    { href: '/#why-us', label: 'Why Roboticela' },
-    { href: '/#get-started', label: 'Get Started' },
+    { href: '/products', label: 'Products' },
     { href: '/#faq', label: 'FAQ' },
+    { href: '/about', label: 'About' },
     { href: '/support', label: 'Contact' },
   ];
 
@@ -41,27 +40,17 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden lg:flex items-center gap-4 md:gap-6 shrink-0">
-          {navLinks.map((link) =>
-            link.href.startsWith('/') && link.href !== '/' ? (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-foreground/80 hover:text-primary hover:underline transition-all duration-200 cursor-pointer text-sm md:text-base"
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-foreground/80 hover:text-primary hover:underline transition-all duration-200 cursor-pointer text-sm md:text-base"
-              >
-                {link.label}
-              </a>
-            )
-          )}
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-foreground/80 hover:text-primary hover:underline transition-all duration-200 cursor-pointer text-sm md:text-base"
+            >
+              {link.label}
+            </Link>
+          ))}
           <Link
-            href="/#newsletter"
+            href="/newsletter"
             className="flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent/80 rounded-xl transition-colors"
           >
             <Mail className="w-5 h-5" />
@@ -103,29 +92,18 @@ export default function Navbar() {
               className="lg:hidden fixed top-[73px] left-0 right-0 bg-card/95 backdrop-blur-md border-b border-border/40 z-30 max-h-[calc(100vh-73px)] overflow-y-auto"
             >
               <div className="max-w-7xl mx-auto px-4 py-4 space-y-3">
-                {navLinks.map((link) =>
-                  link.href.startsWith('/') && link.href !== '/' ? (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={closeMenu}
-                      className="block px-4 py-3 text-foreground/80 hover:text-primary hover:bg-accent rounded-xl transition-all duration-200 cursor-pointer text-base"
-                    >
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      onClick={closeMenu}
-                      className="block px-4 py-3 text-foreground/80 hover:text-primary hover:bg-accent rounded-xl transition-all duration-200 cursor-pointer text-base"
-                    >
-                      {link.label}
-                    </a>
-                  )
-                )}
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={closeMenu}
+                    className="block px-4 py-3 text-foreground/80 hover:text-primary hover:bg-accent rounded-xl transition-all duration-200 cursor-pointer text-base"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
                 <Link
-                  href="/#newsletter"
+                  href="/newsletter"
                   onClick={closeMenu}
                   className="flex items-center gap-2 px-4 py-3 bg-accent hover:bg-accent/80 rounded-xl transition-colors"
                 >

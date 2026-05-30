@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us - Roboticela",
-  description: "Learn about our vision, mission, and the team building the future without boundaries.",
+  title: "About Roboticela — Think Different. Build Everything.",
+  description: "Roboticela is a company with no category and no limits. Learn our story, mission, and the vision behind the brand that's building everything.",
 };
 
 export default function AboutLayout({

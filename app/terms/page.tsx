@@ -1,58 +1,33 @@
 'use client';
 
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import { motion } from 'framer-motion';
-
-function formatDate(date: Date): string {
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
-  return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
-}
+import LegalPageLayout from '../components/LegalPageLayout';
+import { Scale } from 'lucide-react';
 
 export default function TermsPage() {
   const effectiveDate = new Date();
   const lastUpdated = new Date();
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300 overflow-x-hidden w-full max-w-full">
-      <Navbar />
-      
-      <main className="pt-32 pb-24 md:pt-40 md:pb-32 px-4">
-        <div className="max-w-4xl mx-auto">
-          <motion.article
-            className="bg-white/70 dark:bg-white/5 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/30 dark:border-white/10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-8">
-              Terms of Service & User Agreement
-            </h1>
-
-            <div className="text-sm text-slate-600 dark:text-gray-400 mb-8 space-y-1">
-              <p><strong>Effective Date: {formatDate(effectiveDate)}</strong></p>
-              <p><strong>Last Updated: {formatDate(lastUpdated)}</strong></p>
-            </div>
-
-            <hr className="border-white/20 dark:border-white/10 mb-8" />
-
-            <div className="prose prose-slate dark:prose-invert max-w-none">
-              <div className="text-base md:text-lg text-slate-700 dark:text-gray-300 leading-relaxed space-y-6">
-                
+    <LegalPageLayout
+      eyebrow="Legal"
+      title="Terms of Service"
+      titleAccent="& User Agreement"
+      description="The terms and conditions that govern your use of Roboticela services and platforms."
+      icon={Scale}
+      effectiveDate={effectiveDate}
+      lastUpdated={lastUpdated}
+    >
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     Preamble & Binding Agreement
                   </h2>
-                  <p className="font-semibold text-slate-900 dark:text-white mb-4">
+                  <p className="font-semibold text-foreground mb-4">
                     IMPORTANT - PLEASE READ CAREFULLY:
                   </p>
                   <p>
                     These Terms of Service and User Agreement (this <strong>"Agreement"</strong> or these <strong>"Terms"</strong>) constitute a legally binding contract between you (referred to as <strong>"User"</strong>, <strong>"you"</strong>, <strong>"your"</strong>, or <strong>"Customer"</strong>) and Roboticela (referred to as <strong>"Roboticela"</strong>, <strong>"Company"</strong>, <strong>"we"</strong>, <strong>"us"</strong>, or <strong>"our"</strong>). By accessing, browsing, using, registering for, or otherwise interacting with any services, websites, applications, platforms, software, products, or offerings provided by or associated with Roboticela (collectively, the <strong>"Services"</strong>), you acknowledge that you have read, understood, and agree to be bound by all terms and conditions contained in this Agreement.
                   </p>
-                  <p className="font-semibold text-slate-900 dark:text-white mt-4">
+                  <p className="font-semibold text-foreground mt-4">
                     IF YOU DO NOT AGREE TO ALL TERMS AND CONDITIONS OF THIS AGREEMENT, YOU MUST IMMEDIATELY DISCONTINUE ALL USE OF THE SERVICES AND EXIT ANY WEBSITES OR APPLICATIONS ASSOCIATED WITH ROBOTICELA.
                   </p>
                   <p className="mt-4">
@@ -60,14 +35,14 @@ export default function TermsPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     1. Acceptance & Modification of Terms
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     1.1 Acceptance
                   </h3>
                   <p>
@@ -81,13 +56,13 @@ export default function TermsPage() {
                     <li>You are not prohibited from using the Services under applicable law</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     1.2 Modification Rights
                   </h3>
                   <p>
                     Roboticela reserves the right, in our sole and absolute discretion, to modify, amend, update, change, or revise this Agreement at any time, for any reason, without prior notice to you. Modifications will be effective immediately upon posting on our website or through the Services, or as otherwise indicated. Your continued use of the Services after any modifications constitutes your acceptance of the modified Agreement.
                   </p>
-                  <p className="font-semibold text-slate-900 dark:text-white mt-4">
+                  <p className="font-semibold text-foreground mt-4">
                     YOU ACKNOWLEDGE AND AGREE THAT:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -97,7 +72,7 @@ export default function TermsPage() {
                     <li>Roboticela may modify, suspend, or discontinue any aspect of the Services at any time</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     1.3 Severability
                   </h3>
                   <p>
@@ -105,14 +80,14 @@ export default function TermsPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     2. Definitions & Interpretation
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     2.1 Key Definitions
                   </h3>
                   <ul className="list-disc pl-6 space-y-3 mt-4">
@@ -124,7 +99,7 @@ export default function TermsPage() {
                     <li><strong>"Intellectual Property"</strong> means all intellectual property rights, including but not limited to copyrights, trademarks, trade secrets, patents, know-how, and proprietary information.</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     2.2 Interpretation
                   </h3>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -135,24 +110,24 @@ export default function TermsPage() {
                   </ul>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     3. Description of Services
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     3.1 General Description
                   </h3>
                   <p>
                     Roboticela provides a comprehensive range of services, products, and solutions across all industries and sectors, without limitation. The Services may include, but are not limited to, software applications, web platforms, mobile applications, cloud services, consulting services, data processing, analytics, artificial intelligence services, and any other services offered by Roboticela.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     3.2 Service Availability
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     YOU ACKNOWLEDGE AND AGREE THAT:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -164,7 +139,7 @@ export default function TermsPage() {
                     <li>Roboticela is not responsible for third-party service failures or limitations</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     3.3 No Guarantees
                   </h3>
                   <p>
@@ -179,14 +154,14 @@ export default function TermsPage() {
                   </ul>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     4. Account Registration & Security
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     4.1 Account Creation
                   </h3>
                   <p>
@@ -200,10 +175,10 @@ export default function TermsPage() {
                     <li>Notify Roboticela immediately of any unauthorized access or use</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     4.2 Account Security
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     YOU ARE SOLELY RESPONSIBLE FOR:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -212,7 +187,7 @@ export default function TermsPage() {
                     <li>Ensuring that your Account is used only by authorized persons</li>
                     <li>Any loss or damage arising from unauthorized use of your Account</li>
                   </ul>
-                  <p className="font-semibold text-slate-900 dark:text-white mt-4">
+                  <p className="font-semibold text-foreground mt-4">
                     ROBOTICELA IS NOT LIABLE FOR:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -221,7 +196,7 @@ export default function TermsPage() {
                     <li>Any activities conducted under your Account, whether authorized or not</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     4.3 Account Termination
                   </h3>
                   <p>
@@ -235,21 +210,21 @@ export default function TermsPage() {
                   </ul>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     5. User Obligations & Restrictions
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     5.1 Acceptable Use
                   </h3>
                   <p>
                     You agree to use the Services only for lawful purposes and in accordance with this Agreement. You agree not to:
                   </p>
                   
-                  <p className="mt-4 font-semibold text-slate-900 dark:text-white">A. Illegal Activities:</p>
+                  <p className="mt-4 font-semibold text-foreground">A. Illegal Activities:</p>
                   <ul className="list-disc pl-6 space-y-2 mt-2">
                     <li>Use the Services in violation of any applicable law, regulation, or legal obligation</li>
                     <li>Engage in any fraudulent, deceptive, or illegal activity</li>
@@ -257,7 +232,7 @@ export default function TermsPage() {
                     <li>Transmit or facilitate transmission of illegal content</li>
                   </ul>
 
-                  <p className="mt-4 font-semibold text-slate-900 dark:text-white">B. Unauthorized Access:</p>
+                  <p className="mt-4 font-semibold text-foreground">B. Unauthorized Access:</p>
                   <ul className="list-disc pl-6 space-y-2 mt-2">
                     <li>Attempt to gain unauthorized access to the Services, Accounts, or systems</li>
                     <li>Interfere with, disrupt, or damage the Services or servers</li>
@@ -265,7 +240,7 @@ export default function TermsPage() {
                     <li>Reverse engineer, decompile, or disassemble any part of the Services</li>
                   </ul>
 
-                  <p className="mt-4 font-semibold text-slate-900 dark:text-white">C. Harmful Content:</p>
+                  <p className="mt-4 font-semibold text-foreground">C. Harmful Content:</p>
                   <ul className="list-disc pl-6 space-y-2 mt-2">
                     <li>Upload, transmit, or distribute viruses, malware, or harmful code</li>
                     <li>Transmit spam, unsolicited communications, or bulk messages</li>
@@ -273,7 +248,7 @@ export default function TermsPage() {
                     <li>Impersonate any person or entity or misrepresent your identity</li>
                   </ul>
 
-                  <p className="mt-4 font-semibold text-slate-900 dark:text-white">D. Commercial Restrictions:</p>
+                  <p className="mt-4 font-semibold text-foreground">D. Commercial Restrictions:</p>
                   <ul className="list-disc pl-6 space-y-2 mt-2">
                     <li>Resell, redistribute, or sublicense the Services without authorization</li>
                     <li>Use the Services to compete with Roboticela</li>
@@ -281,7 +256,7 @@ export default function TermsPage() {
                     <li>Use the Services to develop competing products or services</li>
                   </ul>
 
-                  <p className="mt-4 font-semibold text-slate-900 dark:text-white">E. Other Prohibited Activities:</p>
+                  <p className="mt-4 font-semibold text-foreground">E. Other Prohibited Activities:</p>
                   <ul className="list-disc pl-6 space-y-2 mt-2">
                     <li>Violate any terms of this Agreement or applicable policies</li>
                     <li>Interfere with other users' enjoyment of the Services</li>
@@ -289,7 +264,7 @@ export default function TermsPage() {
                     <li>Engage in any activity that Roboticela, in its sole discretion, deems inappropriate</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     5.2 Content Standards
                   </h3>
                   <p>
@@ -302,7 +277,7 @@ export default function TermsPage() {
                     <li>User Content does not contain prohibited data or information</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     5.3 Monitoring & Enforcement
                   </h3>
                   <p>
@@ -316,21 +291,21 @@ export default function TermsPage() {
                   </ul>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     6. Intellectual Property Rights
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     6.1 Roboticela's Intellectual Property
                   </h3>
                   <p>
                     All rights, title, and interest in and to the Services, including all Roboticela Content, software, code, designs, trademarks, logos, and other intellectual property, are owned by Roboticela or its licensors and are protected by copyright, trademark, patent, trade secret, and other intellectual property laws.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     6.2 Limited License
                   </h3>
                   <p>
@@ -343,7 +318,7 @@ export default function TermsPage() {
                     <li>Remove or alter any proprietary notices</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     6.3 User Content License
                   </h3>
                   <p>
@@ -359,14 +334,14 @@ export default function TermsPage() {
                     You waive any moral rights or similar rights you may have in User Content.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     6.4 Feedback
                   </h3>
                   <p>
                     If you provide feedback, suggestions, or ideas about the Services, you grant Roboticela an unlimited, perpetual, irrevocable, royalty-free license to use, modify, and incorporate such feedback without any obligation to you.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     6.5 Reservation of Rights
                   </h3>
                   <p>
@@ -374,14 +349,14 @@ export default function TermsPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     7. Payment Terms & Fees
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     7.1 Fees
                   </h3>
                   <p>
@@ -394,7 +369,7 @@ export default function TermsPage() {
                     <li>Authorize Roboticela to charge your payment method</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     7.2 Payment Terms
                   </h3>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -404,10 +379,10 @@ export default function TermsPage() {
                     <li>Failure to pay may result in suspension or termination of Services</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     7.3 Refunds
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     ROBOTICELA'S REFUND POLICY:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -417,7 +392,7 @@ export default function TermsPage() {
                     <li>Refunds, if granted, may be subject to processing fees</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     7.4 Taxes
                   </h3>
                   <p>
@@ -425,21 +400,21 @@ export default function TermsPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     8. Privacy & Data Protection
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     8.1 Privacy Policy
                   </h3>
                   <p>
                     Your use of the Services is also governed by our Privacy Policy, which is incorporated into this Agreement by reference. By using the Services, you consent to the collection, use, and disclosure of information as described in the Privacy Policy.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     8.2 Data Processing
                   </h3>
                   <p>
@@ -452,7 +427,7 @@ export default function TermsPage() {
                     <li>You are responsible for backing up your own data</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     8.3 Data Security
                   </h3>
                   <p>
@@ -466,14 +441,14 @@ export default function TermsPage() {
                   </ul>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     9. Third-Party Services & Links
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     9.1 Third-Party Integration
                   </h3>
                   <p>
@@ -486,14 +461,14 @@ export default function TermsPage() {
                     <li>Third-party services are subject to their own terms and policies</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     9.2 No Endorsement
                   </h3>
                   <p>
                     The inclusion of links or references to third-party services does not constitute endorsement by Roboticela. Roboticela disclaims all liability for third-party services.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     9.3 Third-Party Content
                   </h3>
                   <p>
@@ -501,17 +476,17 @@ export default function TermsPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     10. Disclaimers & Warranties
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     10.1 No Warranties
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING BUT NOT LIMITED TO:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -524,10 +499,10 @@ export default function TermsPage() {
                     <li>WARRANTIES REGARDING RESULTS OR OUTCOMES</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     10.2 Your Acknowledgment
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     YOU ACKNOWLEDGE AND AGREE THAT:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -538,7 +513,7 @@ export default function TermsPage() {
                     <li>You are solely responsible for evaluating the suitability of the Services for your needs</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     10.3 Jurisdiction-Specific Disclaimers
                   </h3>
                   <p>
@@ -546,17 +521,17 @@ export default function TermsPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     11. Limitation of Liability
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     11.1 Limitation of Liability
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL ROBOTICELA, ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, LICENSORS, OR SUPPLIERS BE LIABLE FOR ANY:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -567,14 +542,14 @@ export default function TermsPage() {
                     <li>PERSONAL INJURY OR PROPERTY DAMAGE</li>
                     <li>ANY OTHER DAMAGES ARISING OUT OF OR RELATED TO THE SERVICES</li>
                   </ul>
-                  <p className="font-semibold text-slate-900 dark:text-white mt-4">
+                  <p className="font-semibold text-foreground mt-4">
                     REGARDLESS OF THE THEORY OF LIABILITY (CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, OR OTHERWISE) AND EVEN IF ROBOTICELA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     11.2 Maximum Liability
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     IF ROBOTICELA IS FOUND LIABLE FOR ANY DAMAGES, OUR TOTAL AGGREGATE LIABILITY SHALL NOT EXCEED THE GREATER OF:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -582,17 +557,17 @@ export default function TermsPage() {
                     <li>FIFTY U.S. DOLLARS ($50)</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     11.3 Exclusions
                   </h3>
                   <p>
                     The limitations and exclusions in this section apply to the maximum extent permitted by applicable law and shall survive termination of this Agreement.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     11.4 Your Acknowledgment
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     YOU ACKNOWLEDGE AND AGREE THAT:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -602,17 +577,17 @@ export default function TermsPage() {
                   </ul>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     12. Indemnification
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     12.1 Your Indemnification Obligation
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     YOU AGREE TO INDEMNIFY, DEFEND, AND HOLD HARMLESS ROBOTICELA, ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, LICENSORS, AND SUPPLIERS FROM AND AGAINST ANY AND ALL:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -620,7 +595,7 @@ export default function TermsPage() {
                     <li>DAMAGES, LOSSES, COSTS, AND EXPENSES (INCLUDING REASONABLE ATTORNEYS' FEES)</li>
                     <li>LIABILITIES AND OBLIGATIONS</li>
                   </ul>
-                  <p className="font-semibold text-slate-900 dark:text-white mt-4">
+                  <p className="font-semibold text-foreground mt-4">
                     ARISING OUT OF OR RELATED TO:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -631,14 +606,14 @@ export default function TermsPage() {
                     <li>Your negligence or willful misconduct</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     12.2 Defense and Control
                   </h3>
                   <p>
                     Roboticela reserves the right, at your expense, to assume the exclusive defense and control of any matter subject to indemnification. You agree to cooperate with Roboticela's defense and not to settle any matter without Roboticela's prior written consent.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     12.3 Survival
                   </h3>
                   <p>
@@ -646,21 +621,21 @@ export default function TermsPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     13. Termination
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     13.1 Termination by You
                   </h3>
                   <p>
                     You may stop using the Services at any time. You may terminate your Account by contacting Roboticela or using available account management features.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     13.2 Termination by Roboticela
                   </h3>
                   <p>
@@ -674,7 +649,7 @@ export default function TermsPage() {
                     <li>Any reason Roboticela deems necessary</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     13.3 Effect of Termination
                   </h3>
                   <p>
@@ -687,7 +662,7 @@ export default function TermsPage() {
                     <li>All provisions that by their nature should survive shall survive</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     13.4 Survival
                   </h3>
                   <p>
@@ -695,27 +670,27 @@ export default function TermsPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     14. Dispute Resolution & Arbitration
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     14.1 Informal Resolution
                   </h3>
                   <p>
                     Before initiating any formal proceeding, you and Roboticela agree to attempt to resolve disputes informally by contacting the other party and engaging in good faith negotiations.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     14.2 Binding Arbitration
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     YOU AND ROBOTICELA AGREE THAT ANY DISPUTE, CLAIM, OR CONTROVERSY ARISING OUT OF OR RELATING TO THIS AGREEMENT OR THE SERVICES SHALL BE RESOLVED EXCLUSIVELY BY BINDING ARBITRATION IN ACCORDANCE WITH THE ARBITRATION ACT, 1940 (PAKISTAN), AS AMENDED.
                   </p>
-                  <p className="font-semibold text-slate-900 dark:text-white mt-4">
+                  <p className="font-semibold text-foreground mt-4">
                     KEY TERMS:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -726,10 +701,10 @@ export default function TermsPage() {
                     <li>Arbitration shall be conducted on an individual basis (no class actions)</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     14.3 Class Action Waiver
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     YOU AND ROBOTICELA AGREE THAT:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -738,7 +713,7 @@ export default function TermsPage() {
                     <li>You waive any right to participate in class actions or collective proceedings</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     14.4 Exceptions
                   </h3>
                   <p>
@@ -751,7 +726,7 @@ export default function TermsPage() {
                     <li>Matters not capable of being settled by arbitration under applicable law</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     14.5 Governing Law for Arbitration
                   </h3>
                   <p>
@@ -759,24 +734,24 @@ export default function TermsPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     15. Governing Law & Jurisdiction
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     15.1 Governing Law
                   </h3>
                   <p>
                     This Agreement shall be governed by and construed in accordance with the laws of Pakistan, without regard to conflict of law principles.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     15.2 Jurisdiction
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     FOR ANY DISPUTES NOT SUBJECT TO ARBITRATION, YOU AND ROBOTICELA IRREVOCABLY AGREE THAT:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -785,64 +760,64 @@ export default function TermsPage() {
                     <li>You waive any objection to venue in such courts</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     15.3 Waiver of Jury Trial
                   </h3>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     YOU AND ROBOTICELA WAIVE ANY RIGHT TO A JURY TRIAL IN ANY PROCEEDING ARISING OUT OF OR RELATED TO THIS AGREEMENT.
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     16. General Provisions
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     16.1 Entire Agreement
                   </h3>
                   <p>
                     This Agreement, together with the Privacy Policy and any other policies referenced herein, constitutes the entire agreement between you and Roboticela regarding the Services and supersedes all prior agreements.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     16.2 Assignment
                   </h3>
                   <p>
                     You may not assign or transfer this Agreement or your rights hereunder without Roboticela's prior written consent. Roboticela may assign or transfer this Agreement without restriction.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     16.3 Waiver
                   </h3>
                   <p>
                     No waiver of any provision of this Agreement shall be effective unless in writing and signed by the waiving party. Failure to enforce any provision shall not constitute a waiver.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     16.4 Force Majeure
                   </h3>
                   <p>
                     Roboticela shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including but not limited to acts of God, natural disasters, war, terrorism, labor disputes, or government actions.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     16.5 Notices
                   </h3>
                   <p>
                     Notices to you may be provided through the Services, by email, or by other means. Notices to Roboticela must be sent to the contact information provided below.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     16.6 Relationship
                   </h3>
                   <p>
                     This Agreement does not create any partnership, joint venture, agency, or employment relationship between you and Roboticela.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     16.7 Language
                   </h3>
                   <p>
@@ -850,10 +825,10 @@ export default function TermsPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     17. Contact Information
                   </h2>
                   <p>
@@ -862,18 +837,18 @@ export default function TermsPage() {
                   <p className="mt-4">
                     <strong>Email:</strong> <a href="mailto:contact@roboticela.com" className="text-teal-600 dark:text-teal-400 hover:underline">contact@roboticela.com</a>
                   </p>
-                  <p className="mt-4 text-sm text-slate-600 dark:text-gray-400">
+                  <p className="mt-4 text-sm text-foreground/60">
                     <strong>Note:</strong> Roboticela reserves the right to respond to inquiries in a reasonable time frame and is not obligated to respond to every inquiry. Responses may be limited by legal, business, or technical constraints.
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     18. Acknowledgment & Acceptance
                   </h2>
-                  <p className="font-semibold text-slate-900 dark:text-white">
+                  <p className="font-semibold text-foreground">
                     BY USING THE SERVICES, YOU ACKNOWLEDGE THAT:
                   </p>
                   <ol className="list-decimal pl-6 space-y-2 mt-4">
@@ -884,25 +859,17 @@ export default function TermsPage() {
                     <li>You will comply with all applicable laws and this Agreement</li>
                     <li>If you do not agree, you must immediately discontinue use of the Services</li>
                   </ol>
-                  <p className="mt-4 text-sm text-slate-600 dark:text-gray-400">
+                  <p className="mt-4 text-sm text-foreground/60">
                     <strong>THIS AGREEMENT IS EFFECTIVE AS OF THE DATE YOU FIRST USE THE SERVICES AND SHALL CONTINUE UNTIL TERMINATED IN ACCORDANCE WITH ITS TERMS.</strong>
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
-                <p className="text-sm text-slate-600 dark:text-gray-400 italic mt-8">
+                <p className="text-sm text-foreground/60 italic mt-8">
                   These Terms of Service are provided for informational purposes. They create binding legal obligations. Roboticela reserves all rights not expressly granted herein. If you have questions about this Agreement, consult with legal counsel before using the Services.
                 </p>
-
-              </div>
-            </div>
-          </motion.article>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+    </LegalPageLayout>
   );
 }
 

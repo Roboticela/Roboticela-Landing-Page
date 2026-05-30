@@ -1,49 +1,24 @@
 'use client';
 
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import { motion } from 'framer-motion';
-
-function formatDate(date: Date): string {
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
-  return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
-}
+import LegalPageLayout from '../components/LegalPageLayout';
+import { Shield } from 'lucide-react';
 
 export default function PrivacyPage() {
   const effectiveDate = new Date();
   const lastUpdated = new Date();
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300 overflow-x-hidden w-full max-w-full">
-      <Navbar />
-      
-      <main className="pt-32 pb-24 md:pt-40 md:pb-32 px-4">
-        <div className="max-w-4xl mx-auto">
-          <motion.article
-            className="bg-white/70 dark:bg-white/5 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/30 dark:border-white/10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-8">
-              Privacy Policy & Terms of Data Processing
-            </h1>
-
-            <div className="text-sm text-slate-600 dark:text-gray-400 mb-8 space-y-1">
-              <p><strong>Effective Date: {formatDate(effectiveDate)}</strong></p>
-              <p><strong>Last Updated: {formatDate(lastUpdated)}</strong></p>
-            </div>
-
-            <hr className="border-white/20 dark:border-white/10 mb-8" />
-
-            <div className="prose prose-slate dark:prose-invert max-w-none">
-              <div className="text-base md:text-lg text-slate-700 dark:text-gray-300 leading-relaxed space-y-6">
-                
+    <LegalPageLayout
+      eyebrow="Legal"
+      title="Privacy Policy"
+      titleAccent="& Data Processing"
+      description="How Roboticela collects, uses, stores, and protects your information when you use our services."
+      icon={Shield}
+      effectiveDate={effectiveDate}
+      lastUpdated={lastUpdated}
+    >
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     Preamble & Acceptance
                   </h2>
                   <p>
@@ -54,14 +29,14 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     1. Scope & Definitions
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     1.1 Applicability
                   </h3>
                   <p>
@@ -75,7 +50,7 @@ export default function PrivacyPage() {
                     <li>All third-party integrations, partnerships, and collaborations</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     1.2 Definitions
                   </h3>
                   <ul className="list-disc pl-6 space-y-3 mt-4">
@@ -87,21 +62,21 @@ export default function PrivacyPage() {
                   </ul>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     2. Information Collection & Processing
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     2.1 General Collection Practices
                   </h3>
                   <p>
                     Roboticela may collect, process, store, transmit, and use information in various forms and from various sources. By using the Services, you expressly consent to the collection and processing of information as described in this Policy, and you acknowledge that such collection and processing may occur without additional notice to you.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     2.2 Types of Information Collected
                   </h3>
                   <p>
@@ -143,7 +118,7 @@ export default function PrivacyPage() {
                     <li>Information from other users or entities who may provide information about you</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     2.3 Collection Methods
                   </h3>
                   <p>
@@ -160,14 +135,14 @@ export default function PrivacyPage() {
                   </ul>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     3. Use of Information
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     3.1 Permitted Uses
                   </h3>
                   <p>
@@ -191,14 +166,14 @@ export default function PrivacyPage() {
                     <li>Any other purpose disclosed at the time of collection or with your consent</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     3.2 No Limitation on Use
                   </h3>
                   <p>
                     Roboticela reserves the right to use information in any manner not expressly prohibited by applicable law. The uses described in this Policy are illustrative and not exhaustive. Roboticela may use information for purposes not specifically described in this Policy, provided such use is lawful.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     3.3 De-identified and Aggregated Information
                   </h3>
                   <p>
@@ -206,14 +181,14 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     4. Information Sharing & Disclosure
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     4.1 General Sharing Practices
                   </h3>
                   <p>
@@ -264,14 +239,14 @@ export default function PrivacyPage() {
                     <li>As otherwise permitted by you</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     4.2 No Limitation on Sharing
                   </h3>
                   <p>
                     Roboticela reserves the right to share information with any third party for any lawful purpose, subject only to applicable legal restrictions. The categories of third parties described in this Policy are illustrative and not exhaustive.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     4.3 Third-Party Services
                   </h3>
                   <p>
@@ -279,21 +254,21 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     5. Data Security & Protection
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     5.1 Security Measures
                   </h3>
                   <p>
                     Roboticela implements various technical, administrative, and organizational measures intended to protect information from unauthorized access, use, disclosure, alteration, or destruction. However, no method of transmission over the internet, method of electronic storage, or security measure is completely secure or impenetrable.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     5.2 No Guarantee of Security
                   </h3>
                   <p>
@@ -307,7 +282,7 @@ export default function PrivacyPage() {
                     <li>Roboticela is not liable for any security breaches, unauthorized access, or data loss</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     5.3 Your Responsibilities
                   </h3>
                   <p>
@@ -322,21 +297,21 @@ export default function PrivacyPage() {
                   </ul>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     6. Data Retention & Deletion
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     6.1 Retention Period
                   </h3>
                   <p>
                     Roboticela may retain information for as long as necessary or useful for business purposes, legal compliance, dispute resolution, or as required or permitted by applicable law. Roboticela is not obligated to delete information upon request if retention is required by law, necessary for business operations, or for other legitimate purposes.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     6.2 Deletion Requests
                   </h3>
                   <p>
@@ -350,7 +325,7 @@ export default function PrivacyPage() {
                     <li>Retain information that has been shared with third parties (which may be beyond our control)</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     6.3 Backup and Archive Systems
                   </h3>
                   <p>
@@ -358,14 +333,14 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     7. Your Rights & Choices
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     7.1 Limited Rights
                   </h3>
                   <p>
@@ -380,7 +355,7 @@ export default function PrivacyPage() {
                     <li>The right to withdraw consent</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     7.2 Exercise of Rights
                   </h3>
                   <p>
@@ -393,14 +368,14 @@ export default function PrivacyPage() {
                     <li>Take reasonable time to process requests</li>
                   </ul>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     7.3 Opt-Out Options
                   </h3>
                   <p><strong>Marketing Communications:</strong> You may opt out of marketing communications by following unsubscribe instructions in communications or by contacting us. Opting out may not affect transactional or administrative communications.</p>
                   <p className="mt-4"><strong>Cookies and Tracking:</strong> Most browsers allow you to control cookies and tracking technologies through browser settings. However, disabling cookies may affect functionality of the Services. We use third-party analytics services, including Google Analytics and Microsoft Clarity, which use cookies and similar technologies to analyze website usage, track user behavior, and improve user experience. You can opt out of Google Analytics by installing the Google Analytics Opt-out Browser Add-on, available at: https://tools.google.com/dlpage/gaoptout. For Microsoft Clarity, you can manage your preferences through your browser settings or by contacting us.</p>
                   <p className="mt-4"><strong>Do Not Track:</strong> Roboticela does not currently respond to "Do Not Track" signals. We use third-party analytics services (including Google Analytics and Microsoft Clarity) that may continue to track your activities even if you have enabled DNT in your browser settings. These services collect information about your use of the Services in accordance with their respective privacy policies.</p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     7.4 No Guarantee of Rights
                   </h3>
                   <p>
@@ -408,21 +383,21 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     8. International Data Transfers
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     8.1 Global Operations
                   </h3>
                   <p>
                     Roboticela operates globally, and information may be transferred to, stored in, and processed in countries other than your country of residence. By using the Services, you consent to such transfers.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     8.2 Different Legal Standards
                   </h3>
                   <p>
@@ -430,21 +405,21 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     9. Children's Privacy
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     9.1 Age Restrictions
                   </h3>
                   <p>
                     The Services are not intended for individuals under the age of 13 (or the applicable age of majority in your jurisdiction). Roboticela does not knowingly collect information from children under 13. If you are under 13, do not use the Services or provide any information to Roboticela.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     9.2 Parental Responsibility
                   </h3>
                   <p>
@@ -452,21 +427,21 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     10. Third-Party Links & Services
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     10.1 Third-Party Content
                   </h3>
                   <p>
                     The Services may contain links to third-party websites, services, or content. Roboticela is not responsible for the privacy practices, content, or data collection of third parties. Your interactions with third parties are solely between you and such third parties.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     10.2 No Endorsement
                   </h3>
                   <p>
@@ -474,28 +449,28 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     11. Changes to This Policy
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     11.1 Modification Rights
                   </h3>
                   <p>
                     Roboticela reserves the right to modify, update, or change this Policy at any time, in our sole discretion, without prior notice. Changes will be effective immediately upon posting or as otherwise indicated.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     11.2 Your Responsibility
                   </h3>
                   <p>
                     It is your responsibility to review this Policy periodically for changes. Your continued use of the Services after changes constitutes acceptance of the modified Policy.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     11.3 No Notice Required
                   </h3>
                   <p>
@@ -503,35 +478,35 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     12. Disclaimers & Limitations
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     12.1 No Warranties
                   </h3>
                   <p>
                     ROBOTICELA PROVIDES THE SERVICES AND PROCESSES INFORMATION "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR ACCURACY.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     12.2 Limitation of Liability
                   </h3>
                   <p>
                     TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, ROBOTICELA SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE, DATA, OR USE, ARISING OUT OF OR RELATED TO THIS POLICY, THE SERVICES, OR THE COLLECTION, USE, OR DISCLOSURE OF INFORMATION, REGARDLESS OF THE THEORY OF LIABILITY.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     12.3 Maximum Liability
                   </h3>
                   <p>
                     If Roboticela is found liable for any damages, our total liability shall not exceed the amount you paid to Roboticela in the six (6) months preceding the claim, or fifty U.S. dollars ($50), whichever is greater.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     12.4 Indemnification
                   </h3>
                   <p>
@@ -539,28 +514,28 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     13. Governing Law & Dispute Resolution
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     13.1 Governing Law
                   </h3>
                   <p>
                     This Policy shall be governed by and construed in accordance with the laws of Pakistan, without regard to conflict of law principles.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     13.2 Jurisdiction
                   </h3>
                   <p>
                     Any disputes arising out of or related to this Policy or the Services shall be subject to the exclusive jurisdiction of the courts located in Pakistan.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     13.3 Class Action Waiver
                   </h3>
                   <p>
@@ -568,21 +543,21 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     14. Severability & Waiver
                   </h2>
                   
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     14.1 Severability
                   </h3>
                   <p>
                     If any provision of this Policy is found to be invalid, illegal, or unenforceable, the remaining provisions shall remain in full force and effect.
                   </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 mt-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 mt-6">
                     14.2 Waiver
                   </h3>
                   <p>
@@ -590,10 +565,10 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     15. Entire Agreement
                   </h2>
                   <p>
@@ -601,10 +576,10 @@ export default function PrivacyPage() {
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     16. Contact Information
                   </h2>
                   <p>
@@ -613,39 +588,31 @@ export default function PrivacyPage() {
                   <p className="mt-4">
                     <strong>Email:</strong> <a href="mailto:contact@roboticela.com" className="text-teal-600 dark:text-teal-400 hover:underline">contact@roboticela.com</a>
                   </p>
-                  <p className="mt-4 text-sm text-slate-600 dark:text-gray-400">
+                  <p className="mt-4 text-sm text-foreground/60">
                     <strong>Note:</strong> Roboticela reserves the right to respond to inquiries in a reasonable time frame and is not obligated to respond to every inquiry. Responses may be limited by legal, business, or technical constraints.
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
                 <section>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 mt-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8">
                     17. Acknowledgment
                   </h2>
                   <p>
                     BY USING THE SERVICES, YOU ACKNOWLEDGE THAT YOU HAVE READ THIS POLICY, UNDERSTAND IT, AND AGREE TO BE BOUND BY ITS TERMS. IF YOU DO NOT AGREE, YOU MUST IMMEDIATELY DISCONTINUE USE OF THE SERVICES.
                   </p>
-                  <p className="mt-4 text-sm text-slate-600 dark:text-gray-400">
+                  <p className="mt-4 text-sm text-foreground/60">
                     <strong>This Policy is effective as of the date stated above and applies to all information collected, processed, or used by Roboticela, regardless of when such information was collected.</strong>
                   </p>
                 </section>
 
-                <hr className="border-white/20 dark:border-white/10 my-8" />
+                <hr className="border-border/40 my-8" />
 
-                <p className="text-sm text-slate-600 dark:text-gray-400 italic mt-8">
+                <p className="text-sm text-foreground/60 italic mt-8">
                   This Privacy Policy is provided for informational purposes. It does not create any contractual or legal obligations beyond what is required by applicable law. Roboticela reserves all rights not expressly granted herein.
                 </p>
-
-              </div>
-            </div>
-          </motion.article>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+    </LegalPageLayout>
   );
 }
 

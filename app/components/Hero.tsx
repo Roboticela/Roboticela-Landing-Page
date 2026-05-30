@@ -55,7 +55,7 @@ export default function Hero() {
                   : spinTransition
               }
               onClick={spinLogo}
-              whileTap={{ scale: 0.95 }}
+              
               style={{ transformOrigin: 'center center' }}
               className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 cursor-pointer touch-manipulation select-none"
               role="button"
@@ -76,7 +76,7 @@ export default function Hero() {
                 }}
                 transition={{
                   duration: 2.8,
-                  repeat: Infinity,
+                  repeat: 1e10,
                   ease: 'easeInOut',
                 }}
                 aria-hidden
@@ -89,7 +89,7 @@ export default function Hero() {
                 }}
                 transition={{
                   duration: 2.8,
-                  repeat: Infinity,
+                  repeat: 1e10,
                   ease: 'easeInOut',
                   delay: 0.35,
                 }}
@@ -140,8 +140,6 @@ export default function Hero() {
           >
             <Link href="/products">
               <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
                 className="group px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-primary/20"
               >
                 Explore Products
@@ -150,8 +148,6 @@ export default function Hero() {
             </Link>
             <Link href="/about">
               <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
                 className="px-8 py-4 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40"
               >
                 Learn More
@@ -166,13 +162,13 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.8, repeat: Infinity, repeatType: 'reverse' }}
+        transition={{ delay: 1.2, duration: 0.8, repeat: 1e10, repeatType: 'reverse' }}
       >
         <div className="w-6 h-10 border-2 border-foreground/20 rounded-full flex items-start justify-center p-2">
           <motion.div
             className="w-1.5 h-1.5 bg-foreground/40 rounded-full"
             animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            transition={{ duration: 1.5, repeat: 1e10, ease: 'easeInOut' }}
           />
         </div>
       </motion.div>
