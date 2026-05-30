@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import type { ArticleBase } from '../data/articleContent';
 import { absoluteUrl, SITE_URL } from './site';
 
-const DEFAULT_OG_IMAGE = '/og-image.png';
+const DEFAULT_OG_IMAGE = '/og-image.jpg';
 const PUBLISHER_NAME = 'Roboticela';
 const PUBLISHER_LOGO = '/Favicon.png';
 

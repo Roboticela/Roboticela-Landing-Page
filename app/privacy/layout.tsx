@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "Read Roboticela's Privacy Policy and data protection practices. Learn how we collect, use, store, and protect your personal information across all our services.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Roboticela Privacy Policy",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Roboticela Privacy Policy & Data Protection",
     description: "Read Roboticela's Privacy Policy and data protection practices. Learn how we collect, use, store, and protect your personal information across all our services.",
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
     creator: "@roboticela",
     site: "@roboticela",
   },

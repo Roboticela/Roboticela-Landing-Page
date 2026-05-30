@@ -14,14 +14,14 @@ export const metadata: Metadata = {
     title: 'Roboticela Accessibility Statement & WCAG',
     description:
       'Roboticela is committed to inclusive design. Read our accessibility statement covering WCAG standards, assistive technology support, and ongoing improvements.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Roboticela Accessibility' }],
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Roboticela Accessibility' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Roboticela Accessibility Statement & WCAG',
     description:
       'Roboticela is committed to inclusive design. Read our accessibility statement covering WCAG standards, assistive technology support, and ongoing improvements.',
-    images: ['/og-image.png'],
+    images: ['/og-image.jpg'],
     creator: '@roboticela',
     site: '@roboticela',
   },

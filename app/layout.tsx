@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description: "The future doesn't fit in boxes. Neither do we. Roboticela builds without limits—software, hardware, research, and experiences that push what's possible.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpg",
         width: 1376,
         height: 768,
         alt: "Roboticela",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Roboticela - Think Different. Build Everything.",
     description: "The future doesn't fit in boxes. Neither do we. Roboticela builds without limits—software, hardware, research, and experiences that push what's possible.",
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
     creator: "@roboticela",
     site: "@roboticela",
   },
