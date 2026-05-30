@@ -136,21 +136,19 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.5, ease: easeOut }}
           >
-            <Link href="/products">
-              <motion.button
-                className="group px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-primary/20"
+            <Link
+                href="/products"
+                className="group px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 shadow-lg shadow-primary/20"
               >
                 Explore Products
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-            </Link>
-            <Link href="/about">
-              <motion.button
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+              </Link>
+            <Link
+                href="/about"
                 className="px-8 py-4 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40"
               >
-                Learn More
-              </motion.button>
-            </Link>
+                Our Story
+              </Link>
           </motion.div>
         </motion.div>
       </div>

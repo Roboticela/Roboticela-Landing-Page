@@ -44,23 +44,19 @@ export default function PageCta({
           {description}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href={primaryHref}>
-            <motion.button
-              type="button"
-              className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 shadow-lg shadow-primary/20"
-            >
-              {primaryLabel}
-              <ArrowRight className="w-5 h-5" />
-            </motion.button>
+          <Link
+            href={primaryHref}
+            className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 shadow-lg shadow-primary/20"
+          >
+            {primaryLabel}
+            <ArrowRight className="w-5 h-5" aria-hidden="true" />
           </Link>
           {secondaryLabel && secondaryHref && (
-            <Link href={secondaryHref}>
-              <motion.button
-                type="button"
-                className="px-8 py-4 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40 inline-flex items-center gap-2"
-              >
-                {secondaryLabel}
-              </motion.button>
+            <Link
+              href={secondaryHref}
+              className="px-8 py-4 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40 inline-flex items-center gap-2"
+            >
+              {secondaryLabel}
             </Link>
           )}
         </div>

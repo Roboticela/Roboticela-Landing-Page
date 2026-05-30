@@ -369,21 +369,19 @@ export default function OurVisionPage() {
               Be part of something bigger. Help us build a future that&apos;s unlimited by design.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/careers">
-                <motion.button
-                  className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 shadow-lg shadow-primary/20"
-                >
-                  Explore Careers
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
+              <Link
+                href="/careers"
+                className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 shadow-lg shadow-primary/20"
+              >
+                Explore Careers
+                <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </Link>
-              <Link href="/about">
-                <motion.button
-                  className="px-8 py-4 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40 inline-flex items-center gap-2"
-                >
-                  Our Story
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
+              <Link
+                href="/about"
+                className="px-8 py-4 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40 inline-flex items-center gap-2"
+              >
+                Our Story
+                <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </Link>
             </div>
           </motion.div>

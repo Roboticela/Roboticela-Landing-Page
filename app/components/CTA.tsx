@@ -35,20 +35,18 @@ export default function CTA() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <Link href="/products">
-              <motion.button
-                className="group px-10 py-5 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-primary/20"
-              >
-                Get Started Today
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+            <Link
+              href="/products"
+              className="group px-10 py-5 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 shadow-lg shadow-primary/20"
+            >
+              Get Started Today
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </Link>
-            <Link href="/support">
-              <motion.button
-                className="px-10 py-5 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40"
-              >
-                Contact Us
-              </motion.button>
+            <Link
+              href="/support"
+              className="px-10 py-5 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40"
+            >
+              Contact Us
             </Link>
           </motion.div>
         </motion.div>

@@ -131,13 +131,12 @@ export default function CareersPage() {
                       <span>{opening.type}</span>
                     </div>
                   </div>
-                  <Link href="/support">
-                    <motion.button
-                      className="px-6 py-3 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold transition-all duration-300 inline-flex items-center gap-2 shrink-0"
-                    >
-                      Apply Now
-                      <ArrowRight className="w-4 h-4" />
-                    </motion.button>
+                  <Link
+                    href="/support"
+                    className="px-6 py-3 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold transition-all duration-300 inline-flex items-center gap-2 shrink-0"
+                  >
+                    Apply Now
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </Link>
                 </motion.article>
               ))}

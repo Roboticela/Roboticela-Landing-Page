@@ -148,13 +148,12 @@ export default function Products() {
 
           {/* View All Products Button */}
           <div className="text-center mt-12">
-            <Link href="/products">
-              <motion.button
-                className="px-8 py-4 bg-card/60 hover:bg-card/80 backdrop-blur-sm text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40 inline-flex items-center gap-2"
-              >
-                View All Products
-                <ArrowRight className="w-5 h-5" />
-              </motion.button>
+            <Link
+              href="/products"
+              className="px-8 py-4 bg-card/60 hover:bg-card/80 backdrop-blur-sm text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40 inline-flex items-center gap-2"
+            >
+              View All Products
+              <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </Link>
           </div>
         </motion.div>
@@ -195,12 +194,11 @@ export default function Products() {
           </div>
 
           <div className="text-center">
-            <Link href="/product-request">
-              <motion.button
-                className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 shadow-lg shadow-primary/20"
-              >
-                Join the Waitlist
-              </motion.button>
+            <Link
+              href="/product-request"
+              className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 shadow-lg shadow-primary/20 inline-flex items-center gap-2"
+            >
+              Join the Waitlist
             </Link>
           </div>
         </motion.div>
@@ -218,19 +216,17 @@ export default function Products() {
             We&apos;re always building something new. Tell us what you&apos;re looking for.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/product-request">
-              <motion.button
-                className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300"
-              >
-                Request a Product
-              </motion.button>
+            <Link
+              href="/product-request"
+              className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2"
+            >
+              Request a Product
             </Link>
-            <Link href="/products">
-              <motion.button
-                className="px-8 py-4 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40"
-              >
-                Browse All Products
-              </motion.button>
+            <Link
+              href="/products"
+              className="px-8 py-4 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40 inline-flex items-center gap-2"
+            >
+              Browse All Products
             </Link>
           </div>
         </motion.div>

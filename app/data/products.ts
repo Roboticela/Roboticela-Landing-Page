@@ -49,7 +49,7 @@ export const products: Product[] = [
       'Master networking concepts with our interactive OSI model simulator. Perfect for students, educators, and professionals.',
     status: 'Available',
     links: [
-      { label: 'Learn More', href: 'https://osi-simulator.roboticela.com', external: true },
+      { label: 'About OSI Simulator', href: 'https://osi-simulator.roboticela.com', external: true },
       { label: 'Try It Now', href: 'https://app.osi-simulator.roboticela.com', external: true },
       { label: 'Classic Version', href: 'https://app.osi-classic.roboticela.com/legacy', external: true },
     ],
@@ -62,7 +62,7 @@ export const products: Product[] = [
       "Generate perfect icons for every platform in seconds. iOS, Android, web—we've got you covered.",
     status: 'Available',
     links: [
-      { label: 'Learn More', href: 'https://iconify.roboticela.com', external: true },
+      { label: 'About Iconify', href: 'https://iconify.roboticela.com', external: true },
       { label: 'Start Creating', href: 'https://app.iconify.roboticela.com', external: true },
     ],
   },
