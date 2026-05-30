@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import ArticleDetail from '../../components/ArticleDetail';
+import JsonLd from '../../components/JsonLd';
 import { blogPosts, getBlogById } from '../../data/blogs';
+import { articleJsonLd, articleRichPinMetadata } from '../../lib/pinterest-rich-pins';
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -20,20 +22,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Roboticela Blog — Stories, Insights & Ideas' };
   }
 
+  const pageTitle = `${post.title} | Roboticela Blog`;
+  const canonicalPath = `/blogs/${id}`;
+
   return {
-    title: { absolute: `${post.title} | Roboticela Blog` },
+    title: { absolute: pageTitle },
     description: post.excerpt,
-    alternates: { canonical: `/blogs/${id}` },
-    openGraph: {
-      type: 'article',
-      url: `https://roboticela.com/blogs/${id}`,
-      title: `${post.title} | Roboticela Blog`,
+    alternates: { canonical: canonicalPath },
+    ...articleRichPinMetadata({
+      title: pageTitle,
       description: post.excerpt,
-      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: post.title }],
-    },
+      canonicalPath,
+      publishedDate: post.date,
+      section: post.category,
+      author: post.author,
+    }),
     twitter: {
       card: 'summary_large_image',
-      title: `${post.title} | Roboticela Blog`,
+      title: pageTitle,
       description: post.excerpt,
       images: ['/og-image.png'],
     },
@@ -49,11 +55,14 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   return (
-    <ArticleDetail
-      item={post}
-      backHref="/blogs"
-      backLabel="Back to Blog"
-      eyebrow="Blog"
-    />
+    <>
+      <JsonLd data={articleJsonLd(post, `/blogs/${id}`)} />
+      <ArticleDetail
+        item={post}
+        backHref="/blogs"
+        backLabel="Back to Blog"
+        eyebrow="Blog"
+      />
+    </>
   );
 }

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import JsonLd from "./components/JsonLd";
+import { organizationJsonLd, pinterestDomainVerifyMetadata, websiteJsonLd } from "./lib/pinterest-rich-pins";
 import "./globals.css";
 
 const inter = Inter({
@@ -73,6 +75,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  ...pinterestDomainVerifyMetadata(),
 };
 
 export default function RootLayout({
@@ -106,6 +109,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         {children}
         <Script
           id="microsoft-clarity"
