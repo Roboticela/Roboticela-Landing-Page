@@ -2,6 +2,8 @@
 
 import { Search, X } from 'lucide-react';
 
+import { formInputCardClass } from '../lib/form-input';
+
 type ProductSearchProps = {
   value: string;
   onChange: (value: string) => void;
@@ -30,7 +32,7 @@ export default function ProductSearch({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         aria-label={ariaLabel}
-        className="relative w-full pl-12 pr-12 py-4 bg-card/60 backdrop-blur-sm border border-border/40 rounded-full text-foreground placeholder:text-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
+        className={`relative w-full pl-12 pr-12 py-4 rounded-full backdrop-blur-sm ${formInputCardClass}`}
       />
       {value && (
         <button

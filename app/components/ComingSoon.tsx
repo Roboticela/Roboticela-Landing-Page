@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaRocket, FaLightbulb, FaGlobe, FaCog, FaChartLine, FaUsers, FaUser, FaEnvelope, FaCheckCircle, FaArrowRight } from 'react-icons/fa';
 import { containerAnimation, itemAnimation, iconAnimation } from './animations';
+import ButtonLoader from './ButtonLoader';
 import Image from 'next/image';
 
 export default function ComingSoon() {
@@ -245,18 +246,15 @@ export default function ComingSoon() {
                   disabled={isSubmitting}
                   className="w-full px-8 py-5 bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 
                     text-white rounded-xl font-bold text-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed 
-                    flex items-center justify-center gap-3 group"
+                    inline-flex flex-row flex-nowrap items-center justify-center gap-3 whitespace-nowrap group"
                 >
                   {isSubmitting ? (
-                    <>
-                      <span className="animate-spin text-2xl">⏳</span>
-                      <span>Joining Waitlist...</span>
-                    </>
+                    <ButtonLoader label="Joining waitlist..." variant="onPrimary" />
                   ) : (
-                    <>
+                    <span className="inline-flex flex-row flex-nowrap items-center gap-3">
                       <span>Join the Waitlist</span>
-                      <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-200" />
-                    </>
+                      <FaArrowRight className="shrink-0 group-hover:translate-x-1 transition-transform duration-200" />
+                    </span>
                   )}
                 </motion.button>
               </form>

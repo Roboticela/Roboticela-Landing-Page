@@ -9,6 +9,7 @@
   --accent: #f5f5f5;
   --primary: #171717;
   --tertiary: #9ca3af;
+  --input-fill-bg: var(--background);
   --font-inter: 'Inter', sans-serif;
   --safe-area-inset-top: env(safe-area-inset-top, 0px);
   --safe-area-inset-right: env(safe-area-inset-right, 0px);
@@ -25,6 +26,7 @@
   --accent: #334155;
   --primary: #60a5fa;
   --tertiary: #3b82f6;
+  color-scheme: dark;
 }
 
 /* Dark Theme */
@@ -36,6 +38,7 @@
   --accent: #2a2a2a;
   --primary: #ededed;
   --tertiary: #6b7280;
+  color-scheme: dark;
 }
 
 /* Light Theme */
@@ -47,6 +50,7 @@
   --accent: #f3f4f6;
   --primary: #171717;
   --tertiary: #6b7280;
+  color-scheme: light;
 }
 
 /* Teal/Default brand accent override for light */
@@ -67,6 +71,7 @@
   --accent: #0891b2;
   --primary: #22d3ee;
   --tertiary: #06b6d4;
+  color-scheme: dark;
 }
 
 /* Purple Dream Theme */
@@ -78,6 +83,7 @@
   --accent: #7c3aed;
   --primary: #c084fc;
   --tertiary: #a855f7;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -168,6 +174,50 @@ a:hover {
 
 * {
   box-sizing: border-box;
+}
+
+/* Autofill: match active theme (override browser yellow/blue defaults) */
+.autofill-surface-card {
+  --input-fill-bg: var(--card);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--input-fill-bg) inset !important;
+  box-shadow: 0 0 0 1000px var(--input-fill-bg) inset !important;
+  -webkit-text-fill-color: var(--foreground) !important;
+  caret-color: var(--foreground);
+  transition:
+    background-color 9999s ease-out 0s,
+    color 9999s ease-out 0s,
+    -webkit-text-fill-color 9999s ease-out 0s;
+}
+
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+input:autofill:active,
+textarea:autofill,
+textarea:autofill:hover,
+textarea:autofill:focus,
+textarea:autofill:active,
+select:autofill,
+select:autofill:hover,
+select:autofill:focus,
+select:autofill:active {
+  box-shadow: 0 0 0 1000px var(--input-fill-bg) inset !important;
+  -webkit-text-fill-color: var(--foreground) !important;
+  caret-color: var(--foreground);
 }
 
 .animate-delay-100 { animation-delay: 100ms; }

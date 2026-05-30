@@ -51,7 +51,7 @@ export default function NewsletterPage() {
           <p className="text-foreground/60 mb-8 max-w-md mx-auto">
             One email field. Zero hassle. Join builders and dreamers who follow what we&apos;re creating next.
           </p>
-          <NewsletterSignup size="large" className="max-w-lg mx-auto" />
+          <NewsletterSignup size="large" className="max-w-lg mx-auto" source="newsletter-page" />
           <p className="text-sm text-foreground/50 mt-6">
             By subscribing, you agree to receive emails from Roboticela. See our{' '}
             <Link href="/privacy" className="text-primary hover:underline">

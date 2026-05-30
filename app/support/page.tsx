@@ -14,13 +14,14 @@ import {
 import Link from 'next/link';
 
 import { easeOut } from '../components/animations';
+import { formInputClass } from '../lib/form-input';
 import PageHero from '../components/PageHero';
+import ButtonLoader from '../components/ButtonLoader';
 import SitePageLayout from '../components/SitePageLayout';
 
 type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
-const inputClass =
-  'w-full pl-10 pr-4 py-3 bg-background border border-border/40 rounded-xl text-foreground placeholder:text-foreground/50 focus:outline-none focus:border-primary/40 transition-colors';
+const inputClass = `${formInputClass} pl-10 pr-4`;
 
 export default function SupportPage() {
   const [fullName, setFullName] = useState('');
@@ -39,7 +40,7 @@ export default function SupportPage() {
     setStatus('sending');
     setErrorMessage('');
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('/api/forms/support', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -163,18 +164,15 @@ export default function SupportPage() {
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex flex-row flex-nowrap items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {status === 'sending' ? (
-                  <>
-                    <span className="w-5 h-5 border-2 border-background/30 border-t-background rounded-full animate-spin" />
-                    Sending...
-                  </>
+                  <ButtonLoader label="Sending..." variant="onPrimary" />
                 ) : (
-                  <>
-                    <Send className="w-5 h-5" />
+                  <span className="inline-flex flex-row flex-nowrap items-center gap-2">
+                    <Send className="w-5 h-5 shrink-0" />
                     Send message
-                  </>
+                  </span>
                 )}
               </button>
               <Link

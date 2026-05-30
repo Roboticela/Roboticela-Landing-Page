@@ -1,18 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import { EmailError, sendSupportEmail } from '../../lib/email';
+import {
+  appendToGoogleSheet,
+  buildSupportRow,
+  GoogleSheetsError,
+  sheetNameForForm,
+} from '../../lib/google-sheets/append';
+
 interface ContactBody {
   fullName: string;
   email: string;
   message: string;
-}
-
-function escapeHtml(s: string): string {
-  return s
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
 }
 
 export async function POST(request: NextRequest) {
@@ -30,54 +29,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Optional: send email when SMTP is configured
-    const smtpHost = process.env.SMTP_HOST;
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS ?? process.env.SMTP_PASSWORD;
+    await appendToGoogleSheet(
+      sheetNameForForm('support'),
+      buildSupportRow(fullName, email, message)
+    );
 
-    if (smtpHost && smtpUser && smtpPass) {
-      const nodemailer = await import('nodemailer');
-      const port = Number(process.env.SMTP_PORT) || 587;
-      const secure = process.env.SMTP_SECURE === 'true';
-      const toEmail = process.env.CONTACT_EMAIL ?? process.env.SMTP_USER;
-      const from = process.env.SMTP_FROM ?? process.env.SMTP_USER;
-
-      const transporter = nodemailer.default.createTransport({
-        host: smtpHost,
-        port,
-        secure,
-        auth: { user: smtpUser, pass: smtpPass },
-      });
-
-      const subject = `Roboticela Contact: from ${fullName}`;
-      const text = [
-        `From: ${fullName}`,
-        `Email: ${email}`,
-        '',
-        'Message:',
-        message,
-      ].join('\n');
-
-      const html = [
-        '<p><strong>From:</strong> ' + escapeHtml(fullName) + '</p>',
-        '<p><strong>Email:</strong> ' + escapeHtml(email) + '</p>',
-        '<p><strong>Message:</strong></p>',
-        '<pre style="white-space:pre-wrap;font-family:inherit;">' + escapeHtml(message) + '</pre>',
-      ].join('\n');
-
-      await transporter.sendMail({
-        from,
-        to: toEmail,
-        replyTo: email,
-        subject,
-        text,
-        html,
-      });
-    }
-    // If SMTP is not configured, we still return success so the form doesn't break in dev
+    await sendSupportEmail({ fullName, email, message });
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
+    if (error instanceof GoogleSheetsError || error instanceof EmailError) {
+      return NextResponse.json(
+        { error: error.message },
+        { status: 503 }
+      );
+    }
     console.error('Contact form error:', error);
     const message = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(

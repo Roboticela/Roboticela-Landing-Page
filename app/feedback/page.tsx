@@ -10,6 +10,9 @@ import { MessageSquare, Send } from 'lucide-react';
 import Link from 'next/link';
 
 import { easeOut } from '../components/animations';
+import ButtonLoader from '../components/ButtonLoader';
+import { formInputClass, formTextareaClass } from '../lib/form-input';
+import { submitForm } from '../lib/submit-form';
 
 const feedbackTypeOptions = [
   { value: 'general', label: 'General feedback' },
@@ -29,9 +32,6 @@ const recommendOptions = [
   { value: 'no', label: 'No' },
 ];
 
-const inputClass =
-  'w-full px-4 py-3 bg-background border border-border/40 rounded-xl text-foreground placeholder:text-foreground/50 focus:outline-none focus:border-primary/40 transition-colors';
-
 export default function FeedbackPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -46,6 +46,8 @@ export default function FeedbackPage() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const setField = (name: keyof typeof formData, value: string | number) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -55,11 +57,21 @@ export default function FeedbackPage() {
     setField(e.target.name as keyof typeof formData, e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.rating === 0) return;
 
-    console.log('Feedback:', formData);
+    setError('');
+    setSubmitting(true);
+
+    const result = await submitForm('feedback', { ...formData });
+
+    setSubmitting(false);
+    if (!result.ok) {
+      setError(result.error);
+      return;
+    }
+
     setSubmitted(true);
     setFormData({
       name: '',
@@ -134,7 +146,7 @@ export default function FeedbackPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className={inputClass}
+                    className={formInputClass}
                     placeholder="Jane Doe"
                   />
                 </div>
@@ -149,7 +161,7 @@ export default function FeedbackPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className={inputClass}
+                    className={formInputClass}
                     placeholder="you@example.com"
                   />
                 </div>
@@ -165,7 +177,7 @@ export default function FeedbackPage() {
                   name="product"
                   value={formData.product}
                   onChange={handleChange}
-                  className={inputClass}
+                  className={formInputClass}
                   placeholder="e.g. OSI Simulator, Products page, Newsletter"
                 />
               </div>
@@ -180,7 +192,7 @@ export default function FeedbackPage() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className={inputClass}
+                  className={formInputClass}
                   placeholder="Short summary of your feedback"
                 />
               </div>
@@ -196,7 +208,7 @@ export default function FeedbackPage() {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className={`${inputClass} resize-none`}
+                  className={formTextareaClass}
                   placeholder="Share details, steps to reproduce a bug, or the question you’d like us to answer..."
                 />
               </div>
@@ -223,25 +235,31 @@ export default function FeedbackPage() {
                 .
               </p>
 
+              {error && (
+                <p className="text-sm text-red-600 text-center">{error}</p>
+              )}
+
               <div className="pt-2">
                 <button
                   type="submit"
-                  disabled={submitted || formData.rating === 0}
-                  className="w-full px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={submitted || submitting || formData.rating === 0}
+                  className="w-full px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex flex-row flex-nowrap items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {submitted ? (
+                  {submitting ? (
+                    <ButtonLoader label="Sending..." variant="onPrimary" />
+                  ) : submitted ? (
                     'Thank you — feedback sent!'
                   ) : (
-                    <>
+                    <span className="inline-flex flex-row flex-nowrap items-center gap-2">
                       Submit feedback
-                      <Send className="w-5 h-5" />
-                    </>
+                      <Send className="w-5 h-5 shrink-0" />
+                    </span>
                   )}
                 </button>
               </div>
             </form>
 
-            {submitted && (
+            {submitted && !error && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}

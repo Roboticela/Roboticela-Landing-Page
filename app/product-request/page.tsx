@@ -5,6 +5,9 @@ import { motion } from 'framer-motion';
 import { Lightbulb, Send } from 'lucide-react';
 
 import { easeOut } from '../components/animations';
+import ButtonLoader from '../components/ButtonLoader';
+import { formInputClass, formTextareaClass } from '../lib/form-input';
+import { submitForm } from '../lib/submit-form';
 import CustomSelect from '../components/CustomSelect';
 import PageHero from '../components/PageHero';
 import SitePageLayout from '../components/SitePageLayout';
@@ -39,13 +42,33 @@ export default function ProductRequestPage() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Product request:', formData);
+    setError('');
+    setSubmitting(true);
+
+    const result = await submitForm('productRequest', { ...formData });
+
+    setSubmitting(false);
+    if (!result.ok) {
+      setError(result.error);
+      return;
+    }
+
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      productType: '',
+      description: '',
+      useCase: '',
+      priority: 'medium',
+    });
+    setTimeout(() => setSubmitted(false), 4000);
   };
 
   const handleChange = (
@@ -91,7 +114,7 @@ export default function ProductRequestPage() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-background border border-border/40 rounded-xl text-foreground placeholder:text-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
+                  className={formInputClass}
                   placeholder="John Doe"
                 />
               </div>
@@ -108,7 +131,7 @@ export default function ProductRequestPage() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-background border border-border/40 rounded-xl text-foreground placeholder:text-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
+                  className={formInputClass}
                   placeholder="john@example.com"
                 />
               </div>
@@ -124,7 +147,7 @@ export default function ProductRequestPage() {
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-background border border-border/40 rounded-xl text-foreground placeholder:text-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
+                  className={formInputClass}
                   placeholder="Your Company"
                 />
               </div>
@@ -152,7 +175,7 @@ export default function ProductRequestPage() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-background border border-border/40 rounded-xl text-foreground placeholder:text-foreground/50 focus:outline-none focus:border-primary/40 transition-colors resize-none"
+                  className={formTextareaClass}
                   placeholder="Describe the product you need. What problem does it solve? What features should it have?"
                 />
               </div>
@@ -169,7 +192,7 @@ export default function ProductRequestPage() {
                   onChange={handleChange}
                   required
                   rows={3}
-                  className="w-full px-4 py-3 bg-background border border-border/40 rounded-xl text-foreground placeholder:text-foreground/50 focus:outline-none focus:border-primary/40 transition-colors resize-none"
+                  className={formTextareaClass}
                   placeholder="How will you use this product? What industry or field is it for?"
                 />
               </div>
@@ -184,25 +207,31 @@ export default function ProductRequestPage() {
               />
 
               {/* Submit Button */}
+              {error && (
+                <p className="text-sm text-red-600 text-center">{error}</p>
+              )}
+
               <div className="pt-4">
                 <button
                   type="submit"
-                  disabled={submitted}
-                  className="w-full px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={submitted || submitting}
+                  className="w-full px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex flex-row flex-nowrap items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {submitted ? (
+                  {submitting ? (
+                    <ButtonLoader label="Sending..." variant="onPrimary" />
+                  ) : submitted ? (
                     'Request Sent!'
                   ) : (
-                    <>
+                    <span className="inline-flex flex-row flex-nowrap items-center gap-2">
                       Submit Request
-                      <Send className="w-5 h-5" />
-                    </>
+                      <Send className="w-5 h-5 shrink-0" />
+                    </span>
                   )}
                 </button>
               </div>
             </form>
 
-            {submitted && (
+            {submitted && !error && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
