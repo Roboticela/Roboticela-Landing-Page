@@ -7,17 +7,6 @@ const DEFAULT_OG_IMAGE = '/og-image.png';
 const PUBLISHER_NAME = 'Roboticela';
 const PUBLISHER_LOGO = '/Favicon.png';
 
-export function pinterestDomainVerifyMetadata(): Pick<Metadata, 'other'> | undefined {
-  const code = process.env.PINTEREST_DOMAIN_VERIFY?.trim();
-  if (!code) return undefined;
-
-  return {
-    other: {
-      'p:domain_verify': code,
-    },
-  };
-}
-
 type ArticleRichPinOptions = {
   title: string;
   description: string;
