@@ -95,19 +95,21 @@ export default function Products() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`${link.label} — ${product.name}`}
                         className="inline-flex items-center gap-1 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full font-medium text-sm transition-all duration-300"
                       >
                         {link.label}
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="w-4 h-4" aria-hidden="true" />
                       </a>
                     ) : (
                       <Link
                         key={linkIndex}
                         href={link.href}
+                        aria-label={`${link.label} — ${product.name}`}
                         className="inline-flex items-center gap-1 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full font-medium text-sm transition-all duration-300"
                       >
                         {link.label}
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="w-4 h-4" aria-hidden="true" />
                       </Link>
                     )
                   )}
@@ -137,7 +139,7 @@ export default function Products() {
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-card/30 backdrop-blur-[2px] rounded-3xl">
                   <div className="flex flex-col items-center gap-2">
                     <Lock className="w-7 h-7 text-primary/60" />
-                    <p className="text-sm font-medium text-foreground/50">Coming Soon</p>
+                    <p className="text-sm font-medium text-foreground/70">Coming Soon</p>
                   </div>
                 </div>
               </motion.div>

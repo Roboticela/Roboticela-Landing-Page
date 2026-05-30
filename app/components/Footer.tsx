@@ -18,7 +18,7 @@ export default function Footer() {
             Subscribe to our newsletter and be the first to know about new products, breakthroughs, and updates. Join our community and stay in the loop.
           </p>
           <NewsletterSignup />
-          <p className="text-sm text-foreground/50 mt-4">We respect your inbox. No spam, just innovation.</p>
+          <p className="text-sm text-foreground/70 mt-4">We respect your inbox. No spam, just innovation.</p>
         </div>
 
         {/* Main Footer Content */}
