@@ -1,7 +1,6 @@
 'use client';
 
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
+import SitePageLayout from '../../components/SitePageLayout';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -92,10 +91,7 @@ const itemVariants = {
 
 export default function VisionPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-
-      <main className="pb-24 px-4">
+    <SitePageLayout>
         {/* Hero */}
         <section className="relative pt-40 pb-28 overflow-hidden">
           <div className="absolute inset-0 -z-10">
@@ -104,7 +100,7 @@ export default function VisionPage() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-full blur-3xl" />
           </div>
 
-          <div className="max-w-5xl mx-auto text-center">
+          <div className="max-w-7xl mx-auto text-center px-2">
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -117,8 +113,8 @@ export default function VisionPage() {
                   animate={{ scale: [1, 1.12, 1], opacity: [0.35, 0.6, 0.35] }}
                   transition={{ duration: 3.2, repeat: 1e10, ease: 'easeInOut' }}
                 />
-                <div className="relative bg-card/50 backdrop-blur-md border border-border/40 rounded-3xl p-6 md:p-8">
-                  <Target className="w-14 h-14 md:w-16 md:h-16 text-primary mx-auto" strokeWidth={1.5} />
+                <div className="relative bg-card/50 backdrop-blur-md border border-border/40 rounded-2xl p-5 md:p-6">
+                  <Target className="w-10 h-10 md:w-11 md:h-11 text-primary mx-auto" strokeWidth={1.5} />
                 </div>
               </div>
             </motion.div>
@@ -131,12 +127,11 @@ export default function VisionPage() {
               <p className="text-sm uppercase tracking-[0.2em] text-primary font-semibold mb-5">
                 Our Vision
               </p>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 tracking-tight leading-[1.05]">
-                Unlimited
-                <br />
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight leading-tight max-w-5xl lg:max-w-6xl mx-auto text-balance">
+                Unlimited{' '}
                 <span className="text-primary">by Design.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base md:text-lg text-foreground/60 max-w-3xl lg:max-w-4xl mx-auto leading-relaxed">
                 A north star for a company with no category—only conviction, craft, and the courage to build across every frontier.
               </p>
             </motion.div>
@@ -177,7 +172,7 @@ export default function VisionPage() {
             className="text-center mb-14"
           >
             <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-3">What Guides Us</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
               Three Pillars of Our Vision
             </h2>
           </motion.div>
@@ -218,7 +213,7 @@ export default function VisionPage() {
             className="text-center mb-14"
           >
             <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-3">Where We&apos;re Headed</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
               The Road Ahead
             </h2>
           </motion.div>
@@ -264,7 +259,7 @@ export default function VisionPage() {
             className="text-center mb-14"
           >
             <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-3">No Single Lane</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight mb-4">
               Every Category. One Vision.
             </h2>
             <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
@@ -367,7 +362,7 @@ export default function VisionPage() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/8 rounded-full blur-3xl" />
             </div>
             <Compass className="w-10 h-10 text-primary mx-auto mb-6 opacity-80" strokeWidth={1.5} />
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 tracking-tight">
               Join Our Journey
             </h2>
             <p className="text-xl text-foreground/60 max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -393,9 +388,6 @@ export default function VisionPage() {
             </div>
           </motion.div>
         </section>
-      </main>
-
-      <Footer />
-    </div>
+    </SitePageLayout>
   );
 }

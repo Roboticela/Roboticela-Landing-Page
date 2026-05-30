@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import PageHero from '../components/PageHero';
+import SitePageLayout from '../components/SitePageLayout';
 import CustomSelect from '../components/CustomSelect';
 import StarRating from '../components/StarRating';
 import { motion } from 'framer-motion';
@@ -76,52 +76,14 @@ export default function FeedbackPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-
-      <main className="pb-24 px-4">
-        <section className="relative pt-40 pb-16 overflow-hidden">
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/8 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-1/3 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl" />
-          </div>
-
-          <div className="max-w-5xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.85, ease: easeOut }}
-              className="flex justify-center mb-10"
-            >
-              <div className="relative">
-                <motion.div
-                  className="absolute -inset-8 rounded-full bg-primary/15 blur-2xl"
-                  animate={{ scale: [1, 1.12, 1], opacity: [0.35, 0.6, 0.35] }}
-                  transition={{ duration: 3.2, repeat: 1e10, ease: 'easeInOut' }}
-                />
-                <div className="relative bg-card/50 backdrop-blur-md border border-border/40 rounded-3xl p-6 md:p-8">
-                  <MessageSquare className="w-14 h-14 md:w-16 md:h-16 text-primary mx-auto" strokeWidth={1.5} />
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.8, ease: easeOut }}
-            >
-              <p className="text-sm uppercase tracking-[0.2em] text-primary font-semibold mb-5">Feedback</p>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6 tracking-tight leading-[1.05]">
-                We&apos;d Love to
-                <br />
-                <span className="text-primary">Hear From You.</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto leading-relaxed">
-                Rate your experience, ask a question, or tell us what we can do better. Every response helps us build better products.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+    <SitePageLayout>
+      <PageHero
+        eyebrow="Feedback"
+        title="We'd Love to"
+        titleAccent="Hear From You."
+        description="Rate your experience, ask a question, or tell us what we can do better. Every response helps us build better products."
+        icon={MessageSquare}
+      />
 
         <section className="max-w-3xl mx-auto">
           <motion.div
@@ -292,9 +254,6 @@ export default function FeedbackPage() {
             )}
           </motion.div>
         </section>
-      </main>
-
-      <Footer />
-    </div>
+    </SitePageLayout>
   );
 }

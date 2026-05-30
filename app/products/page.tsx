@@ -1,21 +1,25 @@
 'use client';
 
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { Package } from 'lucide-react';
+
+import PageHero from '../components/PageHero';
 import ProductsCatalog from '../components/ProductsCatalog';
+import SitePageLayout from '../components/SitePageLayout';
 
 export default function ProductsPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <SitePageLayout>
+      <PageHero
+        eyebrow="Products"
+        title="Tools &"
+        titleAccent="Platforms."
+        description="Software, hardware, e-commerce, enterprise, and research—crafted with care for real problems."
+        icon={Package}
+      />
 
-      <main className="pt-32 pb-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <ProductsCatalog />
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+      <section className="max-w-7xl mx-auto">
+        <ProductsCatalog showHeader={false} />
+      </section>
+    </SitePageLayout>
   );
 }

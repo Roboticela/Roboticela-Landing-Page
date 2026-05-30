@@ -118,7 +118,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8, ease: easeOut }}
           >
-            Think different. Build everything.
+            Think different. <span className="text-primary">Build everything.</span>
           </motion.h2>
 
           {/* Subheading */}

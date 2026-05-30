@@ -1,11 +1,13 @@
 'use client';
 
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import CustomSelect from '../components/CustomSelect';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Lightbulb, Send } from 'lucide-react';
-import { useState } from 'react';
+
+import { easeOut } from '../components/animations';
+import CustomSelect from '../components/CustomSelect';
+import PageHero from '../components/PageHero';
+import SitePageLayout from '../components/SitePageLayout';
 
 const productTypeOptions = [
   { value: 'software', label: 'Software / Web Application' },
@@ -60,36 +62,22 @@ export default function ProductRequestPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      
-      <main className="pt-32 pb-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          {/* Hero Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center justify-center bg-primary/10 rounded-full p-4 mb-8">
-              <Lightbulb className="w-12 h-12 text-primary" />
-            </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 tracking-tight">
-              Request a Product
-            </h1>
-            <p className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto">
-              We&apos;re always building something new. Tell us what you&apos;re looking for, and we&apos;ll make it happen.
-            </p>
-          </motion.div>
+    <SitePageLayout>
+      <PageHero
+        eyebrow="Products"
+        title="Request a"
+        titleAccent="Product."
+        description="We're always building something new. Tell us what you're looking for, and we'll make it happen."
+        icon={Lightbulb}
+      />
 
-          {/* Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="bg-card/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-border/40"
-          >
+      <section className="max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.7, ease: easeOut }}
+          className="bg-card/60 backdrop-blur-sm rounded-[2.5rem] p-8 md:p-12 border border-border/40"
+        >
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name */}
               <div>
@@ -234,23 +222,20 @@ export default function ProductRequestPage() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
           >
-            <div className="bg-card/40 backdrop-blur-sm rounded-2xl p-6 border border-border/40 text-center">
+            <div className="bg-card/50 backdrop-blur-sm rounded-3xl p-6 border border-border/40 text-center">
               <div className="text-3xl font-bold text-primary mb-2">24-48h</div>
               <p className="text-foreground/70">Response Time</p>
             </div>
-            <div className="bg-card/40 backdrop-blur-sm rounded-2xl p-6 border border-border/40 text-center">
+            <div className="bg-card/50 backdrop-blur-sm rounded-3xl p-6 border border-border/40 text-center">
               <div className="text-3xl font-bold text-primary mb-2">100%</div>
               <p className="text-foreground/70">Custom Solutions</p>
             </div>
-            <div className="bg-card/40 backdrop-blur-sm rounded-2xl p-6 border border-border/40 text-center">
+            <div className="bg-card/50 backdrop-blur-sm rounded-3xl p-6 border border-border/40 text-center">
               <div className="text-3xl font-bold text-primary mb-2">∞</div>
               <p className="text-foreground/70">Possibilities</p>
             </div>
           </motion.div>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+      </section>
+    </SitePageLayout>
   );
 }

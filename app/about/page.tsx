@@ -1,8 +1,9 @@
 'use client';
 
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
+import PageHero from '../components/PageHero';
+import PageCta from '../components/PageCta';
+import SitePageLayout from '../components/SitePageLayout';
 import {
   Atom, Lightbulb, Heart, Rocket, Wrench, Globe, FlaskConical,
   ShoppingBag, Cpu, Infinity, Star, ArrowRight,
@@ -73,53 +74,25 @@ const itemVariants = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-
-      <main className="pb-24 px-4">
-
-        {/* ── Hero ── */}
-        <section className="relative pt-40 pb-32 overflow-hidden">
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl" />
+    <SitePageLayout>
+      <PageHero
+        eyebrow="About Roboticela"
+        title="Think Different."
+        titleAccent="Build Everything."
+        description="A company with no category. No limits. No lanes."
+        iconNode={
+          <div className="relative w-24 h-24 md:w-28 md:h-28">
+            <Image
+              src="/Logo.png"
+              alt="Roboticela"
+              fill
+              sizes="(max-width: 768px) 128px, 176px"
+              className="object-contain"
+            />
           </div>
-
-          <div className="max-w-5xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: easeOut }}
-              className="flex justify-center mb-10"
-            >
-              <div className="relative">
-                <motion.div
-                  className="absolute -inset-6 rounded-full bg-primary/15 blur-2xl"
-                  animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.55, 0.3] }}
-                  transition={{ duration: 3, repeat: 1e10, ease: 'easeInOut' }}
-                />
-                <div className="relative w-32 h-32 md:w-44 md:h-44">
-                  <Image src="/Logo.png" alt="Roboticela" fill sizes="(max-width: 768px) 128px, 176px" className="object-contain" />
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8, ease: easeOut }}
-            >
-              <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">About Roboticela</p>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 tracking-tight leading-none">
-                Think Different.<br />
-                <span className="text-primary">Build Everything.</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto leading-relaxed">
-                A company with no category. No limits. No lanes.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+        }
+        paddingBottom="lg"
+      />
 
         {/* ── The Name ── */}
         <section className="max-w-6xl mx-auto mb-32">
@@ -134,7 +107,7 @@ export default function AboutPage() {
             <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">The Name</p>
-                <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 tracking-tight">
                   Robot <span className="text-foreground/30">+</span> Cell
                 </h2>
                 <p className="text-lg text-foreground/70 leading-relaxed mb-6">
@@ -169,7 +142,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8, ease: easeOut }}
           >
             <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">Our Story</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-12 tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-12 tracking-tight">
               Innovation Without Boundaries
             </h2>
           </motion.div>
@@ -209,7 +182,7 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">No Category</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
               We Work On Everything
             </h2>
           </motion.div>
@@ -247,7 +220,7 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">How We Think</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
               Our Principles
             </h2>
           </motion.div>
@@ -324,51 +297,14 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── Tagline CTA ── */}
-        <section className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: easeOut }}
-            className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-[3rem] p-14 md:p-20 border border-primary/20 text-center overflow-hidden"
-          >
-            <div className="absolute inset-0 -z-10">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
-            </div>
-            <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-6">The Bottom Line</p>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 tracking-tight">
-              Roboticela.
-            </h2>
-            <p className="text-3xl md:text-4xl font-semibold text-primary mb-10">
-              Unlimited by design.
-            </p>
-            <p className="text-xl text-foreground/60 max-w-2xl mx-auto mb-12 leading-relaxed">
-              No category. No ceiling. Just a relentless commitment to building what&apos;s next—beautifully, boldly, and for everyone.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/products">
-                <motion.button
-                  className="px-8 py-4 bg-primary hover:bg-primary/90 text-background rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 shadow-lg shadow-primary/20"
-                >
-                  Explore Our Products
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-              </Link>
-              <Link href="/support">
-                <motion.button
-                  className="px-8 py-4 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40"
-                >
-                  Get in Touch
-                </motion.button>
-              </Link>
-            </div>
-          </motion.div>
-        </section>
-
-      </main>
-
-      <Footer />
-    </div>
+        <PageCta
+          title="Roboticela. Unlimited by design."
+          description="No category. No ceiling. Just a relentless commitment to building what's next—beautifully, boldly, and for everyone."
+          primaryLabel="Explore Our Products"
+          primaryHref="/products"
+          secondaryLabel="Get in Touch"
+          secondaryHref="/support"
+        />
+    </SitePageLayout>
   );
 }

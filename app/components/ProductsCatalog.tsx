@@ -35,13 +35,13 @@ const itemAnimation = {
   },
 };
 
-const PLACEHOLDERS_PER_CATEGORY = 4;
-const PLACEHOLDERS_SINGLE_CATEGORY = 9;
+const PRODUCTS_PER_CATEGORY = 6;
 
 type ProductsCatalogProps = {
   activeCategory?: ProductCategorySlug;
   title?: string;
   description?: string;
+  showHeader?: boolean;
 };
 
 function ProductCard({ product }: { product: Product }) {
@@ -156,13 +156,13 @@ function CategorySection({
   showPlaceholders: boolean;
 }) {
   const placeholderCount = showPlaceholders
-    ? Math.max(0, PLACEHOLDERS_PER_CATEGORY - items.length)
+    ? Math.max(0, PRODUCTS_PER_CATEGORY - items.length)
     : 0;
 
   return (
     <section id={category.slug} className="mb-16 scroll-mt-32">
       <div className="mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">{category.name}</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">{category.name}</h2>
         <p className="text-lg text-foreground/70 max-w-3xl">{category.description}</p>
         <Link
           href={`/products/${category.slug}`}
@@ -175,7 +175,7 @@ function CategorySection({
       <ProductGrid
         items={items}
         placeholderCount={placeholderCount}
-        gridKey={`${category.slug}-${items.length}`}
+        gridKey={`${category.slug}-${items.length}-${placeholderCount}`}
       />
     </section>
   );
@@ -185,6 +185,7 @@ export default function ProductsCatalog({
   activeCategory,
   title = 'Our Products',
   description = 'Tools and platforms crafted with care. Each one designed to make your work effortless.',
+  showHeader = true,
 }: ProductsCatalogProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const isSearching = searchQuery.trim().length > 0;
@@ -209,17 +210,19 @@ export default function ProductsCatalog({
 
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: easeOut }}
-        className="text-center mb-12"
-      >
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 tracking-tight">
-          {title}
-        </h1>
-        <p className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto">{description}</p>
-      </motion.div>
+      {showHeader && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: easeOut }}
+          className="text-center mb-12 max-w-5xl lg:max-w-6xl mx-auto"
+        >
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 tracking-tight">
+            {title}
+          </h1>
+          <p className="text-base md:text-lg text-foreground/60 max-w-3xl mx-auto">{description}</p>
+        </motion.div>
+      )}
 
       <ProductCategoryNav activeSlug={activeCategory ?? 'all'} />
 
@@ -266,7 +269,7 @@ export default function ProductsCatalog({
               items={getProductsByCategory(activeCategory)}
               placeholderCount={Math.max(
                 0,
-                PLACEHOLDERS_SINGLE_CATEGORY - getProductsByCategory(activeCategory).length
+                PRODUCTS_PER_CATEGORY - getProductsByCategory(activeCategory).length
               )}
               gridKey={activeCategory}
             />
@@ -289,7 +292,7 @@ export default function ProductsCatalog({
         transition={{ delay: 0.6, duration: 0.6, ease: easeOut }}
         className="mt-16 text-center bg-gradient-to-br from-primary/5 to-primary/10 rounded-3xl p-12 border border-primary/20"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
           Can&apos;t find what you need?
         </h2>
         <p className="text-lg text-foreground/70 mb-8 max-w-2xl mx-auto">

@@ -1,8 +1,10 @@
 'use client';
 
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
+import { Package } from 'lucide-react';
+
+import PageHero from '../../components/PageHero';
 import ProductsCatalog from '../../components/ProductsCatalog';
+import SitePageLayout from '../../components/SitePageLayout';
 import type { ProductCategory } from '../../data/productCategories';
 
 type CategoryProductsPageProps = {
@@ -11,20 +13,21 @@ type CategoryProductsPageProps = {
 
 export default function CategoryProductsPage({ category }: CategoryProductsPageProps) {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <SitePageLayout>
+      <PageHero
+        eyebrow="Products"
+        title={category.name}
+        titleAccent="Collection."
+        description={category.description}
+        icon={Package}
+      />
 
-      <main className="pt-32 pb-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <ProductsCatalog
-            activeCategory={category.slug}
-            title={`${category.name} Products`}
-            description={category.description}
-          />
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+      <section className="max-w-7xl mx-auto">
+        <ProductsCatalog
+          activeCategory={category.slug}
+          showHeader={false}
+        />
+      </section>
+    </SitePageLayout>
   );
 }
