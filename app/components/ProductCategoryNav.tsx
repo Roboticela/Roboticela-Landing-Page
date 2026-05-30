@@ -12,7 +12,7 @@ export default function ProductCategoryNav({ activeSlug = 'all' }: ProductCatego
   const linkClass = (isActive: boolean) =>
     `px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
       isActive
-        ? 'bg-primary/15 text-black border border-primary/40'
+        ? 'bg-primary/15 text-foreground border border-primary/40'
         : 'bg-card/60 text-foreground/80 border border-border/40 hover:border-primary/40 hover:text-primary'
     }`;
 
