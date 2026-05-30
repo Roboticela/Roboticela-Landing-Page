@@ -1,17 +1,45 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Menu, X, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
 import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
+
+  const handleHomeClick = useCallback(
+    (e: React.MouseEvent) => {
+      if (pathname === '/') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    },
+    [pathname]
+  );
+
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent, href: string) => {
+      closeMenu();
+      if (href === '/' && pathname === '/') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (href.startsWith('/#') && pathname === '/') {
+        e.preventDefault();
+        const id = href.slice(2);
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
+    [pathname, router]
+  );
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -25,7 +53,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/70 backdrop-blur-md border-b border-border/40">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 flex items-center justify-between gap-2 overflow-x-hidden relative z-50">
-        <Link href="/" className="flex items-center gap-1.5 sm:gap-2 md:gap-3 min-w-0 flex-1">
+        <Link href="/" onClick={handleHomeClick} className="flex items-center gap-1.5 sm:gap-2 md:gap-3 min-w-0 flex-1">
           <div className="relative w-5 h-5 sm:w-6 sm:h-6 md:w-10 md:h-10 shrink-0">
             <Image src="/Logo.png" alt="Roboticela" fill sizes="(max-width: 640px) 20px, (max-width: 768px) 24px, 40px" className="object-contain" />
           </div>
@@ -44,6 +72,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="text-foreground/80 hover:text-primary hover:underline transition-all duration-200 cursor-pointer text-sm md:text-base"
             >
               {link.label}
@@ -96,7 +125,7 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    onClick={closeMenu}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="block px-4 py-3 text-foreground/80 hover:text-primary hover:bg-accent rounded-xl transition-all duration-200 cursor-pointer text-base"
                   >
                     {link.label}
