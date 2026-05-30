@@ -14,14 +14,14 @@ export const metadata: Metadata = {
     title: 'Contact Roboticela — Get Help & Support',
     description:
       'Reach the Roboticela support team. Send a message, report an issue, ask a question, or request help for any Roboticela product, service, or platform.',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Contact Roboticela' }],
+    images: [{ url: 'https://roboticela.com/og-image.jpg', width: 1200, height: 630, alt: 'Contact Roboticela' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Contact Roboticela — Get Help & Support',
     description:
       'Reach the Roboticela support team. Send a message, report an issue, ask a question, or request help for any Roboticela product, service, or platform.',
-    images: ['/og-image.jpg'],
+    images: ['https://roboticela.com/og-image.jpg'],
     creator: '@roboticela',
     site: '@roboticela',
   },

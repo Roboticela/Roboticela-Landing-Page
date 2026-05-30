@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import type { ArticleBase } from '../data/articleContent';
 import { absoluteUrl, SITE_URL } from './site';
 
-const DEFAULT_OG_IMAGE = '/og-image.jpg';
+const DEFAULT_OG_IMAGE = 'https://roboticela.com/og-image.jpg';
 const PUBLISHER_NAME = 'Roboticela';
 const PUBLISHER_LOGO = '/Favicon.png';
 
@@ -45,6 +45,7 @@ export function articleRichPinMetadata({
           url: imagePath,
           width: 1200,
           height: 630,
+          type: "image/jpeg",
           alt: title,
         },
       ],

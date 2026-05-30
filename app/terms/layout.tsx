@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description: "Read Roboticela's Terms of Service and User Agreement. Understand your legal rights and obligations when using our services, products, and platforms.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://roboticela.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Roboticela Terms of Service",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Roboticela Terms of Service & User Agreement",
     description: "Read Roboticela's Terms of Service and User Agreement. Understand your legal rights and obligations when using our services, products, and platforms.",
-    images: ["/og-image.jpg"],
+    images: ["https://roboticela.com/og-image.jpg"],
     creator: "@roboticela",
     site: "@roboticela",
   },

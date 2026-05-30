@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: pageTitle,
       description: post.excerpt,
-      images: ['/og-image.jpg'],
+      images: ['https://roboticela.com/og-image.jpg'],
     },
   };
 }

@@ -14,14 +14,14 @@ export const metadata: Metadata = {
     title: 'Roboticela Newsletter — Stay Informed',
     description:
       'Subscribe to the Roboticela newsletter and be the first to know about new products, research breakthroughs, events, and updates straight from our team.',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Roboticela Newsletter' }],
+    images: [{ url: 'https://roboticela.com/og-image.jpg', width: 1200, height: 630, alt: 'Roboticela Newsletter' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Roboticela Newsletter — Stay Informed',
     description:
       'Subscribe to the Roboticela newsletter and be the first to know about new products, research breakthroughs, events, and updates straight from our team.',
-    images: ['/og-image.jpg'],
+    images: ['https://roboticela.com/og-image.jpg'],
     creator: '@roboticela',
     site: '@roboticela',
   },

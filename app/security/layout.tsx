@@ -14,14 +14,14 @@ export const metadata: Metadata = {
     title: 'Roboticela Security — Data Protection Practices',
     description:
       'Learn how Roboticela protects your data. We cover encryption, access control, secure development, and responsible data handling across all our platforms.',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Roboticela Security' }],
+    images: [{ url: 'https://roboticela.com/og-image.jpg', width: 1200, height: 630, alt: 'Roboticela Security' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Roboticela Security — Data Protection Practices',
     description:
       'Learn how Roboticela protects your data. We cover encryption, access control, secure development, and responsible data handling across all our platforms.',
-    images: ['/og-image.jpg'],
+    images: ['https://roboticela.com/og-image.jpg'],
     creator: '@roboticela',
     site: '@roboticela',
   },
