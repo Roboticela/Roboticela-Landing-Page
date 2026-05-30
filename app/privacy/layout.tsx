@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Read Roboticela's Privacy Policy and Terms of Data Processing. Learn how we collect, use, and protect your personal information when you use our services.",
+  title: "Roboticela Privacy Policy & Data Protection",
+  description: "Read Roboticela's Privacy Policy and data protection practices. Learn how we collect, use, store, and protect your personal information across all our services.",
   keywords: [
     "Roboticela",
     "Privacy Policy",
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://roboticela.com/privacy",
     siteName: "Roboticela",
-    title: "Privacy Policy - Roboticela",
-    description: "Read Roboticela's Privacy Policy and Terms of Data Processing. Learn how we collect, use, and protect your personal information.",
+    title: "Roboticela Privacy Policy & Data Protection",
+    description: "Read Roboticela's Privacy Policy and data protection practices. Learn how we collect, use, store, and protect your personal information across all our services.",
     images: [
       {
         url: "/og-image.png",
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Privacy Policy - Roboticela",
-    description: "Read Roboticela's Privacy Policy and Terms of Data Processing. Learn how we collect, use, and protect your personal information.",
+    title: "Roboticela Privacy Policy & Data Protection",
+    description: "Read Roboticela's Privacy Policy and data protection practices. Learn how we collect, use, store, and protect your personal information across all our services.",
     images: ["/og-image.png"],
     creator: "@roboticela",
     site: "@roboticela",

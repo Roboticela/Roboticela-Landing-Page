@@ -1,6 +1,6 @@
 'use client';
 
-import SitePageLayout from '../../components/SitePageLayout';
+import SitePageLayout from '../components/SitePageLayout';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,8 +18,8 @@ import {
   Target,
 } from 'lucide-react';
 
-import { easeOut } from '../../components/animations';
-import { productCategories } from '../../data/productCategories';
+import { easeOut } from '../components/animations';
+import { productCategories } from '../data/productCategories';
 
 const pillars = [
   {
@@ -89,7 +89,7 @@ const itemVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: easeOut } },
 };
 
-export default function VisionPage() {
+export default function OurVisionPage() {
   return (
     <SitePageLayout>
         {/* Hero */}

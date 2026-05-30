@@ -1,9 +1,30 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog - Roboticela',
+  title: 'Roboticela Blog — Stories, Insights & Ideas',
   description:
-    'Stories, insights, and perspectives from the Roboticela team. Innovation without boundaries.',
+    'Explore the Roboticela blog for stories, insights, technical deep-dives, and perspectives from our team. Thoughtful content about building the future.',
+  keywords: ['Roboticela', 'blog', 'stories', 'insights', 'technology', 'innovation', 'engineering', 'ideas'],
+  alternates: { canonical: '/blogs' },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://roboticela.com/blogs',
+    siteName: 'Roboticela',
+    title: 'Roboticela Blog — Stories, Insights & Ideas',
+    description:
+      'Explore the Roboticela blog for stories, insights, technical deep-dives, and perspectives from our team. Thoughtful content about building the future.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Roboticela Blog' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Roboticela Blog — Stories, Insights & Ideas',
+    description:
+      'Explore the Roboticela blog for stories, insights, technical deep-dives, and perspectives from our team. Thoughtful content about building the future.',
+    images: ['/og-image.png'],
+    creator: '@roboticela',
+    site: '@roboticela',
+  },
 };
 
 export default function BlogsLayout({ children }: { children: React.ReactNode }) {

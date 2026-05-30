@@ -26,14 +26,14 @@ export default function Hero() {
       <div className="max-w-5xl mx-auto">
         <motion.div
           className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: easeOut }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, ease: easeOut }}
         >
           {/* Logo */}
           <div className="flex justify-center mb-8">
             <motion.div
-              initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={{
                 opacity: 1,
                 scale: 1,
@@ -47,16 +47,14 @@ export default function Hero() {
               transition={
                 clickRotation === 0
                   ? {
-                      delay: 0.1,
-                      duration: 1,
+                      duration: 0.5,
                       ease: easeOut,
-                      rotate: { duration: 1, ease: easeOut },
+                      rotate: { duration: 0.5, ease: easeOut },
                     }
                   : spinTransition
               }
               onClick={spinLogo}
-              
-              style={{ transformOrigin: 'center center' }}
+              style={{ transformOrigin: 'center center', willChange: 'transform' }}
               className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 cursor-pointer touch-manipulation select-none"
               role="button"
               tabIndex={0}
@@ -96,7 +94,7 @@ export default function Hero() {
                 aria-hidden
               />
               <div className="relative z-10 w-full h-full">
-                <Image src="/Logo.png" alt="Roboticela" fill sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, 160px" className="object-contain pointer-events-none" priority />
+                <Image src="/Logo.png" alt="Roboticela" fill sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, 160px" className="object-contain pointer-events-none" priority fetchPriority="high" />
               </div>
             </motion.div>
           </div>
@@ -104,9 +102,9 @@ export default function Hero() {
           {/* Brand name */}
           <motion.h1
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8, ease: easeOut }}
+            transition={{ duration: 0.5, ease: easeOut }}
           >
             Roboticela
           </motion.h1>
@@ -114,9 +112,9 @@ export default function Hero() {
           {/* Main tagline */}
           <motion.h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-4 tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: easeOut }}
+            transition={{ delay: 0.15, duration: 0.5, ease: easeOut }}
           >
             Think different. <span className="text-primary">Build everything.</span>
           </motion.h2>
@@ -124,9 +122,9 @@ export default function Hero() {
           {/* Subheading */}
           <motion.p
             className="text-xl sm:text-2xl md:text-3xl text-foreground/60 max-w-3xl mx-auto mb-12 font-normal tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8, ease: easeOut }}
+            transition={{ delay: 0.3, duration: 0.5, ease: easeOut }}
           >
             The future doesn&apos;t fit in boxes. Neither do we.
           </motion.p>
@@ -134,9 +132,9 @@ export default function Hero() {
           {/* CTA Buttons */}
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8, ease: easeOut }}
+            transition={{ delay: 0.45, duration: 0.5, ease: easeOut }}
           >
             <Link href="/products">
               <motion.button
@@ -160,9 +158,9 @@ export default function Hero() {
       {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.8, repeat: 1e10, repeatType: 'reverse' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.5 }}
       >
         <div className="w-6 h-10 border-2 border-foreground/20 rounded-full flex items-start justify-center p-2">
           <motion.div

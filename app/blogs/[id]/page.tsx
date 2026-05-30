@@ -17,12 +17,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getBlogById(id);
 
   if (!post) {
-    return { title: 'Blog - Roboticela' };
+    return { title: 'Roboticela Blog — Stories, Insights & Ideas' };
   }
 
   return {
-    title: `${post.title} - Roboticela Blog`,
+    title: { absolute: `${post.title} | Roboticela Blog` },
     description: post.excerpt,
+    alternates: { canonical: `/blogs/${id}` },
+    openGraph: {
+      type: 'article',
+      url: `https://roboticela.com/blogs/${id}`,
+      title: `${post.title} | Roboticela Blog`,
+      description: post.excerpt,
+      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${post.title} | Roboticela Blog`,
+      description: post.excerpt,
+      images: ['/og-image.png'],
+    },
   };
 }
 

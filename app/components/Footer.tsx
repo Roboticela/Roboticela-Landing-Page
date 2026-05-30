@@ -53,7 +53,7 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Company</h4>
             <ul className="space-y-2">
               <li><Link href="/about" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">About</Link></li>
-              <li><Link href="/company/vision" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Our Vision</Link></li>
+              <li><Link href="/our-vision" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Our Vision</Link></li>
               <li><Link href="/careers" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Careers</Link></li>
               <li><Link href="/news" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">News</Link></li>
               <li><Link href="/support" className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors">Contact</Link></li>

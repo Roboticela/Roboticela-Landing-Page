@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "Read Roboticela's Terms of Service and User Agreement. Understand your rights and obligations when using our services, products, and platforms.",
+  title: "Roboticela Terms of Service & User Agreement",
+  description: "Read Roboticela's Terms of Service and User Agreement. Understand your legal rights and obligations when using our services, products, and platforms.",
   keywords: [
     "Roboticela",
     "Terms of Service",
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://roboticela.com/terms",
     siteName: "Roboticela",
-    title: "Terms of Service - Roboticela",
-    description: "Read Roboticela's Terms of Service and User Agreement. Understand your rights and obligations when using our services.",
+    title: "Roboticela Terms of Service & User Agreement",
+    description: "Read Roboticela's Terms of Service and User Agreement. Understand your legal rights and obligations when using our services, products, and platforms.",
     images: [
       {
         url: "/og-image.png",
@@ -37,8 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Terms of Service - Roboticela",
-    description: "Read Roboticela's Terms of Service and User Agreement. Understand your rights and obligations when using our services.",
+    title: "Roboticela Terms of Service & User Agreement",
+    description: "Read Roboticela's Terms of Service and User Agreement. Understand your legal rights and obligations when using our services, products, and platforms.",
     images: ["/og-image.png"],
     creator: "@roboticela",
     site: "@roboticela",

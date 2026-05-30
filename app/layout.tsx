@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: {
@@ -10,7 +18,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/Favicon.png",
   },
-  description: "The future doesn't fit in boxes. Neither do we. Innovation without boundaries—software, hardware, research, and experiences that matter.",
+  description: "The future doesn't fit in boxes. Neither do we. Roboticela builds without limits—software, hardware, research, and experiences that push what's possible.",
   keywords: [
     "Roboticela",
     "innovation",
@@ -36,7 +44,7 @@ export const metadata: Metadata = {
     url: "https://roboticela.com",
     siteName: "Roboticela",
     title: "Roboticela - Think Different. Build Everything.",
-    description: "The future doesn't fit in boxes. Neither do we. Innovation without boundaries—software, hardware, research, and experiences that matter.",
+    description: "The future doesn't fit in boxes. Neither do we. Roboticela builds without limits—software, hardware, research, and experiences that push what's possible.",
     images: [
       {
         url: "/og-image.png",
@@ -49,7 +57,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Roboticela - Think Different. Build Everything.",
-    description: "The future doesn't fit in boxes. Neither do we. Innovation without boundaries.",
+    description: "The future doesn't fit in boxes. Neither do we. Roboticela builds without limits—software, hardware, research, and experiences that push what's possible.",
     images: ["/og-image.png"],
     creator: "@roboticela",
     site: "@roboticela",
@@ -73,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning className={inter.variable}>
       <head>
         <link rel="preconnect" href="https://www.clarity.ms" />
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
