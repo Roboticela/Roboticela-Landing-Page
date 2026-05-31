@@ -27,7 +27,7 @@ export default function Hero() {
 
           {/* Brand name */}
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 tracking-tight"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: easeOut }}
@@ -37,19 +37,18 @@ export default function Hero() {
 
           {/* Main tagline */}
           <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-4 tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-4 tracking-tight"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.5, ease: easeOut }}
           >
             Think different.{' '}
-            <span style={{ color: '#2EE6D6' }}>Build everything.</span>
+            <span className="text-[var(--hero-accent)]">Build everything.</span>
           </motion.h2>
 
           {/* Subheading */}
           <motion.p
-            className="text-xl sm:text-2xl md:text-3xl max-w-3xl mx-auto mb-12 font-normal tracking-tight"
-            style={{ color: 'rgba(255,255,255,0.58)' }}
+            className="text-xl sm:text-2xl md:text-3xl max-w-3xl mx-auto mb-12 font-normal tracking-tight text-foreground/60"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5, ease: easeOut }}
@@ -66,11 +65,10 @@ export default function Hero() {
           >
             <Link
               href="/products"
-              className="group px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2"
+              className="group px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 shadow-[0_0_28px_var(--hero-accent-glow)] hover:shadow-[0_0_36px_var(--hero-accent-glow)]"
               style={{
-                background: 'linear-gradient(135deg, #2EE6D6 0%, #00BFFF 100%)',
-                color: '#000',
-                boxShadow: '0 0 28px rgba(46,230,214,0.35)',
+                background: 'linear-gradient(135deg, var(--hero-cta-from) 0%, var(--hero-cta-to) 100%)',
+                color: 'var(--hero-cta-text)',
               }}
             >
               Explore Products
@@ -78,13 +76,7 @@ export default function Hero() {
             </Link>
             <Link
               href="/about"
-              className="px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
-              style={{
-                background: 'rgba(255,255,255,0.06)',
-                color: 'rgba(255,255,255,0.85)',
-                border: '1px solid rgba(255,255,255,0.18)',
-                backdropFilter: 'blur(8px)',
-              }}
+              className="px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 bg-foreground/[0.06] text-foreground/85 border border-foreground/[0.18] backdrop-blur-sm hover:bg-foreground/10"
             >
               Our Story
             </Link>
@@ -100,12 +92,12 @@ export default function Hero() {
         transition={{ delay: 0.8, duration: 0.5 }}
       >
         <div
-          className="w-6 h-10 rounded-full flex items-start justify-center p-2"
-          style={{ border: '2px solid rgba(46,230,214,0.3)' }}
+          className="w-6 h-10 rounded-full flex items-start justify-center p-2 border-2"
+          style={{ borderColor: 'var(--hero-scroll-border)' }}
         >
           <motion.div
             className="w-1.5 h-1.5 rounded-full"
-            style={{ background: 'rgba(46,230,214,0.6)' }}
+            style={{ background: 'var(--hero-scroll-dot)' }}
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 1.5, repeat: 1e10, ease: 'easeInOut' }}
           />

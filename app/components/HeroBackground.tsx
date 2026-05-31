@@ -1,24 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useCallback } from 'react';
-
-/* ─────────────────────── palette ─────────────────────── */
-
-const PAL: [number, number, number][] = [
-  [46, 230, 214],   // 0 cyan        #2EE6D6
-  [0, 191, 255],    // 1 blue        #00BFFF
-  [108, 59, 255],   // 2 purple      #6C3BFF
-  [255, 157, 0],    // 3 orange      #FF9D00
-  [255, 174, 28],   // 4 amber       #FFAE1C  (logo)
-  [89, 22, 235],    // 5 violet      #5916EB  (logo)
-  [0, 185, 150],    // 6 teal-green  #00B996  (logo)
-  [151, 1, 154],    // 7 magenta     #97019A  (logo)
-];
-
-function c(idx: number, a: number): string {
-  const [r, g, b] = PAL[idx % PAL.length];
-  return `rgba(${r},${g},${b},${a.toFixed(3)})`;
-}
+import { useTheme, type ThemeMode } from '../lib/useTheme';
+import { circuitRgb, getHeroPalette, heroColor } from '../lib/heroPalette';
 
 /* ─────────────────────── tiny utils ─────────────────────── */
 
@@ -129,7 +113,14 @@ interface Ribbon {
 
 /* ─────────────────────── draw helpers ─────────────────────── */
 
-function drawHex(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number, alpha: number): void {
+function drawHex(
+  ctx: CanvasRenderingContext2D,
+  cx: number,
+  cy: number,
+  r: number,
+  alpha: number,
+  mode: ThemeMode,
+): void {
   if (alpha < 0.004) return;
   ctx.beginPath();
   for (let i = 0; i < 6; i++) {
@@ -139,22 +130,25 @@ function drawHex(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: numbe
     i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
   }
   ctx.closePath();
-  ctx.strokeStyle = c(0, alpha);
+  ctx.strokeStyle = heroColor(0, alpha, mode);
   ctx.lineWidth = 0.5;
   ctx.stroke();
 }
 
 /* pre-render a radial glow sprite per palette color */
-function buildGlowSprites(): HTMLCanvasElement[] {
-  return PAL.map(([r, g, b]) => {
+function buildGlowSprites(mode: ThemeMode): HTMLCanvasElement[] {
+  const peak = mode === 'light' ? 0.55 : 0.85;
+  const mid = mode === 'light' ? 0.26 : 0.4;
+  const outer = mode === 'light' ? 0.1 : 0.1;
+  return getHeroPalette(mode).map(([r, g, b]) => {
     const sz = 100;
     const gc = document.createElement('canvas');
     gc.width = gc.height = sz;
     const gctx = gc.getContext('2d')!;
     const grd = gctx.createRadialGradient(sz / 2, sz / 2, 0, sz / 2, sz / 2, sz / 2);
-    grd.addColorStop(0,   `rgba(${r},${g},${b},0.85)`);
-    grd.addColorStop(0.18, `rgba(${r},${g},${b},0.4)`);
-    grd.addColorStop(0.5,  `rgba(${r},${g},${b},0.1)`);
+    grd.addColorStop(0,   `rgba(${r},${g},${b},${peak})`);
+    grd.addColorStop(0.18, `rgba(${r},${g},${b},${mid})`);
+    grd.addColorStop(0.5,  `rgba(${r},${g},${b},${outer})`);
     grd.addColorStop(1,   'transparent');
     gctx.fillStyle = grd;
     gctx.fillRect(0, 0, sz, sz);
@@ -163,12 +157,12 @@ function buildGlowSprites(): HTMLCanvasElement[] {
 }
 
 /* pre-render a static grid onto an offscreen canvas */
-function buildGridCanvas(W: number, H: number): HTMLCanvasElement {
+function buildGridCanvas(W: number, H: number, mode: ThemeMode): HTMLCanvasElement {
   const gc = document.createElement('canvas');
   gc.width = W; gc.height = H;
   const gctx = gc.getContext('2d')!;
-  gctx.strokeStyle = 'rgba(0,191,255,0.022)';
-  gctx.lineWidth = 0.4;
+  gctx.strokeStyle = mode === 'light' ? 'rgba(13, 148, 136, 0.045)' : 'rgba(0,191,255,0.022)';
+  gctx.lineWidth = mode === 'light' ? 0.42 : 0.4;
   gctx.beginPath();
   for (let x = 0; x <= W; x += 90) { gctx.moveTo(x, 0); gctx.lineTo(x, H); }
   for (let y = 0; y <= H; y += 90) { gctx.moveTo(0, y); gctx.lineTo(W, y); }
@@ -342,6 +336,7 @@ const CIRCUIT_SEGS: number[][] = [
 /* ─────────────────────── component ─────────────────────── */
 
 export default function HeroBackground() {
+  const theme = useTheme();
   const canvasRef  = useRef<HTMLCanvasElement>(null);
   const glowRef    = useRef<HTMLDivElement>(null);
   const rafRef     = useRef(0);
@@ -349,6 +344,9 @@ export default function HeroBackground() {
   const tgtMouse   = useRef({ x: 0.5, y: 0.62 });
 
   useEffect(() => {
+    const sceneMode = theme;
+    const blend: GlobalCompositeOperation = sceneMode === 'light' ? 'source-over' : 'lighter';
+    const circuitAlpha = sceneMode === 'light' ? 0.045 : 0.03;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d', { alpha: true });
@@ -384,8 +382,8 @@ export default function HeroBackground() {
       canvas!.height = Math.floor(H * dpr);
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      glowSprites = buildGlowSprites();
-      gridCanvas  = buildGridCanvas(W, H);
+      glowSprites = buildGlowSprites(sceneMode);
+      gridCanvas  = buildGridCanvas(W, H, sceneMode);
       particles   = mkParticles(W, H);
       nodes       = mkNodes(W, H);
       hexes       = mkHexCells(W, H);
@@ -436,7 +434,7 @@ export default function HeroBackground() {
       }));
 
       ctx!.save();
-      ctx!.globalCompositeOperation = 'lighter';
+      ctx!.globalCompositeOperation = blend;
       ctx!.lineCap = 'round';
       ctx!.lineJoin = 'round';
 
@@ -450,7 +448,7 @@ export default function HeroBackground() {
       for (const [w, a] of passes) {
         tracePath(ctx!, pts);
         ctx!.lineWidth = w;
-        ctx!.strokeStyle = c(r.colorIdx, a * breathe);
+        ctx!.strokeStyle = heroColor(r.colorIdx, a * breathe, sceneMode);
         ctx!.stroke();
       }
 
@@ -506,7 +504,7 @@ export default function HeroBackground() {
       waveTimer += dt;
       if (waveTimer > 4200) { spawnWave(); waveTimer = rnd(-1400, 0); }
       ctx!.save();
-      ctx!.globalCompositeOperation = 'lighter';
+      ctx!.globalCompositeOperation = blend;
       ctx!.lineCap = 'round';
       for (let i = waves.length - 1; i >= 0; i--) {
         const wv = waves[i];
@@ -518,12 +516,12 @@ export default function HeroBackground() {
         if (a < 0.004) continue;
         ctx!.beginPath();
         ctx!.arc(wv.cx, wv.cy, r, wv.a0, wv.a1);
-        ctx!.strokeStyle = c(wv.colorIdx, a);
+        ctx!.strokeStyle = heroColor(wv.colorIdx, a, sceneMode);
         ctx!.lineWidth = 26;
         ctx!.stroke();
         ctx!.beginPath();
         ctx!.arc(wv.cx, wv.cy, r, wv.a0, wv.a1);
-        ctx!.strokeStyle = c(wv.colorIdx, a * 1.8);
+        ctx!.strokeStyle = heroColor(wv.colorIdx, a * 1.8, sceneMode);
         ctx!.lineWidth = 4;
         ctx!.stroke();
       }
@@ -543,7 +541,7 @@ export default function HeroBackground() {
         const baseR = Math.min(W, H) * 0.05;
         const maxR  = Math.min(W, H) * 0.66;
         ctx!.save();
-        ctx!.globalCompositeOperation = 'lighter';
+        ctx!.globalCompositeOperation = blend;
         for (let i = ripples.length - 1; i >= 0; i--) {
           const rp = ripples[i];
           rp.t += rp.speed * spd;
@@ -556,13 +554,13 @@ export default function HeroBackground() {
           /* soft halo ring */
           ctx!.beginPath();
           ctx!.arc(lcx, lcy, r, 0, Math.PI * 2);
-          ctx!.strokeStyle = c(rp.colorIdx, a * 0.45);
+          ctx!.strokeStyle = heroColor(rp.colorIdx, a * 0.45, sceneMode);
           ctx!.lineWidth = 9;
           ctx!.stroke();
           /* crisp ring */
           ctx!.beginPath();
           ctx!.arc(lcx, lcy, r, 0, Math.PI * 2);
-          ctx!.strokeStyle = c(rp.colorIdx, a);
+          ctx!.strokeStyle = heroColor(rp.colorIdx, a, sceneMode);
           ctx!.lineWidth = 1.3;
           ctx!.stroke();
         }
@@ -577,12 +575,13 @@ export default function HeroBackground() {
             ? (Math.random() < 0.28 ? 0 : rnd(0.02, 0.058))
             : rnd(0.02, 0.058);
         }
-        drawHex(ctx!, h.cx, h.cy, h.size, h.alpha * centerClear(h.cx, h.cy, W, H));
+        drawHex(ctx!, h.cx, h.cy, h.size, h.alpha * centerClear(h.cx, h.cy, W, H), sceneMode);
       }
 
       /* ── circuit board lines (masked away from reading zone) ── */
       {
-        const alpha = 0.03 + 0.013 * Math.sin(time * 0.00045);
+        const [cr, cg, cb] = circuitRgb(sceneMode);
+        const alpha = circuitAlpha + (sceneMode === 'light' ? 0.016 : 0.013) * Math.sin(time * 0.00045);
         ctx!.save();
         ctx!.lineWidth = 0.5;
         for (const seg of CIRCUIT_SEGS) {
@@ -595,14 +594,14 @@ export default function HeroBackground() {
             const sx = seg[i] * W, sy = seg[i + 1] * H;
             i === 0 ? ctx!.moveTo(sx, sy) : ctx!.lineTo(sx, sy);
           }
-          ctx!.strokeStyle = `rgba(108,59,255,${alpha * m})`;
+          ctx!.strokeStyle = `rgba(${cr},${cg},${cb},${alpha * m})`;
           ctx!.stroke();
           /* junction dot at end */
           const ex = seg[seg.length - 2] * W;
           const ey = seg[seg.length - 1] * H;
           ctx!.beginPath();
           ctx!.arc(ex, ey, 1.8, 0, Math.PI * 2);
-          ctx!.fillStyle = `rgba(108,59,255,${alpha * 2.5 * m})`;
+          ctx!.fillStyle = `rgba(${cr},${cg},${cb},${alpha * 2.5 * m})`;
           ctx!.fill();
         }
         ctx!.restore();
@@ -633,7 +632,7 @@ export default function HeroBackground() {
             ctx!.beginPath();
             ctx!.moveTo(da.x, da.y);
             ctx!.lineTo(db.x, db.y);
-            ctx!.strokeStyle = c(nodes[i].colorIdx, alpha);
+            ctx!.strokeStyle = heroColor(nodes[i].colorIdx, alpha, sceneMode);
             ctx!.stroke();
           }
         }
@@ -644,7 +643,7 @@ export default function HeroBackground() {
       pulseTimer += dt;
       if (pulseTimer > 750) { spawnPulse(); pulseTimer = 0; }
       ctx!.save();
-      ctx!.globalCompositeOperation = 'lighter';
+      ctx!.globalCompositeOperation = blend;
       for (let i = pulses.length - 1; i >= 0; i--) {
         const p = pulses[i];
         p.t += p.speed * spd;
@@ -659,14 +658,14 @@ export default function HeroBackground() {
         /* bright core */
         ctx!.beginPath();
         ctx!.arc(px, py, 2.8, 0, Math.PI * 2);
-        ctx!.fillStyle = c(p.colorIdx, 0.95);
+        ctx!.fillStyle = heroColor(p.colorIdx, 0.95, sceneMode);
         ctx!.fill();
       }
       ctx!.restore();
 
       /* ── network nodes (physics confined to edge band + draw) ── */
       ctx!.save();
-      ctx!.globalCompositeOperation = 'lighter';
+      ctx!.globalCompositeOperation = blend;
       for (let i = 0; i < nodes.length; i++) {
         const n = nodes[i];
         n.phase += n.phaseSpeed * spd;
@@ -694,14 +693,14 @@ export default function HeroBackground() {
         /* crisp core dot */
         ctx!.beginPath();
         ctx!.arc(dp.x, dp.y, size, 0, Math.PI * 2);
-        ctx!.fillStyle = c(n.colorIdx, alpha);
+        ctx!.fillStyle = heroColor(n.colorIdx, alpha, sceneMode);
         ctx!.fill();
       }
       ctx!.restore();
 
       /* ── particles ── */
       ctx!.save();
-      ctx!.globalCompositeOperation = 'lighter';
+      ctx!.globalCompositeOperation = blend;
       for (const p of particles) {
         p.phase += p.phaseSpeed * spd;
 
@@ -726,7 +725,7 @@ export default function HeroBackground() {
 
         ctx!.beginPath();
         ctx!.arc(dx, dy, p.size, 0, Math.PI * 2);
-        ctx!.fillStyle = c(p.colorIdx, alpha);
+        ctx!.fillStyle = heroColor(p.colorIdx, alpha, sceneMode);
         ctx!.fill();
       }
       ctx!.restore();
@@ -755,7 +754,7 @@ export default function HeroBackground() {
       ro.disconnect();
       if (resizeTimer) clearTimeout(resizeTimer);
     };
-  }, []);
+  }, [theme]);
 
   const onMouseMove = useCallback((e: MouseEvent) => {
     const r = canvasRef.current?.getBoundingClientRect();
@@ -815,17 +814,17 @@ export default function HeroBackground() {
         }
       `}</style>
 
-      {/* 1. Deep black base */}
-      <div style={{ position: 'absolute', inset: 0, background: '#000' }} />
+      {/* 1. Theme base */}
+      <div style={{ position: 'absolute', inset: 0, background: 'var(--hero-base)' }} />
 
       {/* 2. Animated gradient mesh blobs (CSS – GPU accelerated) */}
-      <div style={{ position: 'absolute', inset: 0, filter: 'blur(90px)', opacity: 0.7 }}>
+      <div style={{ position: 'absolute', inset: 0, filter: 'blur(90px)', opacity: 'var(--hero-blob-opacity)' }}>
 
-        {/* Purple cloud – top-left */}
+        {/* Violet cloud – top-left */}
         <div className="rb-anim" style={{
           position: 'absolute', top: '3%', left: '8%',
           width: '52%', height: '48%',
-          background: 'radial-gradient(ellipse, rgba(108,59,255,0.26) 0%, transparent 68%)',
+          background: 'radial-gradient(ellipse, var(--hero-blob-1) 0%, transparent 68%)',
           animation: 'rb-blob1 20s ease-in-out infinite',
         }} />
 
@@ -833,31 +832,31 @@ export default function HeroBackground() {
         <div className="rb-anim" style={{
           position: 'absolute', top: '10%', right: '4%',
           width: '48%', height: '52%',
-          background: 'radial-gradient(ellipse, rgba(0,191,255,0.2) 0%, transparent 68%)',
+          background: 'radial-gradient(ellipse, var(--hero-blob-2) 0%, transparent 68%)',
           animation: 'rb-blob2 25s ease-in-out infinite',
         }} />
 
-        {/* Cyan cloud – bottom-left */}
+        {/* Teal cloud – bottom-left */}
         <div className="rb-anim" style={{
           position: 'absolute', bottom: '8%', left: '4%',
           width: '44%', height: '44%',
-          background: 'radial-gradient(ellipse, rgba(46,230,214,0.18) 0%, transparent 68%)',
+          background: 'radial-gradient(ellipse, var(--hero-blob-3) 0%, transparent 68%)',
           animation: 'rb-blob3 28s ease-in-out infinite',
         }} />
 
-        {/* Orange ember – bottom-right (subtle) */}
+        {/* Coral ember – bottom-right */}
         <div className="rb-anim" style={{
           position: 'absolute', bottom: '14%', right: '8%',
           width: '40%', height: '40%',
-          background: 'radial-gradient(ellipse, rgba(255,157,0,0.12) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse, var(--hero-blob-4) 0%, transparent 65%)',
           animation: 'rb-blob4 22s ease-in-out infinite',
         }} />
 
-        {/* Cyan pulse – centre */}
+        {/* Indigo pulse – centre */}
         <div className="rb-anim" style={{
           position: 'absolute', top: '28%', left: '30%',
           width: '40%', height: '40%',
-          background: 'radial-gradient(ellipse, rgba(46,230,214,0.1) 0%, transparent 60%)',
+          background: 'radial-gradient(ellipse, var(--hero-blob-5) 0%, transparent 60%)',
           animation: 'rb-blob5 16s ease-in-out infinite',
         }} />
       </div>
@@ -865,7 +864,7 @@ export default function HeroBackground() {
       {/* 3. Centre focal glow – radiates behind logo / headline */}
       <div className="rb-anim" style={{
         position: 'absolute', inset: 0, transformOrigin: '50% 42%',
-        background: 'radial-gradient(ellipse 58% 46% at 50% 42%, rgba(46,230,214,0.09) 0%, rgba(0,191,255,0.05) 38%, transparent 68%)',
+        background: 'radial-gradient(ellipse 58% 46% at 50% 42%, var(--hero-center-glow) 0%, var(--hero-center-glow-mid) 38%, transparent 68%)',
         animation: 'rb-glow 9s ease-in-out infinite',
       }} />
 
@@ -873,15 +872,15 @@ export default function HeroBackground() {
       <div ref={glowRef} style={{
         position: 'absolute', inset: 0, opacity: 0, pointerEvents: 'none',
         willChange: 'opacity',
-        background: 'radial-gradient(ellipse 40% 34% at 50% 42%, rgba(46,230,214,0.16) 0%, rgba(0,191,255,0.08) 42%, transparent 70%)',
+        background: 'radial-gradient(ellipse 40% 34% at 50% 42%, var(--hero-hover-glow) 0%, var(--hero-hover-glow-mid) 42%, transparent 70%)',
       }} />
 
       {/* 4. Volumetric ambient fog patches */}
       <div className="rb-anim" style={{
         position: 'absolute', inset: 0,
         background: [
-          'radial-gradient(ellipse 75% 65% at 22% 68%, rgba(108,59,255,0.055) 0%, transparent 52%)',
-          'radial-gradient(ellipse 65% 55% at 78% 22%, rgba(0,191,255,0.045) 0%, transparent 48%)',
+          'radial-gradient(ellipse 75% 65% at 22% 68%, var(--hero-fog-1) 0%, transparent 52%)',
+          'radial-gradient(ellipse 65% 55% at 78% 22%, var(--hero-fog-2) 0%, transparent 48%)',
         ].join(', '),
         animation: 'rb-fog 12s ease-in-out infinite',
       }} />
@@ -892,15 +891,15 @@ export default function HeroBackground() {
         background: [
           'conic-gradient(from 0deg at 50% 42%,',
           '  transparent 0deg,',
-          '  rgba(46,230,214,0.028) 18deg,',
+          '  var(--hero-ray-teal) 18deg,',
           '  transparent 36deg,',
-          '  rgba(0,191,255,0.022) 72deg,',
+          '  var(--hero-ray-blue) 72deg,',
           '  transparent 108deg,',
-          '  rgba(108,59,255,0.022) 162deg,',
+          '  var(--hero-ray-indigo) 162deg,',
           '  transparent 200deg,',
-          '  rgba(46,230,214,0.025) 230deg,',
+          '  var(--hero-ray-teal) 230deg,',
           '  transparent 260deg,',
-          '  rgba(255,157,0,0.018) 300deg,',
+          '  var(--hero-ray-coral) 300deg,',
           '  transparent 340deg',
           ')',
         ].join(''),
@@ -916,19 +915,19 @@ export default function HeroBackground() {
       {/* 7. Edge vignette – keeps content area clean */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-        background: 'radial-gradient(ellipse 88% 85% at 50% 50%, transparent 42%, rgba(0,0,0,0.52) 100%)',
+        background: 'radial-gradient(ellipse 88% 85% at 50% 50%, transparent 42%, var(--hero-vignette) 100%)',
       }} />
 
-      {/* 8. Top-edge fade to black (navbar region) */}
+      {/* 8. Top-edge fade (navbar region) */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: '18%', pointerEvents: 'none',
-        background: 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%)',
+        background: 'linear-gradient(to bottom, var(--hero-edge-top) 0%, transparent 100%)',
       }} />
 
       {/* 9. Bottom-edge fade */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, height: '15%', pointerEvents: 'none',
-        background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 100%)',
+        background: 'linear-gradient(to top, var(--hero-edge-bottom) 0%, transparent 100%)',
       }} />
     </div>
   );

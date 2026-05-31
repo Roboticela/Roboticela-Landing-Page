@@ -16,6 +16,35 @@
   --safe-area-inset-right: env(safe-area-inset-right, 0px);
   --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
   --safe-area-inset-left: env(safe-area-inset-left, 0px);
+  /* Hero defaults (dark) until data-theme is applied */
+  --hero-base: #000000;
+  --hero-blob-opacity: 0.7;
+  --hero-center-glow: rgba(46, 230, 214, 0.09);
+  --hero-center-glow-mid: rgba(0, 191, 255, 0.05);
+  --hero-hover-glow: rgba(46, 230, 214, 0.16);
+  --hero-hover-glow-mid: rgba(0, 191, 255, 0.08);
+  --hero-fog-1: rgba(108, 59, 255, 0.055);
+  --hero-fog-2: rgba(0, 191, 255, 0.045);
+  --hero-blob-1: rgba(108, 59, 255, 0.26);
+  --hero-blob-2: rgba(0, 191, 255, 0.2);
+  --hero-blob-3: rgba(46, 230, 214, 0.18);
+  --hero-blob-4: rgba(255, 157, 0, 0.12);
+  --hero-blob-5: rgba(46, 230, 214, 0.1);
+  --hero-ray-teal: rgba(46, 230, 214, 0.028);
+  --hero-ray-blue: rgba(0, 191, 255, 0.022);
+  --hero-ray-indigo: rgba(108, 59, 255, 0.022);
+  --hero-ray-coral: rgba(255, 157, 0, 0.018);
+  --hero-vignette: rgba(0, 0, 0, 0.52);
+  --hero-edge-top: rgba(0, 0, 0, 0.55);
+  --hero-edge-bottom: rgba(0, 0, 0, 0.45);
+  --hero-accent: #2ee6d6;
+  --hero-accent-secondary: #00bfff;
+  --hero-accent-glow: rgba(46, 230, 214, 0.35);
+  --hero-cta-from: #2ee6d6;
+  --hero-cta-to: #00bfff;
+  --hero-cta-text: #000000;
+  --hero-scroll-border: rgba(46, 230, 214, 0.3);
+  --hero-scroll-dot: rgba(46, 230, 214, 0.6);
 }
 
 /* Navy Theme */
@@ -66,6 +95,72 @@
 [data-theme="dark"] {
   --primary: #2dd4bf;
   --primary-foreground: #0a0a0a;
+}
+
+/* Hero section — light: soft paper base + jewel-tone aurora (distinct from dark neon) */
+[data-theme="light"] {
+  --hero-base: #f0f4fa;
+  --hero-blob-opacity: 0.88;
+  --hero-blob-1: rgba(124, 58, 237, 0.16);
+  --hero-blob-2: rgba(37, 99, 235, 0.14);
+  --hero-blob-3: rgba(13, 148, 136, 0.15);
+  --hero-blob-4: rgba(249, 115, 22, 0.11);
+  --hero-blob-5: rgba(99, 102, 241, 0.12);
+  --hero-center-glow: rgba(13, 148, 136, 0.14);
+  --hero-center-glow-mid: rgba(37, 99, 235, 0.07);
+  --hero-hover-glow: rgba(13, 148, 136, 0.2);
+  --hero-hover-glow-mid: rgba(99, 102, 241, 0.1);
+  --hero-fog-1: rgba(124, 58, 237, 0.07);
+  --hero-fog-2: rgba(37, 99, 235, 0.06);
+  --hero-ray-teal: rgba(13, 148, 136, 0.07);
+  --hero-ray-blue: rgba(37, 99, 235, 0.055);
+  --hero-ray-indigo: rgba(99, 102, 241, 0.055);
+  --hero-ray-coral: rgba(249, 115, 22, 0.045);
+  --hero-vignette: rgba(240, 244, 250, 0.72);
+  --hero-edge-top: rgba(240, 244, 250, 0.92);
+  --hero-edge-bottom: rgba(240, 244, 250, 0.65);
+  --hero-accent: #0f766e;
+  --hero-accent-secondary: #4f46e5;
+  --hero-accent-glow: rgba(13, 148, 136, 0.28);
+  --hero-cta-from: #0d9488;
+  --hero-cta-to: #4f46e5;
+  --hero-cta-text: #ffffff;
+  --hero-scroll-border: rgba(15, 118, 110, 0.4);
+  --hero-scroll-dot: rgba(15, 118, 110, 0.7);
+}
+
+[data-theme="dark"],
+[data-theme="navy"],
+[data-theme="ocean"],
+[data-theme="purple"] {
+  --hero-base: #000000;
+  --hero-blob-opacity: 0.7;
+  --hero-blob-1: rgba(108, 59, 255, 0.26);
+  --hero-blob-2: rgba(0, 191, 255, 0.2);
+  --hero-blob-3: rgba(46, 230, 214, 0.18);
+  --hero-blob-4: rgba(255, 157, 0, 0.12);
+  --hero-blob-5: rgba(46, 230, 214, 0.1);
+  --hero-center-glow: rgba(46, 230, 214, 0.09);
+  --hero-center-glow-mid: rgba(0, 191, 255, 0.05);
+  --hero-hover-glow: rgba(46, 230, 214, 0.16);
+  --hero-hover-glow-mid: rgba(0, 191, 255, 0.08);
+  --hero-fog-1: rgba(108, 59, 255, 0.055);
+  --hero-fog-2: rgba(0, 191, 255, 0.045);
+  --hero-ray-teal: rgba(46, 230, 214, 0.028);
+  --hero-ray-blue: rgba(0, 191, 255, 0.022);
+  --hero-ray-indigo: rgba(108, 59, 255, 0.022);
+  --hero-ray-coral: rgba(255, 157, 0, 0.018);
+  --hero-vignette: rgba(0, 0, 0, 0.52);
+  --hero-edge-top: rgba(0, 0, 0, 0.55);
+  --hero-edge-bottom: rgba(0, 0, 0, 0.45);
+  --hero-accent: #2ee6d6;
+  --hero-accent-secondary: #00bfff;
+  --hero-accent-glow: rgba(46, 230, 214, 0.35);
+  --hero-cta-from: #2ee6d6;
+  --hero-cta-to: #00bfff;
+  --hero-cta-text: #000000;
+  --hero-scroll-border: rgba(46, 230, 214, 0.3);
+  --hero-scroll-dot: rgba(46, 230, 214, 0.6);
 }
 
 /* Ocean Theme */

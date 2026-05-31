@@ -1,29 +1,17 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { getHeroPalette, getLogoBrand, rgba } from '../lib/heroPalette';
+import { useTheme } from '../lib/useTheme';
 
-/** Logo brand spectrum — matches HeroBackground palette */
-const BRAND = {
-  cyan: [46, 230, 214] as const,
-  blue: [0, 191, 255] as const,
-  purple: [108, 59, 255] as const,
-  orange: [255, 157, 0] as const,
-};
+function buildLogoEnergyStyles(light: boolean): string {
+  const brand = getLogoBrand(light ? 'light' : 'dark');
+  const shimmerBlend = light ? 'multiply' : 'soft-light';
+  const shimmerHighlight = light ? 'rgba(255, 255, 255, 0.35)' : 'rgba(255, 255, 255, 0.1)';
 
-const PALETTE: readonly (readonly [number, number, number])[] = [
-  BRAND.cyan,
-  BRAND.blue,
-  BRAND.purple,
-  BRAND.orange,
-];
-
-function rgba(rgb: readonly [number, number, number], a: number): string {
-  return `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
-}
-
-const LOGO_ENERGY_STYLES = `
+  return `
   .logo-energy-field {
     position: absolute;
     left: 50%;
@@ -47,33 +35,33 @@ const LOGO_ENERGY_STYLES = `
     background: conic-gradient(
       from 0deg at 50% 50%,
       transparent 0deg,
-      ${rgba(BRAND.cyan, 0.06)} 12deg,
+      ${rgba(brand.primary, light ? 0.09 : 0.06)} 12deg,
       transparent 24deg,
-      ${rgba(BRAND.blue, 0.05)} 48deg,
+      ${rgba(brand.secondary, light ? 0.08 : 0.05)} 48deg,
       transparent 60deg,
-      ${rgba(BRAND.purple, 0.055)} 96deg,
+      ${rgba(brand.tertiary, light ? 0.085 : 0.055)} 96deg,
       transparent 108deg,
-      ${rgba(BRAND.orange, 0.05)} 156deg,
+      ${rgba(brand.accent, light ? 0.08 : 0.05)} 156deg,
       transparent 168deg,
-      ${rgba(BRAND.cyan, 0.04)} 200deg,
+      ${rgba(brand.primary, light ? 0.06 : 0.04)} 200deg,
       transparent 220deg,
-      ${rgba(BRAND.blue, 0.045)} 260deg,
+      ${rgba(brand.secondary, light ? 0.07 : 0.045)} 260deg,
       transparent 280deg,
-      ${rgba(BRAND.purple, 0.04)} 310deg,
+      ${rgba(brand.tertiary, light ? 0.065 : 0.04)} 310deg,
       transparent 330deg,
-      ${rgba(BRAND.orange, 0.04)} 350deg,
+      ${rgba(brand.accent, light ? 0.06 : 0.04)} 350deg,
       transparent 360deg
     );
     mask-image: radial-gradient(circle at 50% 50%, black 0%, black 18%, transparent 62%);
     -webkit-mask-image: radial-gradient(circle at 50% 50%, black 0%, black 18%, transparent 62%);
     animation: logo-rays-breathe 5s ease-in-out infinite;
-    opacity: 0.85;
+    opacity: ${light ? 0.95 : 0.85};
     transform-origin: center center;
   }
 
   .logo-energy-aura {
     border-radius: 50%;
-    filter: blur(18px);
+    filter: blur(${light ? 20 : 18}px);
     will-change: transform, opacity;
     transform-origin: center center;
   }
@@ -83,10 +71,10 @@ const LOGO_ENERGY_STYLES = `
     height: 82%;
     background: radial-gradient(
       circle at 50% 50%,
-      ${rgba(BRAND.cyan, 0.28)} 0%,
-      ${rgba(BRAND.blue, 0.14)} 22%,
-      ${rgba(BRAND.purple, 0.1)} 42%,
-      ${rgba(BRAND.orange, 0.07)} 58%,
+      ${rgba(brand.primary, light ? 0.22 : 0.28)} 0%,
+      ${rgba(brand.secondary, light ? 0.12 : 0.14)} 22%,
+      ${rgba(brand.tertiary, light ? 0.09 : 0.1)} 42%,
+      ${rgba(brand.accent, light ? 0.06 : 0.07)} 58%,
       transparent 72%
     );
     animation: logo-aura-breathe 5.2s ease-in-out infinite;
@@ -97,13 +85,13 @@ const LOGO_ENERGY_STYLES = `
     height: 62%;
     background: radial-gradient(
       circle at 48% 46%,
-      ${rgba(BRAND.cyan, 0.35)} 0%,
-      ${rgba(BRAND.blue, 0.18)} 18%,
-      ${rgba(BRAND.purple, 0.12)} 35%,
-      ${rgba(BRAND.orange, 0.08)} 50%,
+      ${rgba(brand.primary, light ? 0.28 : 0.35)} 0%,
+      ${rgba(brand.secondary, light ? 0.14 : 0.18)} 18%,
+      ${rgba(brand.tertiary, light ? 0.1 : 0.12)} 35%,
+      ${rgba(brand.accent, light ? 0.07 : 0.08)} 50%,
       transparent 68%
     );
-    filter: blur(12px);
+    filter: blur(${light ? 14 : 12}px);
     animation: logo-aura-breathe 5.2s ease-in-out infinite;
     animation-delay: -1.1s;
   }
@@ -115,9 +103,9 @@ const LOGO_ENERGY_STYLES = `
     border-radius: 50%;
     background: radial-gradient(
       circle at 50% 50%,
-      ${rgba(BRAND.cyan, 0.42)} 0%,
-      ${rgba(BRAND.blue, 0.2)} 28%,
-      ${rgba(BRAND.purple, 0.12)} 48%,
+      ${rgba(brand.primary, light ? 0.32 : 0.42)} 0%,
+      ${rgba(brand.secondary, light ? 0.16 : 0.2)} 28%,
+      ${rgba(brand.tertiary, light ? 0.1 : 0.12)} 48%,
       transparent 70%
     );
     filter: blur(8px);
@@ -157,49 +145,49 @@ const LOGO_ENERGY_STYLES = `
   }
 
   .logo-energy-shimmer {
-    mix-blend-mode: soft-light;
+    mix-blend-mode: ${shimmerBlend};
     border-radius: 50%;
     background: linear-gradient(
       115deg,
       transparent 38%,
-      ${rgba(BRAND.cyan, 0.14)} 44%,
-      rgba(255, 255, 255, 0.1) 48%,
-      ${rgba(BRAND.purple, 0.12)} 52%,
-      ${rgba(BRAND.orange, 0.08)} 56%,
+      ${rgba(brand.primary, light ? 0.12 : 0.14)} 44%,
+      ${shimmerHighlight} 48%,
+      ${rgba(brand.tertiary, light ? 0.1 : 0.12)} 52%,
+      ${rgba(brand.accent, light ? 0.08 : 0.08)} 56%,
       transparent 62%
     );
     background-size: 220% 100%;
     animation: logo-holo-shimmer 7s ease-in-out infinite;
-    opacity: 0.7;
+    opacity: ${light ? 0.65 : 0.7};
     mask-image: radial-gradient(circle at 50% 50%, black 55%, transparent 78%);
     -webkit-mask-image: radial-gradient(circle at 50% 50%, black 55%, transparent 78%);
   }
 
   @keyframes logo-aura-breathe {
     0%, 100% {
-      opacity: 0.55;
+      opacity: ${light ? 0.5 : 0.55};
       transform: translate(-50%, -50%) scale(0.94);
     }
     50% {
-      opacity: 0.92;
+      opacity: ${light ? 0.88 : 0.92};
       transform: translate(-50%, -50%) scale(1.04);
     }
   }
 
   @keyframes logo-core-pulse {
     0%, 100% {
-      opacity: 0.5;
+      opacity: ${light ? 0.45 : 0.5};
       transform: translate(-50%, -50%) scale(0.88);
     }
     50% {
-      opacity: 0.95;
+      opacity: ${light ? 0.9 : 0.95};
       transform: translate(-50%, -50%) scale(1.06);
     }
   }
 
   @keyframes logo-rays-breathe {
     0%, 100% {
-      opacity: 0.65;
+      opacity: ${light ? 0.72 : 0.65};
       transform: translate(-50%, -50%) rotate(0deg) scale(0.96);
     }
     50% {
@@ -234,6 +222,7 @@ const LOGO_ENERGY_STYLES = `
     }
   }
 `;
+}
 
 interface DetachParticle {
   x: number;
@@ -253,6 +242,13 @@ interface LogoEnergyGlowProps {
 export default function LogoEnergyGlow({
   className = 'w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40',
 }: LogoEnergyGlowProps) {
+  const theme = useTheme();
+  const isLight = theme === 'light';
+  const brand = useMemo(() => getLogoBrand(theme), [theme]);
+  const palette = useMemo(() => getHeroPalette(theme).slice(0, 4), [theme]);
+  const logoStyles = useMemo(() => buildLogoEnergyStyles(isLight), [isLight]);
+  const ringId = `logo-ring-${theme}`;
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<DetachParticle[]>([]);
@@ -272,6 +268,7 @@ export default function LogoEnergyGlow({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    const colors = getHeroPalette(theme).slice(0, 4);
     let running = true;
     let last = performance.now();
 
@@ -302,7 +299,7 @@ export default function LogoEnergyGlow({
           life: 0,
           maxLife: 1.8 + Math.random() * 1.4,
           size: 1 + Math.random() * 1.8,
-          colorIdx: Math.floor(Math.random() * PALETTE.length),
+          colorIdx: Math.floor(Math.random() * colors.length),
         });
       }
       if (particlesRef.current.length > 24) {
@@ -340,8 +337,8 @@ export default function LogoEnergyGlow({
         p.vy *= 0.992;
 
         const t = p.life / p.maxLife;
-        const alpha = (1 - t) * (1 - t) * 0.55;
-        const [r, g, b] = PALETTE[p.colorIdx];
+        const alpha = (1 - t) * (1 - t) * (isLight ? 0.48 : 0.55);
+        const [r, g, b] = colors[p.colorIdx];
         const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * scale * 3);
         grad.addColorStop(0, `rgba(${r},${g},${b},${alpha})`);
         grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
@@ -365,11 +362,11 @@ export default function LogoEnergyGlow({
       ro.disconnect();
       particlesRef.current = [];
     };
-  }, []);
+  }, [theme, isLight]);
 
   return (
     <div className={`relative ${className}`}>
-      <style dangerouslySetInnerHTML={{ __html: LOGO_ENERGY_STYLES }} />
+      <style dangerouslySetInnerHTML={{ __html: logoStyles }} />
       <motion.div
         ref={containerRef}
         initial={{ opacity: 0 }}
@@ -377,127 +374,105 @@ export default function LogoEnergyGlow({
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className="relative h-full w-full"
       >
-        {/* Glow stack — centered on logo; sizing is % of this box */}
         <div className="logo-energy-field pointer-events-none" aria-hidden>
           <div className="logo-energy-rays" />
-
           <div className="logo-energy-aura logo-energy-aura--outer" />
           <div className="logo-energy-aura logo-energy-aura--mid" />
-
           <div className="logo-energy-core" />
 
-          {/* Rotating energy rings — spin wrappers keep position separate from rotation */}
           <div className="logo-energy-ring-wrap logo-energy-ring-wrap--outer">
-          <svg
-            className="logo-energy-ring"
-            viewBox="0 0 200 200"
-            aria-hidden
-          >
-            <defs>
-              <linearGradient id="logo-ring-grad-outer" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor={rgba(BRAND.cyan, 0.65)} />
-                <stop offset="28%" stopColor={rgba(BRAND.blue, 0.5)} />
-                <stop offset="55%" stopColor={rgba(BRAND.purple, 0.55)} />
-                <stop offset="82%" stopColor={rgba(BRAND.orange, 0.5)} />
-                <stop offset="100%" stopColor={rgba(BRAND.cyan, 0.4)} />
-              </linearGradient>
-            </defs>
-            <circle
-              cx="100"
-              cy="100"
-              r="88"
-              fill="none"
-              stroke="url(#logo-ring-grad-outer)"
-              strokeWidth="0.6"
-              strokeDasharray="4 14 2 18 6 12"
-              strokeLinecap="round"
-              opacity="0.45"
-            />
-            {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => (
+            <svg className="logo-energy-ring" viewBox="0 0 200 200" aria-hidden>
+              <defs>
+                <linearGradient id={`${ringId}-outer`} x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor={rgba(brand.primary, 0.65)} />
+                  <stop offset="28%" stopColor={rgba(brand.secondary, 0.5)} />
+                  <stop offset="55%" stopColor={rgba(brand.tertiary, 0.55)} />
+                  <stop offset="82%" stopColor={rgba(brand.accent, 0.5)} />
+                  <stop offset="100%" stopColor={rgba(brand.primary, 0.4)} />
+                </linearGradient>
+              </defs>
               <circle
-                key={deg}
-                cx={100 + 88 * Math.cos((deg * Math.PI) / 180)}
-                cy={100 + 88 * Math.sin((deg * Math.PI) / 180)}
-                r="1.2"
-                fill={rgba(PALETTE[i % PALETTE.length], 0.7)}
+                cx="100"
+                cy="100"
+                r="88"
+                fill="none"
+                stroke={`url(#${ringId}-outer)`}
+                strokeWidth="0.6"
+                strokeDasharray="4 14 2 18 6 12"
+                strokeLinecap="round"
+                opacity="0.45"
               />
-            ))}
-          </svg>
+              {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => (
+                <circle
+                  key={deg}
+                  cx={100 + 88 * Math.cos((deg * Math.PI) / 180)}
+                  cy={100 + 88 * Math.sin((deg * Math.PI) / 180)}
+                  r="1.2"
+                  fill={rgba(palette[i % palette.length], 0.7)}
+                />
+              ))}
+            </svg>
           </div>
 
           <div className="logo-energy-ring-wrap logo-energy-ring-wrap--mid">
-          <svg
-            className="logo-energy-ring"
-            viewBox="0 0 200 200"
-            aria-hidden
-          >
-            <defs>
-              <linearGradient id="logo-ring-grad-mid" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor={rgba(BRAND.purple, 0.55)} />
-                <stop offset="40%" stopColor={rgba(BRAND.cyan, 0.45)} />
-                <stop offset="70%" stopColor={rgba(BRAND.orange, 0.4)} />
-                <stop offset="100%" stopColor={rgba(BRAND.blue, 0.5)} />
-              </linearGradient>
-            </defs>
-            <circle
-              cx="100"
-              cy="100"
-              r="72"
-              fill="none"
-              stroke="url(#logo-ring-grad-mid)"
-              strokeWidth="0.45"
-              strokeDasharray="8 22 3 16"
-              strokeLinecap="round"
-              opacity="0.38"
-            />
-            <circle
-              cx="100"
-              cy="28"
-              r="1"
-              fill={rgba(BRAND.cyan, 0.85)}
-            />
-            <circle cx="172" cy="100" r="0.9" fill={rgba(BRAND.blue, 0.75)} />
-            <circle cx="100" cy="172" r="1" fill={rgba(BRAND.orange, 0.8)} />
-            <circle cx="28" cy="100" r="0.9" fill={rgba(BRAND.purple, 0.8)} />
-          </svg>
+            <svg className="logo-energy-ring" viewBox="0 0 200 200" aria-hidden>
+              <defs>
+                <linearGradient id={`${ringId}-mid`} x1="100%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor={rgba(brand.tertiary, 0.55)} />
+                  <stop offset="40%" stopColor={rgba(brand.primary, 0.45)} />
+                  <stop offset="70%" stopColor={rgba(brand.accent, 0.4)} />
+                  <stop offset="100%" stopColor={rgba(brand.secondary, 0.5)} />
+                </linearGradient>
+              </defs>
+              <circle
+                cx="100"
+                cy="100"
+                r="72"
+                fill="none"
+                stroke={`url(#${ringId}-mid)`}
+                strokeWidth="0.45"
+                strokeDasharray="8 22 3 16"
+                strokeLinecap="round"
+                opacity="0.38"
+              />
+              <circle cx="100" cy="28" r="1" fill={rgba(brand.primary, 0.85)} />
+              <circle cx="172" cy="100" r="0.9" fill={rgba(brand.secondary, 0.75)} />
+              <circle cx="100" cy="172" r="1" fill={rgba(brand.accent, 0.8)} />
+              <circle cx="28" cy="100" r="0.9" fill={rgba(brand.tertiary, 0.8)} />
+            </svg>
           </div>
 
           <div className="logo-energy-ring-wrap logo-energy-ring-wrap--inner">
-          <svg
-            className="logo-energy-ring"
-            viewBox="0 0 200 200"
-            aria-hidden
-          >
-            <circle
-              cx="100"
-              cy="100"
-              r="58"
-              fill="none"
-              stroke={rgba(BRAND.cyan, 0.22)}
-              strokeWidth="0.35"
-              strokeDasharray="2 10 1 8"
-              opacity="0.5"
-            />
-            {Array.from({ length: 16 }, (_, i) => {
-              const a = (i / 16) * Math.PI * 2;
-              const col = PALETTE[i % 4];
-              return (
-                <circle
-                  key={i}
-                  cx={100 + 58 * Math.cos(a)}
-                  cy={100 + 58 * Math.sin(a)}
-                  r={i % 3 === 0 ? 0.85 : 0.45}
-                  fill={rgba(col, i % 3 === 0 ? 0.65 : 0.35)}
-                />
-              );
-            })}
-          </svg>
+            <svg className="logo-energy-ring" viewBox="0 0 200 200" aria-hidden>
+              <circle
+                cx="100"
+                cy="100"
+                r="58"
+                fill="none"
+                stroke={rgba(brand.primary, 0.22)}
+                strokeWidth="0.35"
+                strokeDasharray="2 10 1 8"
+                opacity="0.5"
+              />
+              {Array.from({ length: 16 }, (_, i) => {
+                const a = (i / 16) * Math.PI * 2;
+                const col = palette[i % 4];
+                return (
+                  <circle
+                    key={i}
+                    cx={100 + 58 * Math.cos(a)}
+                    cy={100 + 58 * Math.sin(a)}
+                    r={i % 3 === 0 ? 0.85 : 0.45}
+                    fill={rgba(col, i % 3 === 0 ? 0.65 : 0.35)}
+                  />
+                );
+              })}
+            </svg>
           </div>
 
           <canvas ref={canvasRef} className="logo-energy-particles pointer-events-none" aria-hidden />
         </div>
 
-        {/* Logo + holographic shimmer */}
         <div className="relative z-10 w-full h-full">
           <Image
             src="/Logo.png"
