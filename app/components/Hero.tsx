@@ -1,107 +1,33 @@
 'use client';
 
-import { useCallback, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { easeOut } from './animations';
+import HeroBackground from './HeroBackground';
+import LogoEnergyGlow from './LogoEnergyGlow';
 
 export default function Hero() {
-  const [clickRotation, setClickRotation] = useState(0);
-  const spinTransition = { duration: 0.6, ease: easeOut };
-
-  const spinLogo = useCallback(() => {
-    setClickRotation((current) => current + 360);
-  }, []);
-
   return (
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4 overflow-hidden">
-      {/* Background gradient effect */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      </div>
+      {/* Premium animated background */}
+      <HeroBackground />
 
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto relative z-10">
         <motion.div
           className="text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, ease: easeOut }}
         >
-          {/* Logo */}
+          {/* Logo with premium energy glow */}
           <div className="flex justify-center mb-8">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                rotate: clickRotation,
-              }}
-              whileHover={{
-                scale: 1.1,
-                rotate: clickRotation + 360,
-                transition: spinTransition,
-              }}
-              transition={
-                clickRotation === 0
-                  ? {
-                      duration: 0.5,
-                      ease: easeOut,
-                      rotate: { duration: 0.5, ease: easeOut },
-                    }
-                  : spinTransition
-              }
-              onClick={spinLogo}
-              style={{ transformOrigin: 'center center', willChange: 'transform' }}
-              className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 cursor-pointer touch-manipulation select-none"
-              role="button"
-              tabIndex={0}
-              aria-label="Spin Roboticela logo"
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  spinLogo();
-                }
-              }}
-            >
-              <motion.div
-                className="absolute -inset-4 rounded-full bg-primary/20 blur-2xl"
-                animate={{
-                  scale: [1, 1.18, 1],
-                  opacity: [0.25, 0.5, 0.25],
-                }}
-                transition={{
-                  duration: 2.8,
-                  repeat: 1e10,
-                  ease: 'easeInOut',
-                }}
-                aria-hidden
-              />
-              <motion.div
-                className="absolute inset-0 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm"
-                animate={{
-                  scale: [1, 1.08, 1],
-                  opacity: [0.5, 0.85, 0.5],
-                }}
-                transition={{
-                  duration: 2.8,
-                  repeat: 1e10,
-                  ease: 'easeInOut',
-                  delay: 0.35,
-                }}
-                aria-hidden
-              />
-              <div className="relative z-10 w-full h-full">
-                <Image src="/Logo.png" alt="Roboticela" fill sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, 160px" className="object-contain pointer-events-none" priority fetchPriority="high" />
-              </div>
-            </motion.div>
+            <LogoEnergyGlow />
           </div>
 
           {/* Brand name */}
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 tracking-tight"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: easeOut }}
@@ -111,17 +37,19 @@ export default function Hero() {
 
           {/* Main tagline */}
           <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-4 tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-4 tracking-tight"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.5, ease: easeOut }}
           >
-            Think different. <span className="text-primary">Build everything.</span>
+            Think different.{' '}
+            <span style={{ color: '#2EE6D6' }}>Build everything.</span>
           </motion.h2>
 
           {/* Subheading */}
           <motion.p
-            className="text-xl sm:text-2xl md:text-3xl text-foreground/60 max-w-3xl mx-auto mb-12 font-normal tracking-tight"
+            className="text-xl sm:text-2xl md:text-3xl max-w-3xl mx-auto mb-12 font-normal tracking-tight"
+            style={{ color: 'rgba(255,255,255,0.58)' }}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5, ease: easeOut }}
@@ -137,32 +65,47 @@ export default function Hero() {
             transition={{ delay: 0.45, duration: 0.5, ease: easeOut }}
           >
             <Link
-                href="/products"
-                className="group px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 shadow-lg shadow-primary/20"
-              >
-                Explore Products
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </Link>
+              href="/products"
+              className="group px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2"
+              style={{
+                background: 'linear-gradient(135deg, #2EE6D6 0%, #00BFFF 100%)',
+                color: '#000',
+                boxShadow: '0 0 28px rgba(46,230,214,0.35)',
+              }}
+            >
+              Explore Products
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+            </Link>
             <Link
-                href="/about"
-                className="px-8 py-4 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40"
-              >
-                Our Story
-              </Link>
+              href="/about"
+              className="px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
+              style={{
+                background: 'rgba(255,255,255,0.06)',
+                color: 'rgba(255,255,255,0.85)',
+                border: '1px solid rgba(255,255,255,0.18)',
+                backdropFilter: 'blur(8px)',
+              }}
+            >
+              Our Story
+            </Link>
           </motion.div>
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
       >
-        <div className="w-6 h-10 border-2 border-foreground/20 rounded-full flex items-start justify-center p-2">
+        <div
+          className="w-6 h-10 rounded-full flex items-start justify-center p-2"
+          style={{ border: '2px solid rgba(46,230,214,0.3)' }}
+        >
           <motion.div
-            className="w-1.5 h-1.5 bg-foreground/40 rounded-full"
+            className="w-1.5 h-1.5 rounded-full"
+            style={{ background: 'rgba(46,230,214,0.6)' }}
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 1.5, repeat: 1e10, ease: 'easeInOut' }}
           />
