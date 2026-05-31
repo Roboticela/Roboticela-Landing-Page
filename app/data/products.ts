@@ -49,9 +49,9 @@ export const products: Product[] = [
       'Master networking concepts with our interactive OSI model simulator. Perfect for students, educators, and professionals.',
     status: 'Available',
     links: [
-      { label: 'About OSI Simulator', href: 'https://osi-simulator.roboticela.com', external: true },
-      { label: 'Try It Now', href: 'https://app.osi-simulator.roboticela.com', external: true },
-      { label: 'Classic Version', href: 'https://app.osi-classic.roboticela.com/legacy', external: true },
+      { label: 'About OSI Simulator', href: 'https://osi-model-simulator.roboticela.com', external: true },
+      { label: 'Try It Now', href: 'https://app.osi-model-simulator.roboticela.com', external: true },
+      { label: 'Classic Version', href: 'https://app.osi-model-simulator.roboticela.com/legacy', external: true },
     ],
   },
   {
