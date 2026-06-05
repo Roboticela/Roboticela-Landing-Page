@@ -13,18 +13,18 @@ import SitePageLayout from '../components/SitePageLayout';
 const perks = [
   {
     icon: Rocket,
-    title: 'Product launches',
-    description: 'Be the first to hear when we ship something new—from software to hardware and beyond.',
+    title: 'First access. Always.',
+    description: 'New products, tools, and ideas — you hear about them before anyone else.',
   },
   {
     icon: Zap,
-    title: 'Breakthroughs & updates',
-    description: "Curated news on what we're building, improving, and exploring across every category.",
+    title: "Only what's worth your time.",
+    description: "No filler. No schedule-driven content. We write when we have something real to say.",
   },
   {
     icon: Bell,
-    title: 'No noise',
-    description: 'We respect your inbox. No spam—just innovation worth your time.',
+    title: 'Your inbox, respected.',
+    description: "We know what it means to trust someone with your attention. We don't take it lightly.",
   },
 ];
 
@@ -33,9 +33,8 @@ export default function NewsletterPage() {
     <SitePageLayout>
       <PageHero
         eyebrow="Newsletter"
-        title="Join the"
-        titleAccent="Empire."
-        description="Subscribe and stay in the loop—new products, breakthroughs, and stories from Roboticela, delivered to your inbox."
+        title="Join the Empire."
+        description="Be the first to know. Be the first to try. Stay close to what we're building."
         icon={Mail}
       />
 
@@ -47,13 +46,13 @@ export default function NewsletterPage() {
           className="relative text-center px-8 py-12 md:py-16 bg-card/60 backdrop-blur-sm rounded-[2.5rem] border border-primary/20 overflow-hidden"
         >
           <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 via-transparent to-primary/5" />
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">Subscribe now</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">One field. No noise. Just what matters.</h2>
           <p className="text-foreground/60 mb-8 max-w-md mx-auto">
-            One email field. Zero hassle. Join builders and dreamers who follow what we&apos;re creating next.
+            Join the people who follow what we&apos;re creating. You&apos;ll hear from us when it&apos;s worth opening.
           </p>
           <NewsletterSignup size="large" className="max-w-lg mx-auto" source="newsletter-page" />
           <p className="text-sm text-foreground/50 mt-6">
-            By subscribing, you agree to receive emails from Roboticela. See our{' '}
+            By subscribing, you agree to receive updates from Roboticela. Your inbox is safe with us. See our{' '}
             <Link href="/privacy" className="text-primary hover:underline">
               Privacy Policy
             </Link>
@@ -64,6 +63,7 @@ export default function NewsletterPage() {
 
       <section className="max-w-6xl mx-auto">
         <PageSectionHeader eyebrow="What you get" title="Why subscribe?" />
+
         <motion.div
           variants={pageContainerVariants}
           initial="hidden"

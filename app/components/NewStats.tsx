@@ -9,22 +9,22 @@ const stats = [
   {
     icon: Infinity,
     value: '∞',
-    label: 'Categories we\'re willing to explore',
+    label: "Categories we'll enter",
   },
   {
     icon: Clock,
     value: '24/7',
-    label: 'Commitment to innovation',
+    label: "How often we're thinking",
   },
   {
     icon: Award,
     value: '100%',
-    label: 'Dedication to excellence',
+    label: 'What we give, every time',
   },
   {
     icon: Users,
     value: 'Millions',
-    label: 'Lives touched by our work',
+    label: 'People quietly trusting us',
   },
 ];
 
@@ -38,17 +38,16 @@ const containerAnimation = {
 
 const itemAnimation = {
   hidden: { opacity: 0, scale: 0.8 },
-  show: { 
-    opacity: 1, 
+  show: {
+    opacity: 1,
     scale: 1,
-    transition: { duration: 0.6, ease: easeOut }
+    transition: { duration: 0.6, ease: easeOut },
   },
 };
 
-export default function Stats() {
+export default function NewStats() {
   return (
     <section className="relative py-24 md:py-32 px-4 overflow-hidden bg-accent/20">
-      {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
       </div>
@@ -71,7 +70,7 @@ export default function Stats() {
           variants={containerAnimation}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
         >
           {stats.map((stat, index) => (
             <motion.div

@@ -14,23 +14,23 @@ import { jobOpenings } from '../data/careers';
 const values = [
   {
     icon: Rocket,
-    title: 'Innovation First',
-    description: 'Work on projects that push boundaries and help shape what comes next.',
+    title: 'Work on things that matter.',
+    description: 'Not metrics. Not optics. Problems that are real, with solutions that actually help people.',
   },
   {
     icon: Users,
-    title: 'Diverse Team',
-    description: 'Collaborate with curious people who care about craft, clarity, and impact.',
+    title: 'People who never turn off.',
+    description: 'We hire those who read outside their field, think outside their title, and care beyond their hours.',
   },
   {
     icon: Heart,
-    title: 'Work-Life Balance',
-    description: 'We believe great work happens when you have space to recharge and think.',
+    title: 'Space to think clearly.',
+    description: "The best ideas don't come from exhaustion. We protect the time and space for real thought.",
   },
   {
     icon: Zap,
-    title: 'Room to Grow',
-    description: 'Learn continuously and take on challenges that match your ambition.',
+    title: 'Grow at your own speed.',
+    description: "We don't cap what you can become here. If you want to lead something, show us what you're made of.",
   },
 ];
 
@@ -51,16 +51,15 @@ export default function CareersPage() {
     <SitePageLayout>
       <PageHero
         eyebrow="Careers"
-        title="Build the Future"
-        titleAccent="With Us."
-        description="Whether you're a creator, thinker, builder, or dreamer—help us redefine what's possible at Roboticela."
+        title="We're looking for the restless."
+        description="If you're someone who can't stop building, can't stop asking why, can't stop imagining what's next — you're the person we want."
         icon={Rocket}
         paddingBottom="lg"
       />
 
         {/* Values */}
         <section className="max-w-6xl mx-auto mb-28">
-          <PageSectionHeader eyebrow="Why Join Us" title="Life at Roboticela" />
+          <PageSectionHeader eyebrow="Life Here" title="Life at Roboticela" />
 
           <motion.div
             variants={containerVariants}
@@ -152,9 +151,9 @@ export default function CareersPage() {
               <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <Briefcase className="w-8 h-8 text-primary" strokeWidth={1.5} />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">No open roles right now</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">No open roles right now.</h3>
               <p className="text-lg text-foreground/60 max-w-md mx-auto leading-relaxed mb-8">
-                We&apos;re not hiring for specific positions at the moment. Check back soon—we&apos;re always growing.
+                That doesn&apos;t mean we&apos;re not interested in you. We&apos;re always building — and always looking for the right people. If you think you belong here, reach out.
               </p>
               <Link href="/company/vision">
                 <span className="inline-flex items-center gap-1 text-primary font-medium hover:underline">
@@ -167,11 +166,11 @@ export default function CareersPage() {
         </section>
 
         <PageCta
-          title="Don't see a perfect fit?"
-          description="We're always interested in meeting talented people. Share who you are and how you'd like to contribute—we'd love to hear from you."
-          primaryLabel="Get in Touch"
+          title="You don't need a job posting to start a conversation."
+          description="If you have something rare to offer, we'd genuinely like to hear about it."
+          primaryLabel="Reach out"
           primaryHref="/support"
-          secondaryLabel="About Roboticela"
+          secondaryLabel="What we believe"
           secondaryHref="/about"
         />
     </SitePageLayout>

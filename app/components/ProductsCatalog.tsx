@@ -295,10 +295,10 @@ export default function ProductsCatalog({
         className="mt-16 text-center bg-gradient-to-br from-primary/5 to-primary/10 rounded-3xl p-12 border border-primary/20"
       >
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-          Can&apos;t find what you need?
+          Don&apos;t see it yet?
         </h2>
         <p className="text-lg text-foreground/70 mb-8 max-w-2xl mx-auto">
-          We&apos;re always building something new. Tell us what you&apos;re looking for.
+          We might already be building it. Tell us what you need.
         </p>
         <Link href="/product-request">
           <motion.button

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Roboticela News — Announcements & Updates',
+  title: 'News — What\'s happening at Roboticela.',
   description:
-    'Stay updated with the latest Roboticela news, product announcements, and company milestones. Track every breakthrough, launch, and release from our team.',
+    'Product launches, company milestones, and things worth knowing. Everything from Roboticela, as it happens.',
   keywords: ['Roboticela', 'news', 'announcements', 'updates', 'press releases', 'milestones', 'product launches'],
   alternates: { canonical: '/news' },
   openGraph: {
@@ -11,16 +11,16 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://roboticela.com/news',
     siteName: 'Roboticela',
-    title: 'Roboticela News — Announcements & Updates',
+    title: 'News — What\'s happening at Roboticela.',
     description:
-      'Stay updated with the latest Roboticela news, product announcements, and company milestones. Track every breakthrough, launch, and release from our team.',
+      'Product launches, company milestones, and things worth knowing. Everything from Roboticela, as it happens.',
     images: [{ url: 'https://roboticela.com/og-image.jpg', width: 1200, height: 630, alt: 'Roboticela News' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Roboticela News — Announcements & Updates',
+    title: 'News — What\'s happening at Roboticela.',
     description:
-      'Stay updated with the latest Roboticela news, product announcements, and company milestones. Track every breakthrough, launch, and release from our team.',
+      'Product launches, company milestones, and things worth knowing. Everything from Roboticela, as it happens.',
     images: ['https://roboticela.com/og-image.jpg'],
     creator: '@roboticela',
     site: '@roboticela',

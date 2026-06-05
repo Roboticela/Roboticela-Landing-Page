@@ -88,9 +88,8 @@ export default function ProductRequestPage() {
     <SitePageLayout>
       <PageHero
         eyebrow="Products"
-        title="Request a"
-        titleAccent="Product."
-        description="We're always building something new. Tell us what you're looking for, and we'll make it happen."
+        title="Tell us what you need."
+        description="We're always building. Tell us where to go next."
         icon={Lightbulb}
       />
 
@@ -238,7 +237,7 @@ export default function ProductRequestPage() {
                 className="mt-6 p-4 bg-green-500/10 border border-green-500/40 rounded-xl text-center"
               >
                 <p className="text-green-600 dark:text-green-400 font-medium">
-                  Thank you! We&apos;ve received your product request and will get back to you soon.
+                  We&apos;ve got it. We&apos;re already thinking about it. We&apos;ll be in touch soon.
                 </p>
               </motion.div>
             )}
@@ -252,16 +251,16 @@ export default function ProductRequestPage() {
             className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
           >
             <div className="bg-card/50 backdrop-blur-sm rounded-3xl p-6 border border-border/40 text-center">
-              <div className="text-3xl font-bold text-primary mb-2">24-48h</div>
-              <p className="text-foreground/70">Response Time</p>
+              <div className="text-3xl font-bold text-primary mb-2">24–48h</div>
+              <p className="text-foreground/70">Response time, always</p>
             </div>
             <div className="bg-card/50 backdrop-blur-sm rounded-3xl p-6 border border-border/40 text-center">
               <div className="text-3xl font-bold text-primary mb-2">100%</div>
-              <p className="text-foreground/70">Custom Solutions</p>
+              <p className="text-foreground/70">Custom, no shortcuts</p>
             </div>
             <div className="bg-card/50 backdrop-blur-sm rounded-3xl p-6 border border-border/40 text-center">
               <div className="text-3xl font-bold text-primary mb-2">∞</div>
-              <p className="text-foreground/70">Possibilities</p>
+              <p className="text-foreground/70">What we're willing to explore</p>
             </div>
           </motion.div>
       </section>

@@ -8,23 +8,23 @@ import { easeOut } from './animations';
 const principles = [
   {
     icon: Lightbulb,
-    title: 'Question everything',
-    description: 'We challenge assumptions and ask "why not?" when others say "that\'s just how it\'s done."',
+    title: 'Ask the question nobody asked.',
+    description: 'The most important breakthroughs start where everyone stopped looking. We never stop looking.',
   },
   {
     icon: Heart,
-    title: 'Design for humans',
-    description: 'Technology should adapt to people, not the other way around. Every decision starts with you.',
+    title: 'Build for the person, not the product.',
+    description: "A tool that doesn't feel human isn't finished. We don't ship things that aren't finished.",
   },
   {
     icon: Wrench,
-    title: 'Craft, don\'t manufacture',
-    description: 'We pour care into every detail because you deserve products that feel personal, not mass-produced.',
+    title: 'Care is the material.',
+    description: 'You can feel when something was made with attention. We make sure you always feel it.',
   },
   {
     icon: Rocket,
-    title: 'Never stop exploring',
-    description: 'Curiosity drives us. Today\'s impossible is tomorrow\'s breakthrough.',
+    title: 'Curiosity is the engine.',
+    description: "We don't know what we'll build next. That's not uncertainty — that's how it's supposed to be.",
   },
 ];
 
@@ -38,17 +38,16 @@ const containerAnimation = {
 
 const itemAnimation = {
   hidden: { opacity: 0, y: 30 },
-  show: { 
-    opacity: 1, 
+  show: {
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: easeOut }
+    transition: { duration: 0.6, ease: easeOut },
   },
 };
 
 export default function About() {
   return (
     <section id="about" className="relative py-24 md:py-32 px-4 overflow-hidden">
-      {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/3 rounded-full blur-3xl" />
       </div>
@@ -62,22 +61,27 @@ export default function About() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
-            Innovation Without Boundaries
+            The name means something.
           </h2>
           <div className="max-w-4xl mx-auto space-y-6 text-lg md:text-xl text-foreground/70 leading-relaxed">
             <p>
-              Roboticela isn&apos;t just a company—it&apos;s a vision of what&apos;s possible when innovation knows no boundaries.
+              Robot. Cell. One word. One idea.
+              <br />
+              The smallest unit of life, carrying the intelligence of a machine.
             </p>
             <p>
-              The name itself tells our story: <span className="text-foreground font-semibold">Robot meets Cell</span>. Imagine a single cell with the power of a robot, capable of anything a human can do. That&apos;s the spirit we bring to everything we create.
+              We didn&apos;t build a company. We built a cell — one that thinks, creates, adapts, and grows into
+              whatever it needs to become.
             </p>
             <p>
-              We don&apos;t pick lanes. We don&apos;t do categories. While others choose between software or hardware, digital or physical, we choose all of it. <span className="text-foreground font-semibold">Because the future doesn&apos;t fit in boxes, and neither do we.</span>
+              No industry owns us. No category holds us.{' '}
+              <span className="text-foreground font-semibold">
+                That&apos;s not a position statement. It&apos;s just the truth.
+              </span>
             </p>
           </div>
         </motion.div>
 
-        {/* Philosophy Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -88,13 +92,13 @@ export default function About() {
           <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center tracking-tight">
             How We Think
           </h3>
-          
+
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
             variants={containerAnimation}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
           >
             {principles.map((principle, index) => (
               <motion.div

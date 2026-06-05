@@ -1,14 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Zap, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import { Zap } from 'lucide-react';
 import { easeOut } from './animations';
 
 export default function Innovation() {
   return (
     <section className="relative py-24 md:py-32 px-4 overflow-hidden">
-      {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
       </div>
@@ -26,19 +24,16 @@ export default function Innovation() {
           </div>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
-            Obsessed with What&apos;s Next
+            The best thing we&apos;ve ever built doesn&apos;t exist yet.
           </h2>
-          
+
           <div className="max-w-3xl mx-auto space-y-6 text-lg md:text-xl text-foreground/70 leading-relaxed">
+            <p>That&apos;s not a concern. It&apos;s the whole point.</p>
             <p>
-              We&apos;re not satisfied with what exists. We&apos;re obsessed with what&apos;s next.
+              Every lab, every late night, every version that didn&apos;t make it — they&apos;re all pointing toward
+              something that isn&apos;t here yet.
             </p>
-            <p>
-              Our labs are constantly exploring, testing, and creating breakthroughs in technology. Tomorrow&apos;s innovations? We&apos;re working on them today.
-            </p>
-            <p>
-              From cutting-edge research to everyday solutions—if it can make life better, we&apos;re on it.
-            </p>
+            <p>When it arrives, you&apos;ll be the first to know.</p>
           </div>
         </motion.div>
       </div>

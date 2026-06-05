@@ -15,33 +15,33 @@ import { easeOut } from '../components/animations';
 const principles = [
   {
     icon: Lightbulb,
-    title: 'Question Everything',
-    description: 'We challenge assumptions and ask "why not?" when others say "that\'s just how it\'s done." Every convention is an invitation to do better.',
+    title: 'Question everything quietly.',
+    description: 'Assumptions are doors. We open them gently, then walk through.',
   },
   {
     icon: Heart,
-    title: 'Design for Humans',
-    description: 'Technology should adapt to people, not the other way around. Every decision starts with a simple question: does this make someone\'s life better?',
+    title: 'Design for the human first.',
+    description: "Technology that doesn't adapt to people isn't done yet. Ours is.",
   },
   {
     icon: Wrench,
-    title: 'Craft, Don\'t Manufacture',
-    description: 'We pour care into every detail because you deserve products that feel personal, not mass-produced. Quality isn\'t a feature—it\'s our standard.',
+    title: 'Craft is not optional.',
+    description: 'The difference between good and extraordinary is the part most people skip. We don\'t skip it.',
   },
   {
     icon: Rocket,
-    title: 'Never Stop Exploring',
-    description: 'Curiosity drives us. Today\'s impossible is tomorrow\'s breakthrough. Our labs are alive with research into things that don\'t even have names yet.',
+    title: 'Stay permanently curious.',
+    description: 'The day we stop asking questions is the day this stops meaning anything.',
   },
   {
     icon: Globe,
-    title: 'No Limits, No Categories',
-    description: 'We don\'t pick lanes. Software, hardware, e-commerce, research—we operate across all of it. The future is boundless and so are we.',
+    title: 'No lanes. No categories.',
+    description: "We go where the problem is. That's always been the rule.",
   },
   {
     icon: Star,
-    title: 'Preferred by Choice',
-    description: 'People don\'t just use Roboticela. They prefer it, trust it, and choose it over everything else—because they know we\'re building experiences that matter.',
+    title: 'Preferred, not just used.',
+    description: "There's a quiet but enormous difference. We build for the first one.",
   },
 ];
 
@@ -55,11 +55,11 @@ const domains = [
 ];
 
 const promises = [
-  'To never stop innovating.',
-  'To never settle for good enough.',
-  'To always put you first.',
-  'To build what others say is impossible.',
-  'To craft experiences, not just products.',
+  'Never stop building.',
+  'Never settle for good enough.',
+  'Always put you before everything else.',
+  'Build what others quietly decided was impossible.',
+  'Create experiences, not just products.',
 ];
 
 const containerVariants = {
@@ -77,9 +77,8 @@ export default function AboutPage() {
     <SitePageLayout>
       <PageHero
         eyebrow="About Roboticela"
-        title="Think Different."
-        titleAccent="Build Everything."
-        description="A company with no category. No limits. No lanes."
+        title="We don't have a category."
+        description="That's not a problem we're trying to solve."
         iconNode={
           <div className="relative w-24 h-24 md:w-28 md:h-28">
             <Image
@@ -108,20 +107,21 @@ export default function AboutPage() {
               <div>
                 <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">The Name</p>
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 tracking-tight">
-                  Robot <span className="text-foreground/30">+</span> Cell
+                  Robot. Cell. One word. One idea.
                 </h2>
                 <p className="text-lg text-foreground/70 leading-relaxed mb-6">
-                  Roboticela is a fusion of two words: <span className="text-foreground font-semibold">Robot</span> and <span className="text-foreground font-semibold">Cell</span>. It means a cell with robotic capabilities—an artificial cell with all the abilities of a human, powered by intelligence and purpose.
+                  A cell is the origin of everything — the smallest, most fundamental unit of life.
+                  A robot is precision made physical — intelligence given form.
                 </p>
                 <p className="text-lg text-foreground/70 leading-relaxed">
-                  That&apos;s the spirit we bring to everything we create. Not just smart—alive. Not just functional—beautiful. Not just a product—an experience.
+                  <span className="text-foreground font-semibold">Roboticela</span> is what happens when those two ideas become one. A cell with the mind of a machine. The foundation of something unlimited.
                 </p>
               </div>
               <div className="flex flex-col gap-5">
                 {[
-                  { word: 'Robot', meaning: 'Intelligent. Precise. Capable. Built to do the extraordinary.' },
-                  { word: 'Cell', meaning: 'The smallest unit of life. The foundation of everything.' },
-                  { word: 'Roboticela', meaning: 'A cell with the power of a robot—unlimited by design.' },
+                  { word: 'Robot', meaning: 'Built for the extraordinary. Precise by nature.' },
+                  { word: 'Cell', meaning: 'The beginning of everything. Humble in origin.' },
+                  { word: 'Roboticela', meaning: 'Neither one. Something entirely its own.' },
                 ].map(({ word, meaning }) => (
                   <div key={word} className="bg-background/60 rounded-2xl p-6 border border-border/40">
                     <p className="text-xl font-bold text-foreground mb-1">{word}</p>
@@ -143,7 +143,7 @@ export default function AboutPage() {
           >
             <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">Our Story</p>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-12 tracking-tight">
-              Innovation Without Boundaries
+              Where It Began
             </h2>
           </motion.div>
 
@@ -155,11 +155,11 @@ export default function AboutPage() {
             className="space-y-8 text-left"
           >
             {[
-              'Roboticela isn\'t just a company—it\'s a vision of what\'s possible when innovation knows no boundaries. We started with a simple but radical idea: what if a company refused to be defined by any single category?',
-              'We don\'t pick lanes. We don\'t do categories. While others choose between software or hardware, digital or physical, we choose all of it. Because the future doesn\'t fit in boxes, and neither do we.',
-              'From the apps on your phone to the products in your hands, from cutting-edge research to everyday solutions—Roboticela is there. We\'re building the tools, technologies, and experiences that don\'t just work, but work beautifully.',
-              'People don\'t just use Roboticela. They prefer it. They trust it. They choose it over everything else because they know we\'re not just making products—we\'re crafting experiences that matter.',
-              'We\'re not satisfied with what exists. We\'re obsessed with what\'s next. Our labs are alive with research into things that don\'t even have names yet. Tomorrow\'s breakthroughs? We\'re working on them today.',
+              "Roboticela wasn't built to enter a market. It was built to make the idea of markets feel small.",
+              "We don't specialize. We explore. Across software, hardware, research, and everything in between — wherever something can be made better, that's where we go.",
+              "What you hold, use, or open from us — you can feel that someone cared. Not about the launch, not about the press. About you actually using it and finding it worthy of your time.",
+              "We don't want products that get used. We want products that get chosen. There's a difference. Every decision we make is about closing that gap.",
+              "We're not satisfied with what exists. We're quietly obsessed with what doesn't yet.",
             ].map((paragraph, i) => (
               <motion.div
                 key={i}
@@ -183,7 +183,7 @@ export default function AboutPage() {
           >
             <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">No Category</p>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
-              We Work On Everything
+              We work on everything worth building
             </h2>
           </motion.div>
 
@@ -219,7 +219,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8, ease: easeOut }}
             className="text-center mb-16"
           >
-            <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">How We Think</p>
+            <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">What We Believe</p>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
               Our Principles
             </h2>
@@ -263,13 +263,14 @@ export default function AboutPage() {
             >
               <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">Mission</p>
               <h2 className="text-3xl font-bold text-foreground mb-6 tracking-tight">
-                Why We Exist
+                Why we exist.
               </h2>
               <p className="text-foreground/70 leading-relaxed text-lg mb-6">
-                To build the tools, technologies, and experiences of tomorrow—today. To prove that a company can work on <em>everything</em> and still do it beautifully.
+                To build the tools and experiences of tomorrow — today.
+                To prove that a company can work across <em>everything</em> {" "} and still do it beautifully.
               </p>
               <p className="text-foreground/70 leading-relaxed text-lg">
-                We exist to push the edge of what&apos;s possible and bring those possibilities into the hands of real people.
+                To push the edge of what&apos;s possible and put it in your hands.
               </p>
             </motion.div>
 
@@ -283,12 +284,12 @@ export default function AboutPage() {
             >
               <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">Our Promise</p>
               <h2 className="text-3xl font-bold text-foreground mb-8 tracking-tight">
-                What We Stand For
+                Our Promise
               </h2>
               <ul className="space-y-4">
                 {promises.map((promise) => (
-                  <li key={promise} className="flex items-start gap-3">
-                    <span className="mt-1 w-2 h-2 rounded-full bg-primary shrink-0" />
+                  <li key={promise} className="flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
                     <span className="text-foreground/70 text-lg leading-relaxed">{promise}</span>
                   </li>
                 ))}
@@ -299,10 +300,10 @@ export default function AboutPage() {
 
         <PageCta
           title="Roboticela. Unlimited by design."
-          description="No category. No ceiling. Just a relentless commitment to building what's next—beautifully, boldly, and for everyone."
-          primaryLabel="Explore Our Products"
+          description="No category. No ceiling. Just a quiet, relentless commitment to what comes next."
+          primaryLabel="See our products"
           primaryHref="/products"
-          secondaryLabel="Get in Touch"
+          secondaryLabel="Get in touch"
           secondaryHref="/support"
         />
     </SitePageLayout>

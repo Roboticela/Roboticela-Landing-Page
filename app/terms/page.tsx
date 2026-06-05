@@ -10,9 +10,8 @@ export default function TermsPage() {
   return (
     <LegalPageLayout
       eyebrow="Legal"
-      title="Terms of Service"
-      titleAccent="& User Agreement"
-      description="The terms and conditions that govern your use of Roboticela services and platforms."
+      title="The rules, clearly stated."
+      description="What you can expect from us. What we ask of you. Nothing buried."
       icon={Scale}
       effectiveDate={effectiveDate}
       lastUpdated={lastUpdated}

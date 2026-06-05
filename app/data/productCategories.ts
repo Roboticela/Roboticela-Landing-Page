@@ -15,27 +15,27 @@ export const productCategories: ProductCategory[] = [
   {
     slug: 'software',
     name: 'Software',
-    description: 'Apps, platforms, and digital tools built to solve real problems.',
+    description: "Apps and platforms that think ahead, stay out of your way, and get better the more you use them.",
   },
   {
     slug: 'hardware',
     name: 'Hardware',
-    description: 'Physical devices designed with Roboticela precision and care.',
+    description: "Physical things built with the same quiet attention you'd expect from something made to last.",
   },
   {
     slug: 'e-commerce',
     name: 'E-commerce',
-    description: 'Commerce experiences that connect brands and customers seamlessly.',
+    description: "Commerce that feels like a conversation, not a transaction.",
   },
   {
     slug: 'enterprise',
     name: 'Enterprise',
-    description: 'Scalable solutions for teams and organizations at any size.',
+    description: "Everything Roboticela makes — scaled to your team, your complexity, your ambition.",
   },
   {
     slug: 'research',
     name: 'Research',
-    description: 'Breakthrough discoveries and lab tools that shape tomorrow.',
+    description: "Things being built here that won't be ready for you yet. But they're coming.",
   },
 ];
 

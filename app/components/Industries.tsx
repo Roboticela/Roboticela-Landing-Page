@@ -9,32 +9,32 @@ const industries = [
   {
     icon: ShoppingCart,
     name: 'E-commerce',
-    description: 'Platforms that turn browsers into buyers and create shopping experiences people love.',
+    description: 'Shopping that feels like discovery. Commerce that earns loyalty.',
   },
   {
     icon: Heart,
     name: 'Healthcare',
-    description: 'Technology that puts wellness and care in everyone\'s hands.',
+    description: 'Wellness built with the same care a good doctor gives to a conversation.',
   },
   {
     icon: GraduationCap,
     name: 'Education',
-    description: 'Tools that make learning engaging, accessible, and effective.',
+    description: "Learning that doesn't feel like learning. That's the hardest kind to build.",
   },
   {
     icon: Film,
     name: 'Entertainment',
-    description: 'Experiences that captivate, inspire, and bring joy.',
+    description: 'Things that stay with you after you put them down. Joy that lingers.',
   },
   {
     icon: DollarSign,
     name: 'Finance',
-    description: 'Solutions that make managing money simple, secure, and smart.',
+    description: "Money is complicated. The tools to manage it don't have to be.",
   },
   {
     icon: Infinity,
-    name: 'And everything in between',
-    description: 'If it matters to you, it matters to us.',
+    name: 'And everything else.',
+    description: 'If it matters to someone, it matters to us. No exceptions.',
   },
 ];
 
@@ -48,10 +48,10 @@ const containerAnimation = {
 
 const itemAnimation = {
   hidden: { opacity: 0, y: 30 },
-  show: { 
-    opacity: 1, 
+  show: {
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: easeOut }
+    transition: { duration: 0.6, ease: easeOut },
   },
 };
 
@@ -67,7 +67,7 @@ export default function Industries() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
-            No Boundaries. No Limits.
+            If it matters to people, it matters to us.
           </h2>
         </motion.div>
 
@@ -76,7 +76,7 @@ export default function Industries() {
           variants={containerAnimation}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
         >
           {industries.map((industry, index) => (
             <motion.div

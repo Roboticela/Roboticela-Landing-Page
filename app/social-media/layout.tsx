@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Follow Roboticela — GitHub, X & LinkedIn',
+  title: 'Social — Find us where you already are.',
   description:
-    'Follow Roboticela on GitHub, X, and LinkedIn. Stay connected, track our builds, discover early releases, and join the conversation around what we create.',
+    'GitHub, X, LinkedIn. Follow Roboticela where you spend your time — code, conversation, and community.',
   keywords: ['Roboticela', 'social media', 'GitHub', 'X', 'Twitter', 'LinkedIn', 'follow', 'community'],
   alternates: { canonical: '/social-media' },
   openGraph: {
@@ -11,16 +11,16 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://roboticela.com/social-media',
     siteName: 'Roboticela',
-    title: 'Follow Roboticela — GitHub, X & LinkedIn',
+    title: 'Social — Find us where you already are.',
     description:
-      'Follow Roboticela on GitHub, X, and LinkedIn. Stay connected, track our builds, discover early releases, and join the conversation around what we create.',
+      'GitHub, X, LinkedIn. Follow Roboticela where you spend your time — code, conversation, and community.',
     images: [{ url: 'https://roboticela.com/og-image.jpg', width: 1200, height: 630, alt: 'Follow Roboticela on Social Media' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Follow Roboticela — GitHub, X & LinkedIn',
+    title: 'Social — Find us where you already are.',
     description:
-      'Follow Roboticela on GitHub, X, and LinkedIn. Stay connected, track our builds, discover early releases, and join the conversation around what we create.',
+      'GitHub, X, LinkedIn. Follow Roboticela where you spend your time — code, conversation, and community.',
     images: ['https://roboticela.com/og-image.jpg'],
     creator: '@roboticela',
     site: '@roboticela',

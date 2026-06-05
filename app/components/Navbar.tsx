@@ -47,6 +47,7 @@ export default function Navbar() {
     { href: '/products', label: 'Products' },
     { href: '/#faq', label: 'FAQ' },
     { href: '/about', label: 'About' },
+    { href: '/our-vision', label: 'Our Vision' },
     { href: '/support', label: 'Contact' },
   ];
 

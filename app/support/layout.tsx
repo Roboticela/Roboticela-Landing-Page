@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Roboticela — Get Help & Support',
+  title: "Support — We're here. Talk to us.",
   description:
-    'Reach the Roboticela support team. Send a message, report an issue, ask a question, or request help for any Roboticela product, service, or platform.',
+    "A question, a problem, an idea. Whatever it is, send it our way. We read everything. We respond to everything.",
   keywords: ['Roboticela', 'contact', 'support', 'help', 'customer service', 'report issue', 'get in touch'],
   alternates: { canonical: '/support' },
   openGraph: {
@@ -11,16 +11,16 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://roboticela.com/support',
     siteName: 'Roboticela',
-    title: 'Contact Roboticela — Get Help & Support',
+    title: "Support — We're here. Talk to us.",
     description:
-      'Reach the Roboticela support team. Send a message, report an issue, ask a question, or request help for any Roboticela product, service, or platform.',
+      "A question, a problem, an idea. Whatever it is, send it our way. We read everything. We respond to everything.",
     images: [{ url: 'https://roboticela.com/og-image.jpg', width: 1200, height: 630, alt: 'Contact Roboticela' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Roboticela — Get Help & Support',
+    title: "Support — We're here. Talk to us.",
     description:
-      'Reach the Roboticela support team. Send a message, report an issue, ask a question, or request help for any Roboticela product, service, or platform.',
+      "A question, a problem, an idea. Whatever it is, send it our way. We read everything. We respond to everything.",
     images: ['https://roboticela.com/og-image.jpg'],
     creator: '@roboticela',
     site: '@roboticela',

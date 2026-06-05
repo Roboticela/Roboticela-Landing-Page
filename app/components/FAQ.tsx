@@ -6,28 +6,28 @@ import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
-    question: 'What exactly does Roboticela do?',
-    answer: 'Everything. We don\'t limit ourselves to one industry or product type. If it can improve your life, we\'re working on it. From software to hardware, research to experiences—we build it all.',
+    question: 'What does Roboticela actually do?',
+    answer: "We build software, hardware, and experiences across every category that matters. There's no cleaner way to say it.",
   },
   {
-    question: 'How is Roboticela different from other companies?',
-    answer: 'We don\'t choose between digital and physical, software and hardware. We build it all, and we build it beautifully. The future doesn\'t fit in boxes, and neither do we.',
+    question: 'Why so many different areas?',
+    answer: "Because the most interesting things happen at the edges between fields. We live there.",
   },
   {
-    question: 'Can I use Roboticela products for my business?',
-    answer: 'Absolutely. We serve individuals, startups, and enterprises with solutions that scale. Whatever your size or needs, we have tools designed to help you succeed.',
+    question: 'Can businesses use Roboticela products?',
+    answer: "Yes — from solo founders to large organizations. We build tools that grow with you.",
   },
   {
-    question: 'How do I stay updated on new releases?',
-    answer: 'Subscribe to our newsletter or follow us on social media for the latest updates. We\'re constantly innovating and releasing new products and features.',
+    question: 'How do I hear about new things?',
+    answer: "Join our newsletter. Or find us on GitHub, X, or LinkedIn. We share things when they're worth sharing.",
   },
   {
-    question: 'Do you offer enterprise solutions?',
-    answer: 'Yes. We provide enterprise-grade solutions with bank-level security, scalable architecture, and dedicated support. Our systems are built to grow with your business.',
+    question: 'Do you work with enterprises?',
+    answer: 'Yes. Enterprise-scale solutions, built with the same care as everything else we make.',
   },
   {
-    question: 'What makes Roboticela products special?',
-    answer: 'Every product is crafted with care. We pour attention into every detail because you deserve products that feel personal, not mass-produced. Beautiful by design, crafted with care.',
+    question: 'What makes Roboticela different?',
+    answer: "The care inside it. That's always the answer.",
   },
 ];
 

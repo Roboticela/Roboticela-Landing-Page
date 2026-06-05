@@ -19,23 +19,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const category = getCategoryBySlug(categorySlug);
 
   if (!category) {
-    return { title: 'Roboticela Products — Explore the Full Catalog' };
+    return { title: "Products — Everything we've built so far." };
   }
 
   return {
-    title: { absolute: `${category.name} Products | Roboticela` },
+    title: { absolute: `${category.name} — ${category.description}` },
     description: category.description,
     alternates: { canonical: `/products/${categorySlug}` },
     openGraph: {
       type: 'website',
       url: `https://roboticela.com/products/${categorySlug}`,
-      title: `${category.name} Products | Roboticela`,
+      title: `${category.name} — ${category.description}`,
       description: category.description,
       images: [{ url: 'https://roboticela.com/og-image.jpg', width: 1200, height: 630, type: 'image/jpeg', alt: `${category.name} - Roboticela` }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${category.name} Products | Roboticela`,
+      title: `${category.name} — ${category.description}`,
       description: category.description,
       images: ['https://roboticela.com/og-image.jpg'],
     },

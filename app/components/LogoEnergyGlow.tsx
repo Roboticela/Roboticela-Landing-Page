@@ -314,9 +314,23 @@ export default function LogoEnergyGlow({
 
       const w = canvas.width;
       const h = canvas.height;
+
+      // Container may have zero width during initial layout; skip until valid.
+      const containerWidth = container.getBoundingClientRect().width;
+      if (w === 0 || h === 0 || containerWidth === 0) {
+        rafRef.current = requestAnimationFrame(tick);
+        return;
+      }
+
       const cx = w / 2;
       const cy = h / 2;
-      const scale = w / (container.getBoundingClientRect().width * 2);
+      const scale = w / (containerWidth * 2);
+
+      // Defensive: bail if scale is somehow still non-finite.
+      if (!isFinite(scale) || scale <= 0) {
+        rafRef.current = requestAnimationFrame(tick);
+        return;
+      }
 
       ctx.clearRect(0, 0, w, h);
 
@@ -336,15 +350,22 @@ export default function LogoEnergyGlow({
         p.vx *= 0.992;
         p.vy *= 0.992;
 
+        const radius = p.size * scale * 3;
+
+        // Skip particles with non-finite coords or radius (can't draw them).
+        if (!isFinite(p.x) || !isFinite(p.y) || !isFinite(radius) || radius <= 0) {
+          continue;
+        }
+
         const t = p.life / p.maxLife;
         const alpha = (1 - t) * (1 - t) * (isLight ? 0.48 : 0.55);
         const [r, g, b] = colors[p.colorIdx];
-        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * scale * 3);
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius);
         grad.addColorStop(0, `rgba(${r},${g},${b},${alpha})`);
         grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * scale * 3, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
         ctx.fill();
 
         next.push(p);

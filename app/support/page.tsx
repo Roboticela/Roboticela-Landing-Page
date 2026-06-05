@@ -69,9 +69,8 @@ export default function SupportPage() {
     <SitePageLayout>
       <PageHero
         eyebrow="Support"
-        title="Contact"
-        titleAccent="Us."
-        description="Have a project in mind or a question? Send us a message and we'll get back to you."
+        title="We're here."
+        description="Whatever brought you here — a question, an issue, an idea — send it. We read every message. We respond to every one."
         icon={MessageCircle}
         paddingBottom="sm"
       />
@@ -156,7 +155,7 @@ export default function SupportPage() {
                 className="flex items-center gap-2 p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-green-600 text-sm"
               >
                 <CheckCircle className="w-5 h-5 shrink-0" />
-                <span>Message sent. We&apos;ll get back to you soon.</span>
+                <span>Got it. We&apos;ll be back to you shortly.</span>
               </motion.div>
             )}
 

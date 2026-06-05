@@ -8,23 +8,27 @@ import { easeOut } from './animations';
 const services = [
   {
     icon: Code2,
-    title: 'Software that thinks ahead',
-    description: 'Apps and platforms that don\'t just work—they anticipate what you need.',
+    title: 'Software that thinks quietly.',
+    description:
+      "It doesn't announce itself. It just makes everything feel easier. You'll notice it by how much you don't notice it.",
   },
   {
     icon: Cpu,
-    title: 'Hardware that feels human',
-    description: 'Physical products designed with the same care you\'d expect from your closest friend.',
+    title: 'Hardware that belongs in your hands.',
+    description:
+      "Physical things made with the same quiet care you'd expect from something built to last.",
   },
   {
     icon: Microscope,
-    title: 'Research that shapes tomorrow',
-    description: 'Our labs are alive with experiments into things that don\'t even have names yet.',
+    title: "Research that hasn't been named yet.",
+    description:
+      "Our labs work on things that don't have categories. Most of what we discover there doesn't leave for years.",
   },
   {
     icon: Star,
-    title: 'Experiences that matter',
-    description: 'From your morning routine to your biggest dreams, we\'re building tools that fit your life perfectly.',
+    title: 'Experiences that stay with you.',
+    description:
+      "Not impressive for a moment. Valuable for a lifetime. That's the difference we care about.",
   },
 ];
 
@@ -38,10 +42,10 @@ const containerAnimation = {
 
 const itemAnimation = {
   hidden: { opacity: 0, y: 30 },
-  show: { 
-    opacity: 1, 
+  show: {
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: easeOut }
+    transition: { duration: 0.6, ease: easeOut },
   },
 };
 
@@ -66,7 +70,7 @@ export default function WhatWeDo() {
           variants={containerAnimation}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
         >
           {services.map((service, index) => (
             <motion.div

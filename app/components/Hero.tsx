@@ -32,7 +32,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: easeOut }}
           >
-            Roboticela
+            Roboticela.
           </motion.h1>
 
           {/* Main tagline */}
@@ -42,8 +42,8 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.5, ease: easeOut }}
           >
-            Think different.{' '}
-            <span className="text-[var(--hero-accent)]">Build everything.</span>
+            Some things can&apos;t be{' '}
+            <span className="text-[var(--hero-accent)]">categorized.</span>
           </motion.h2>
 
           {/* Subheading */}
@@ -53,7 +53,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5, ease: easeOut }}
           >
-            The future doesn&apos;t fit in boxes. Neither do we.
+            We didn&apos;t pick an industry. We picked the unknown.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -71,14 +71,14 @@ export default function Hero() {
                 color: 'var(--hero-cta-text)',
               }}
             >
-              Explore Products
+              See what we&apos;ve made
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </Link>
             <Link
               href="/about"
               className="px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 bg-foreground/[0.06] text-foreground/85 border border-foreground/[0.18] backdrop-blur-sm hover:bg-foreground/10"
             >
-              Our Story
+              Learn who we are
             </Link>
           </motion.div>
         </motion.div>

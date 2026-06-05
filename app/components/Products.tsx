@@ -11,12 +11,12 @@ import { products } from '../data/products';
 const HERO_LIMIT = 6;
 
 const comingSoonCategories = [
-  { name: 'Hardware Products', description: 'Physical devices designed with Roboticela precision.' },
-  { name: 'Robotics & Automation', description: 'Smart systems that work alongside humans seamlessly.' },
-  { name: 'Healthcare Technology', description: 'Innovations that put wellness in everyone\'s hands.' },
-  { name: 'Smart Home Devices', description: 'Connected experiences for modern living.' },
-  { name: 'Wearable Technology', description: 'Devices that understand and adapt to you.' },
-  { name: 'Research & Labs', description: 'Breakthrough discoveries that shape tomorrow.' },
+  { name: 'Hardware Products', description: 'Physical things built the way hardware rarely is — with the same attention we give to software.' },
+  { name: 'Robotics & Automation', description: 'Systems that work beside you. Not instead of you. The distinction matters to us.' },
+  { name: 'Healthcare Technology', description: 'Because the most personal category deserves the most personal approach.' },
+  { name: 'Smart Home Devices', description: 'Your home, quietly learning. Nothing intrusive. Everything useful.' },
+  { name: 'Wearable Technology', description: "Technology that disappears into your life. You won't notice it's there. You'll notice when it's not." },
+  { name: 'Research & Labs', description: "We can't tell you what we're building here yet. But we will." },
 ];
 
 const containerAnimation = {
@@ -53,10 +53,11 @@ export default function Products() {
             Our Software Collection
           </h2>
           <p className="text-xl md:text-2xl text-foreground/70 max-w-4xl mx-auto leading-relaxed">
-            Tools That Think Ahead
+            Tools that work quietly.
           </p>
           <p className="text-lg md:text-xl text-foreground/60 max-w-3xl mx-auto mt-6 leading-relaxed">
-            We&apos;ve built software that solves real problems and makes your work effortless. Each product is crafted with the same attention to detail you&apos;d expect from Roboticela—beautiful, powerful, and intuitive.
+            Each product in our catalog was built to solve something real. Not to impress — to actually help.
+            Beautiful without trying to be. Powerful without making you feel it.
           </p>
         </motion.div>
 
@@ -146,7 +147,6 @@ export default function Products() {
             ))}
           </motion.div>
 
-          {/* View All Products Button */}
           <div className="text-center mt-12">
             <Link
               href="/products"
@@ -203,7 +203,6 @@ export default function Products() {
           </div>
         </motion.div>
 
-        {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

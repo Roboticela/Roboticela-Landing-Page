@@ -11,9 +11,8 @@ export default function SecurityPage() {
   return (
     <LegalPageLayout
       eyebrow="Legal"
-      title="Security"
-      titleAccent="Overview"
-      description="Your trust matters. Learn how Roboticela protects data, systems, and the people who use our services."
+      title="Your trust is built into the architecture."
+      description="We don't treat security as a feature. We treat it as a foundation."
       icon={Shield}
       effectiveDate={effectiveDate}
       lastUpdated={lastUpdated}

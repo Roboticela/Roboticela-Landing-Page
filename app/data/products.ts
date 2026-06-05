@@ -46,12 +46,12 @@ export const products: Product[] = [
     logo: '/AppLogos/OSI-Model-Simulator-Logo.svg',
     category: 'software',
     description:
-      'Master networking concepts with our interactive OSI model simulator. Perfect for students, educators, and professionals.',
+      'Networking, finally clear. Seven layers. One tool. The kind of clarity that makes you wonder why it was ever complicated. For students, educators, and the professionals who never stopped being curious.',
     status: 'Available',
     links: [
-      { label: 'About OSI Simulator', href: 'https://osi-model-simulator.roboticela.com', external: true },
-      { label: 'Try It Now', href: 'https://app.osi-model-simulator.roboticela.com', external: true },
-      { label: 'Classic Version', href: 'https://app.osi-model-simulator.roboticela.com/legacy', external: true },
+      { label: 'Learn about OSI Simulator', href: 'https://osi-model-simulator.roboticela.com', external: true },
+      { label: 'Try it now', href: 'https://app.osi-model-simulator.roboticela.com', external: true },
+      { label: 'Classic version', href: 'https://app.osi-model-simulator.roboticela.com/legacy', external: true },
     ],
   },
   {
@@ -59,11 +59,11 @@ export const products: Product[] = [
     logo: '/AppLogos/Iconify-Logo.svg',
     category: 'software',
     description:
-      "Generate perfect icons for every platform in seconds. iOS, Android, web—we've got you covered.",
+      'The right icon, instantly. Every platform. Every size. Generated in seconds, looking like it took hours. Your app deserves a face that feels deliberate.',
     status: 'Available',
     links: [
-      { label: 'About Iconify', href: 'https://iconify.roboticela.com', external: true },
-      { label: 'Start Creating', href: 'https://app.iconify.roboticela.com', external: true },
+      { label: 'Learn about Iconify', href: 'https://iconify.roboticela.com', external: true },
+      { label: 'Start creating', href: 'https://app.iconify.roboticela.com', external: true },
     ],
   },
 ];

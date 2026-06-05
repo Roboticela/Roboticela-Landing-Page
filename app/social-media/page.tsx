@@ -38,9 +38,8 @@ export default function SocialMediaPage() {
     <SitePageLayout>
       <PageHero
         eyebrow="Connect"
-        title="Follow"
-        titleAccent="Roboticela."
-        description="Find us where you already spend time—code, conversation, and community. Tap a channel below to connect."
+        title="We're already where you are."
+        description="Find us. Follow what we're building. Say hello."
         icon={Share2}
       />
 
@@ -84,8 +83,8 @@ export default function SocialMediaPage() {
         </section>
 
         <PageCta
-          title="Prefer email updates?"
-          description="Subscribe to our newsletter for product launches, breakthroughs, and stories—delivered on your schedule."
+          title="Prefer the slower kind?"
+          description="Our newsletter is calm, curated, and completely free of noise."
           primaryLabel="Join the Empire"
           primaryHref="/newsletter"
         />

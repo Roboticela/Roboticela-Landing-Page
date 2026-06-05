@@ -11,9 +11,8 @@ export default function ProductsPage() {
     <SitePageLayout>
       <PageHero
         eyebrow="Products"
-        title="Tools &"
-        titleAccent="Platforms."
-        description="Software, hardware, e-commerce, enterprise, and research—crafted with care for real problems."
+        title="Things made with care."
+        description="Every product here was built to solve something real. Not to demonstrate capability — to actually help."
         icon={Package}
       />
 

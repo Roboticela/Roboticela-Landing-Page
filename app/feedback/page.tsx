@@ -91,9 +91,8 @@ export default function FeedbackPage() {
     <SitePageLayout>
       <PageHero
         eyebrow="Feedback"
-        title="We'd Love to"
-        titleAccent="Hear From You."
-        description="Rate your experience, ask a question, or tell us what we can do better. Every response helps us build better products."
+        title="Tell us the truth."
+        description="Good, bad, somewhere in between — we want all of it. Every response shapes what we build next."
         icon={MessageSquare}
       />
 
@@ -266,7 +265,7 @@ export default function FeedbackPage() {
                 className="mt-6 p-4 bg-primary/10 border border-primary/30 rounded-xl text-center"
               >
                 <p className="text-foreground font-medium">
-                  We&apos;ve received your feedback and appreciate you taking the time to help us improve.
+                  Received. Read. Appreciated. Thank you — this is exactly how we get better.
                 </p>
               </motion.div>
             )}

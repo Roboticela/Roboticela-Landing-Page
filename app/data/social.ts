@@ -13,7 +13,7 @@ export const socialPlatforms: SocialPlatform[] = [
     name: 'GitHub',
     handle: '@Roboticela',
     href: 'https://github.com/Roboticela',
-    description: 'Open source, experiments, and code from our team.',
+    description: 'Open source, experiments, and code you can actually read. Watch us build in public.',
     external: true,
   },
   {
@@ -21,7 +21,7 @@ export const socialPlatforms: SocialPlatform[] = [
     name: 'X (Twitter)',
     handle: '@roboticela',
     href: 'https://twitter.com/roboticela',
-    description: 'Quick updates, launches, and conversations in real time.',
+    description: 'Real-time updates, quiet launches, and things too small for a blog.',
     external: true,
   },
   {
@@ -29,7 +29,7 @@ export const socialPlatforms: SocialPlatform[] = [
     name: 'LinkedIn',
     handle: 'Roboticela',
     href: 'https://linkedin.com/company/roboticela',
-    description: 'Company news, culture, and professional updates.',
+    description: 'Company milestones and the professional side of our story.',
     external: true,
   },
   {
@@ -37,7 +37,7 @@ export const socialPlatforms: SocialPlatform[] = [
     name: 'Email',
     handle: 'hello@roboticela.com',
     href: 'mailto:hello@roboticela.com',
-    description: 'Reach us directly for questions, ideas, or collaboration.',
+    description: 'Direct. Simple. We read it.',
     external: false,
   },
 ];

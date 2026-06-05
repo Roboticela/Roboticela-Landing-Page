@@ -11,9 +11,8 @@ export default function AccessibilityPage() {
   return (
     <LegalPageLayout
       eyebrow="Legal"
-      title="Accessibility"
-      titleAccent="Statement"
-      description="Technology should work for everyone. Learn how Roboticela designs for inclusive, accessible experiences."
+      title="Built for everyone, without exception."
+      description="Technology that excludes people isn't finished. Ours is designed for every ability, every context, every person."
       icon={Accessibility}
       effectiveDate={effectiveDate}
       lastUpdated={lastUpdated}

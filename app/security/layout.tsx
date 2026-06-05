@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Roboticela Security — Data Protection Practices',
+  title: 'Security — Built into everything we make.',
   description:
-    'Learn how Roboticela protects your data. We cover encryption, access control, secure development, and responsible data handling across all our platforms.',
+    'Encryption, access control, and a team that takes your safety seriously. Here\'s how we protect you.',
   keywords: ['Roboticela', 'security', 'data protection', 'encryption', 'privacy', 'GDPR', 'compliance', 'secure'],
   alternates: { canonical: '/security' },
   openGraph: {
@@ -11,16 +11,16 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://roboticela.com/security',
     siteName: 'Roboticela',
-    title: 'Roboticela Security — Data Protection Practices',
+    title: 'Security — Built into everything we make.',
     description:
-      'Learn how Roboticela protects your data. We cover encryption, access control, secure development, and responsible data handling across all our platforms.',
+      "Encryption, access control, and a team that takes your safety seriously. Here's how we protect you.",
     images: [{ url: 'https://roboticela.com/og-image.jpg', width: 1200, height: 630, alt: 'Roboticela Security' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Roboticela Security — Data Protection Practices',
+    title: 'Security — Built into everything we make.',
     description:
-      'Learn how Roboticela protects your data. We cover encryption, access control, secure development, and responsible data handling across all our platforms.',
+      "Encryption, access control, and a team that takes your safety seriously. Here's how we protect you.",
     images: ['https://roboticela.com/og-image.jpg'],
     creator: '@roboticela',
     site: '@roboticela',

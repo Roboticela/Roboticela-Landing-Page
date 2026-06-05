@@ -45,9 +45,8 @@ export default function NewsPage() {
     <SitePageLayout>
       <PageHero
         eyebrow="News"
-        title="Updates &"
-        titleAccent="Announcements."
-        description="The latest from Roboticela—product launches, company news, and stories from the team."
+        title="When there's something worth saying, it's here."
+        description="Launches, announcements, and stories from the people building what comes next."
         icon={Newspaper}
       />
 
@@ -99,9 +98,9 @@ export default function NewsPage() {
               <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <Newspaper className="w-8 h-8 text-primary" strokeWidth={1.5} />
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">No news yet</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">Nothing here yet.</h2>
               <p className="text-lg text-foreground/60 max-w-md mx-auto leading-relaxed">
-                We&apos;ll share announcements and updates here as they happen. Check back soon.
+                We&apos;re building things right now that will live in this space soon. Subscribe so you don&apos;t miss it.
               </p>
             </motion.div>
           )}
@@ -151,9 +150,9 @@ export default function NewsPage() {
         </section>
 
         <PageCta
-          title="Media Inquiries"
-          description="For press and media inquiries, reach out to our communications team—we're happy to help."
-          primaryLabel="Contact Press Team"
+          title="Press & Media"
+          description="Writing about us? We'll help you get it right."
+          primaryLabel="Contact us"
           primaryHref="/support"
         />
     </SitePageLayout>

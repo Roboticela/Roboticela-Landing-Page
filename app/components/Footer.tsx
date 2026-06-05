@@ -13,12 +13,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         {/* Newsletter Section - Join Community / Empire */}
         <div id="newsletter" className="mb-16 text-center scroll-mt-24">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Join the Empire</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Join the Empire.</h3>
           <p className="text-foreground/70 mb-6 max-w-2xl mx-auto">
-            Subscribe to our newsletter and be the first to know about new products, breakthroughs, and updates. Join our community and stay in the loop.
+            New products, quiet breakthroughs, and things worth knowing — delivered when there&apos;s something worth saying. No noise. No spam. Just the good stuff.
           </p>
           <NewsletterSignup />
-          <p className="text-sm text-foreground/70 mt-4">We respect your inbox. No spam, just innovation.</p>
+          <p className="text-sm text-foreground/70 mt-4">We respect your inbox. Always.</p>
         </div>
 
         {/* Main Footer Content */}

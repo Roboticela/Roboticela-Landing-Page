@@ -14,13 +14,13 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Roboticela - Think Different. Build Everything.",
-    template: "%s - Roboticela",
+    default: "Roboticela — Where every idea begins.",
+    template: "%s — Roboticela",
   },
   icons: {
     icon: "/Favicon.png",
   },
-  description: "The future doesn't fit in boxes. Neither do we. Roboticela builds without limits—software, hardware, research, and experiences that push what's possible.",
+  description: "Software, hardware, research, and experiences that quietly reshape what's possible. Built without boundaries. Designed without compromise.",
   keywords: [
     "Roboticela",
     "innovation",
@@ -28,10 +28,8 @@ export const metadata: Metadata = {
     "software",
     "hardware",
     "research",
-    "unlimited potential",
     "future technology",
     "design excellence",
-    "breakthrough solutions",
   ],
   authors: [{ name: "Roboticela" }],
   creator: "Roboticela",
@@ -45,8 +43,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://roboticela.com",
     siteName: "Roboticela",
-    title: "Roboticela - Think Different. Build Everything.",
-    description: "The future doesn't fit in boxes. Neither do we. Roboticela builds without limits—software, hardware, research, and experiences that push what's possible.",
+    title: "Roboticela — Where every idea begins.",
+    description: "Software, hardware, research, and experiences that quietly reshape what's possible. Built without boundaries. Designed without compromise.",
     images: [
       {
         url: "https://roboticela.com/og-image.jpg",
@@ -59,8 +57,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Roboticela - Think Different. Build Everything.",
-    description: "The future doesn't fit in boxes. Neither do we. Roboticela builds without limits—software, hardware, research, and experiences that push what's possible.",
+    title: "Roboticela — Where every idea begins.",
+    description: "Software, hardware, research, and experiences that quietly reshape what's possible. Built without boundaries. Designed without compromise.",
     images: ["https://roboticela.com/og-image.jpg"],
     creator: "@roboticela",
     site: "@roboticela",

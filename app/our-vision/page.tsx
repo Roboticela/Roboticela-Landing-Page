@@ -24,50 +24,48 @@ import { productCategories } from '../data/productCategories';
 const pillars = [
   {
     icon: Lightbulb,
-    title: 'The Future is Limitless',
+    title: "The future isn't waiting.",
     description:
-      'We believe the only limit is imagination. That\'s why we refuse to be defined by a single industry, product, or vision of the future.',
+      "It's being built right now. We're in the lab. We're at the edge. We're already there.",
     accent: 'from-amber-500/10 to-transparent',
   },
   {
     icon: Rocket,
-    title: 'Building Everything',
+    title: 'Build everything. Quietly.',
     description:
-      'We\'re building everything, for everyone, without compromise—from software to hardware, research to experiences.',
+      "Not loudly. Not with announcements. With things you actually hold and use and trust.",
     accent: 'from-sky-500/10 to-transparent',
   },
   {
     icon: Target,
-    title: 'Always Innovating',
+    title: 'Never once stop.',
     description:
-      'To never stop innovating. To never settle for good enough. To always put you first. This is our promise.',
+      "Innovation isn't something you schedule. It's something you are. We are it, always.",
     accent: 'from-primary/15 to-transparent',
   },
 ];
 
 const promises = [
-  'To never stop innovating.',
-  'To never settle for good enough.',
-  'To always put you first.',
-  'To build what others say is impossible.',
-  'To craft experiences, not just products.',
+  'Never stop.',
+  'Never settle.',
+  'Always, unfailingly, put you first.',
 ];
 
 const horizons = [
   {
     year: 'Today',
-    title: 'Ship what matters',
-    text: 'Beautiful products in the wild—tools people reach for because they work and feel right.',
+    title: 'Ship what earns trust.',
+    text: "Products in the world right now — tools people reach for because they work and feel right.",
   },
   {
     year: 'Next',
-    title: 'Expand without boxes',
-    text: 'New categories, new mediums, new problems—same obsession with craft and clarity.',
+    title: 'Expand into new problems.',
+    text: "New categories, new mediums, new questions no one's answered yet. Same quiet obsession.",
   },
   {
     year: 'Beyond',
-    title: 'Invent the unnamed',
-    text: 'Research and labs turning tomorrow\'s ideas into things you can hold, use, and love.',
+    title: "Invent what hasn't been imagined.",
+    text: "The things in our labs don't have names yet. They will. And then you'll hold them.",
   },
 ];
 
@@ -127,12 +125,13 @@ export default function OurVisionPage() {
               <p className="text-sm uppercase tracking-[0.2em] text-primary font-semibold mb-5">
                 Our Vision
               </p>
+
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight leading-tight max-w-5xl lg:max-w-6xl mx-auto text-balance">
-                Unlimited{' '}
-                <span className="text-primary">by Design.</span>
+                No ceiling.{' '}
+                <span className="text-primary">No category. Just what comes next.</span>
               </h1>
               <p className="text-base md:text-lg text-foreground/60 max-w-3xl lg:max-w-4xl mx-auto leading-relaxed">
-                A north star for a company with no category—only conviction, craft, and the courage to build across every frontier.
+                A single north star for a company that refuses to be defined by anything other than what it builds.
               </p>
             </motion.div>
           </div>
@@ -151,7 +150,11 @@ export default function OurVisionPage() {
               &ldquo;
             </span>
             <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-foreground leading-snug md:leading-relaxed">
-              At Roboticela, we believe the only limit is imagination. We refuse one lane, one label, or one version of the future—we build for everyone, everywhere, without compromise.
+              We believe the only limit is imagination.
+              So we stopped respecting every other one.
+              One lane? No. One label? Never.
+              We build for everyone, everywhere, on every frontier —
+              quietly, deliberately, without end.
             </p>
             <footer className="mt-8 flex items-center justify-center gap-3 text-foreground/50">
               <div className="relative w-8 h-8">
@@ -171,7 +174,7 @@ export default function OurVisionPage() {
             transition={{ duration: 0.7, ease: easeOut }}
             className="text-center mb-14"
           >
-            <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-3">What Guides Us</p>
+            <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-3">What Drives Us</p>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
               Three Pillars of Our Vision
             </h2>
@@ -231,13 +234,13 @@ export default function OurVisionPage() {
                 <motion.div
                   key={step.year}
                   variants={itemVariants}
-                  className="relative text-center md:text-left"
+                  className="relative text-center md:text-left h-full"
                 >
-                  <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-0">
+                  <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-0 h-full">
                     <div className="md:mb-6 flex items-center justify-center w-12 h-12 rounded-full bg-primary/15 border border-primary/30 text-primary font-bold text-sm shrink-0 z-10">
                       {index + 1}
                     </div>
-                    <div className="bg-card/50 backdrop-blur-sm rounded-3xl p-8 border border-border/40 flex-1 md:flex-none w-full hover:border-primary/30 transition-colors">
+                    <div className="bg-card/50 backdrop-blur-sm rounded-3xl p-8 border border-border/40 flex-1 w-full hover:border-primary/30 transition-colors">
                       <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">{step.year}</p>
                       <h3 className="text-xl font-bold text-foreground mb-3">{step.title}</h3>
                       <p className="text-foreground/65 leading-relaxed">{step.text}</p>
@@ -260,10 +263,10 @@ export default function OurVisionPage() {
           >
             <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-3">No Single Lane</p>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight mb-4">
-              Every Category. One Vision.
+              Everything, or nothing at all.
             </h2>
             <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-              Our vision spans the full stack of human need—from code on a screen to devices in your hands.
+              Software. Hardware. Commerce. Enterprise. Research. And everything beyond those words that we haven&apos;t entered yet.
             </p>
           </motion.div>
 
@@ -313,13 +316,13 @@ export default function OurVisionPage() {
               <div className="relative">
                 <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">Mission</p>
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 tracking-tight">
-                  Why We Exist
+                  Why we exist.
                 </h2>
                 <p className="text-foreground/70 text-lg leading-relaxed mb-6">
-                  To prove that a company can work on <em>everything</em> and still do it beautifully—to push what&apos;s possible and place it in real hands.
+                  To prove that a company can work on <em>everything</em> {" "} and still do it beautifully — to push what&apos;s possible and place it in real hands.
                 </p>
                 <p className="text-foreground/70 text-lg leading-relaxed">
-                  The future doesn&apos;t fit in boxes. Neither do we.
+                  No category. No ceiling. Just what comes next.
                 </p>
               </div>
             </motion.div>
@@ -333,7 +336,7 @@ export default function OurVisionPage() {
             >
               <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">Our Promise</p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8 tracking-tight">
-                What We Stand For
+                What we stand for
               </h2>
               <ul className="space-y-4">
                 {promises.map((promise) => (
@@ -363,24 +366,24 @@ export default function OurVisionPage() {
             </div>
             <Compass className="w-10 h-10 text-primary mx-auto mb-6 opacity-80" strokeWidth={1.5} />
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 tracking-tight">
-              Join Our Journey
+              Come build with us.
             </h2>
             <p className="text-xl text-foreground/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-              Be part of something bigger. Help us build a future that&apos;s unlimited by design.
+              The future is large enough for everyone. There&apos;s a place in it for you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/careers"
                 className="px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 shadow-lg shadow-primary/20"
               >
-                Explore Careers
+                Explore careers
                 <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </Link>
               <Link
                 href="/about"
                 className="px-8 py-4 bg-transparent hover:bg-card/60 text-foreground rounded-full font-semibold text-lg transition-all duration-300 border border-border/40 inline-flex items-center gap-2"
               >
-                Our Story
+                Our story
                 <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </Link>
             </div>

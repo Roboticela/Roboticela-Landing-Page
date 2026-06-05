@@ -10,9 +10,8 @@ export default function PrivacyPage() {
   return (
     <LegalPageLayout
       eyebrow="Legal"
-      title="Privacy Policy"
-      titleAccent="& Data Processing"
-      description="How Roboticela collects, uses, stores, and protects your information when you use our services."
+      title="Your privacy isn't a checkbox."
+      description="Here's exactly what we do with your information — and what we never will."
       icon={Shield}
       effectiveDate={effectiveDate}
       lastUpdated={lastUpdated}

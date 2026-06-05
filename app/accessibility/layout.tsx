@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Roboticela Accessibility Statement & WCAG',
+  title: 'Accessibility — Built for every person.',
   description:
-    'Roboticela is committed to inclusive design. Read our accessibility statement covering WCAG standards, assistive technology support, and ongoing improvements.',
+    'Technology that works for every ability, every context, every human being. Our commitment to inclusive design.',
   keywords: ['Roboticela', 'accessibility', 'WCAG', 'inclusive design', 'screen reader', 'a11y', 'disability', 'ADA'],
   alternates: { canonical: '/accessibility' },
   openGraph: {
@@ -11,16 +11,16 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://roboticela.com/accessibility',
     siteName: 'Roboticela',
-    title: 'Roboticela Accessibility Statement & WCAG',
+    title: 'Accessibility — Built for every person.',
     description:
-      'Roboticela is committed to inclusive design. Read our accessibility statement covering WCAG standards, assistive technology support, and ongoing improvements.',
+      'Technology that works for every ability, every context, every human being. Our commitment to inclusive design.',
     images: [{ url: 'https://roboticela.com/og-image.jpg', width: 1200, height: 630, alt: 'Roboticela Accessibility' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Roboticela Accessibility Statement & WCAG',
+    title: 'Accessibility — Built for every person.',
     description:
-      'Roboticela is committed to inclusive design. Read our accessibility statement covering WCAG standards, assistive technology support, and ongoing improvements.',
+      'Technology that works for every ability, every context, every human being. Our commitment to inclusive design.',
     images: ['https://roboticela.com/og-image.jpg'],
     creator: '@roboticela',
     site: '@roboticela',

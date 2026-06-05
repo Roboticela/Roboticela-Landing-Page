@@ -13,18 +13,18 @@ import { easeOut } from '../components/animations';
 const comingFeatures = [
   {
     icon: MessageCircle,
-    title: 'Discussions',
-    description: 'Ask questions, share ideas, and learn from builders across the Roboticela ecosystem.',
+    title: 'Conversations worth having.',
+    description: "Questions you've been sitting with. Answers from people who've been there. Ideas that become things.",
   },
   {
     icon: Heart,
-    title: 'Showcase',
-    description: 'Share what you create with our tools and discover projects from the community.',
+    title: "Show what you've made.",
+    description: "Your work deserves people who understand it. Share it with builders who get it.",
   },
   {
     icon: Users,
-    title: 'Connect',
-    description: 'Meet developers, designers, and innovators who think beyond categories.',
+    title: 'Find your people.',
+    description: 'Developers, designers, researchers, dreamers. In one place.',
   },
 ];
 
@@ -43,9 +43,8 @@ export default function CommunityPage() {
     <SitePageLayout>
       <PageHero
         eyebrow="Community"
-        title="Forum"
-        titleAccent="Coming Soon."
-        description="A place to connect, collaborate, and grow with fellow creators—we're building it now."
+        title="The builders are gathering."
+        description="We're building the community with the same care we give everything else. It isn't ready yet. But it will be worth the wait."
         icon={Users}
       />
 
@@ -63,17 +62,17 @@ export default function CommunityPage() {
               <span className="text-sm font-semibold text-primary">Coming Soon</span>
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              We&apos;re crafting something special
+              Something worth joining is being made here.
             </h2>
             <p className="text-lg text-foreground/60 leading-relaxed max-w-lg mx-auto">
-              The Roboticela community forum isn&apos;t live yet. When it launches, you&apos;ll be able to join discussions, get help, and share your work with builders worldwide.
+              When the Roboticela forum opens, you&apos;ll have a place to ask questions, show your work, find collaborators, and be part of something genuinely global. We&apos;re building it now.
             </p>
           </motion.div>
         </section>
 
         {/* Preview features */}
         <section className="max-w-6xl mx-auto mb-28">
-          <PageSectionHeader eyebrow="What's Ahead" title="Built for connection" />
+          <PageSectionHeader eyebrow="A Preview" title="What's coming" />
 
           <motion.div
             variants={containerVariants}
@@ -105,11 +104,11 @@ export default function CommunityPage() {
         </section>
 
         <PageCta
-          title="Stay in the loop"
-          description="Join our newsletter to hear when the forum launches, or reach out if you'd like to connect today."
+          title="Don't miss the opening."
+          description="Subscribe and be the first to know when it's ready."
           primaryLabel="Join the Empire"
           primaryHref="/newsletter"
-          secondaryLabel="Contact Us"
+          secondaryLabel="Reach out now"
           secondaryHref="/support"
         />
     </SitePageLayout>

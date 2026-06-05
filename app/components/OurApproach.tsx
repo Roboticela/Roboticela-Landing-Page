@@ -8,23 +8,27 @@ import { easeOut } from './animations';
 const approaches = [
   {
     icon: Target,
-    title: 'Start with why',
-    description: 'Every project begins with understanding the problem, not jumping to solutions.',
+    title: 'Understand the problem first.',
+    description:
+      "Solutions invented before the problem is understood tend to solve the wrong thing. We sit with the problem.",
   },
   {
     icon: Infinity,
-    title: 'Build without limits',
-    description: 'We don\'t restrict ourselves to one field. If it improves lives, we explore it.',
+    title: 'Build anywhere it matters.',
+    description:
+      "Software, hardware, research, experience — if it improves a life, that's our domain.",
   },
   {
     icon: TestTube,
-    title: 'Test relentlessly',
-    description: 'Before anything reaches you, it\'s been pushed to its limits and refined until it\'s perfect.',
+    title: "Push it until it's right.",
+    description:
+      "What reaches you has already survived a version of itself that wasn't good enough.",
   },
   {
     icon: MessageCircle,
-    title: 'Listen and evolve',
-    description: 'Your feedback shapes our next move. We\'re building this together.',
+    title: 'Listen like it changes everything.',
+    description:
+      "Because it does. What you tell us shapes what we build next. That's not a courtesy — it's the process.",
   },
 ];
 
@@ -38,10 +42,10 @@ const containerAnimation = {
 
 const itemAnimation = {
   hidden: { opacity: 0, x: -30 },
-  show: { 
-    opacity: 1, 
+  show: {
+    opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: easeOut }
+    transition: { duration: 0.6, ease: easeOut },
   },
 };
 
@@ -66,7 +70,7 @@ export default function OurApproach() {
           variants={containerAnimation}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
         >
           {approaches.map((approach, index) => (
             <motion.div
