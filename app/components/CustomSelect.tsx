@@ -2,10 +2,12 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
+import Image from 'next/image';
 
 export type SelectOption = {
   value: string;
   label: string;
+  icon?: string;
 };
 
 type CustomSelectProps = {
@@ -18,6 +20,26 @@ type CustomSelectProps = {
   placeholder?: string;
   required?: boolean;
 };
+
+function OptionLabel({ option }: { option: SelectOption }) {
+  return (
+    <span className="flex items-center gap-3 min-w-0">
+      {option.icon && (
+        <span className="w-6 h-6 shrink-0 flex items-center justify-center">
+          <Image
+            src={option.icon}
+            alt=""
+            width={24}
+            height={24}
+            className="object-contain"
+            aria-hidden
+          />
+        </span>
+      )}
+      <span className="truncate">{option.label}</span>
+    </span>
+  );
+}
 
 export default function CustomSelect({
   id: idProp,
@@ -85,7 +107,9 @@ export default function CustomSelect({
           isOpen ? 'border-primary/40 ring-2 ring-primary/10' : 'border-border/40'
         } ${selectedOption ? 'text-foreground' : 'text-foreground/50'}`}
       >
-        <span className="truncate">{displayLabel}</span>
+        <span className="min-w-0 flex-1">
+          {selectedOption ? <OptionLabel option={selectedOption} /> : displayLabel}
+        </span>
         <ChevronDown
           className={`w-5 h-5 text-foreground/50 shrink-0 transition-transform duration-200 ${
             isOpen ? 'rotate-180' : ''
@@ -116,7 +140,9 @@ export default function CustomSelect({
                       : 'text-foreground/80 hover:bg-accent/80 hover:text-foreground'
                   }`}
                 >
-                  <span className="truncate">{option.label}</span>
+                  <span className="min-w-0 flex-1">
+                    <OptionLabel option={option} />
+                  </span>
                   {isSelected && <Check className="w-4 h-4 shrink-0" aria-hidden />}
                 </button>
               </li>

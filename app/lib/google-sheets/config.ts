@@ -10,7 +10,7 @@ export type FormType = keyof typeof GOOGLE_SHEET_NAMES;
 /** Column headers — row 1 in each tab of the "Roboticela" spreadsheet. */
 export const SHEET_HEADERS = {
   [GOOGLE_SHEET_NAMES.newsletter]: ['Submitted At', 'Email', 'Source'],
-  [GOOGLE_SHEET_NAMES.support]: ['Submitted At', 'Full Name', 'Email', 'Message'],
+  [GOOGLE_SHEET_NAMES.support]: ['Submitted At', 'Full Name', 'Email', 'Support For', 'Message'],
   [GOOGLE_SHEET_NAMES.productRequest]: [
     'Submitted At',
     'Name',

@@ -11,6 +11,7 @@ import {
 interface ContactBody {
   fullName: string;
   email: string;
+  supportFor: string;
   message: string;
 }
 
@@ -20,21 +21,22 @@ export async function POST(request: NextRequest) {
 
     const fullName = typeof body.fullName === 'string' ? body.fullName.trim() : '';
     const email = typeof body.email === 'string' ? body.email.trim() : '';
+    const supportFor = typeof body.supportFor === 'string' ? body.supportFor.trim() : '';
     const message = typeof body.message === 'string' ? body.message.trim() : '';
 
-    if (!fullName || !email || !message) {
+    if (!fullName || !email || !supportFor || !message) {
       return NextResponse.json(
-        { error: 'Full name, email, and message are required.' },
+        { error: 'Full name, email, support for, and message are required.' },
         { status: 400 }
       );
     }
 
     await appendToGoogleSheet(
       sheetNameForForm('support'),
-      buildSupportRow(fullName, email, message)
+      buildSupportRow(fullName, email, supportFor, message)
     );
 
-    await sendSupportEmail({ fullName, email, message });
+    await sendSupportEmail({ fullName, email, supportFor, message });
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {

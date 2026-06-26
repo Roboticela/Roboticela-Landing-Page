@@ -23,8 +23,13 @@ export function buildNewsletterRow(email: string, source: string): string[] {
   return [submittedAt(), cell(email), cell(source)];
 }
 
-export function buildSupportRow(fullName: string, email: string, message: string): string[] {
-  return [submittedAt(), cell(fullName), cell(email), cell(message)];
+export function buildSupportRow(
+  fullName: string,
+  email: string,
+  supportFor: string,
+  message: string
+): string[] {
+  return [submittedAt(), cell(fullName), cell(email), cell(supportFor), cell(message)];
 }
 
 export function buildProductRequestRow(data: {

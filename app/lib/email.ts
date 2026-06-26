@@ -110,16 +110,18 @@ export function linesToText(lines: Record<string, string | number | undefined>):
 export async function sendSupportEmail(data: {
   fullName: string;
   email: string;
+  supportFor: string;
   message: string;
 }): Promise<void> {
   const fields = {
     Name: data.fullName,
     Email: data.email,
+    'Support for': data.supportFor,
     Message: data.message,
   };
 
   await sendNotificationEmail({
-    subject: `Support — ${data.fullName}`,
+    subject: `Support — ${data.supportFor} — ${data.fullName}`,
     text: linesToText(fields),
     html: linesToHtml(fields),
     replyTo: data.email,

@@ -59,10 +59,11 @@ export async function POST(
     if (type === 'support') {
       const fullName = typeof body.fullName === 'string' ? body.fullName.trim() : '';
       const email = typeof body.email === 'string' ? body.email.trim() : '';
+      const supportFor = typeof body.supportFor === 'string' ? body.supportFor.trim() : '';
       const message = typeof body.message === 'string' ? body.message.trim() : '';
 
-      if (!fullName || !email || !message) {
-        return badRequest('Full name, email, and message are required.');
+      if (!fullName || !email || !supportFor || !message) {
+        return badRequest('Full name, email, support for, and message are required.');
       }
       if (!EMAIL_RE.test(email)) {
         return badRequest('A valid email is required.');
@@ -70,9 +71,9 @@ export async function POST(
 
       await appendToGoogleSheet(
         sheetNameForForm('support'),
-        buildSupportRow(fullName, email, message)
+        buildSupportRow(fullName, email, supportFor, message)
       );
-      await sendSupportEmail({ fullName, email, message });
+      await sendSupportEmail({ fullName, email, supportFor, message });
     }
 
     if (type === 'productRequest') {
