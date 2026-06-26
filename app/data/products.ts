@@ -52,6 +52,7 @@ export const products: Product[] = [
       { label: 'Learn about OSI Simulator', href: 'https://osi-model-simulator.roboticela.com', external: true },
       { label: 'Try it now', href: 'https://app.osi-model-simulator.roboticela.com', external: true },
       { label: 'Classic version', href: 'https://app.osi-model-simulator.roboticela.com/legacy', external: true },
+      { label: 'Download', href: 'https://osi-model-simulator.roboticela.com/#downloads', external: true },
     ],
   },
   {
@@ -64,6 +65,20 @@ export const products: Product[] = [
     links: [
       { label: 'Learn about Iconify', href: 'https://iconify.roboticela.com', external: true },
       { label: 'Start creating', href: 'https://app.iconify.roboticela.com', external: true },
+      { label: 'Download', href: 'https://iconify.roboticela.com/#downloads', external: true },
+    ],
+  },
+  {
+    name: 'Keyboard Simulator',
+    logo: '/AppLogos/Keyboard-Simulator.svg',
+    category: 'software',
+    description:
+      'Keyboard Simulator is a powerful cross-platform keyboard simulation platform that brings virtual keyboards to life with realistic interactions, real-time synchronization, immersive visualization, and advanced customization for learning, demonstrations, and beyond.',
+    status: 'Available',
+    links: [
+      { label: 'Learn about Keyboard Simulator', href: 'https://keyboard-simulator.roboticela.com', external: true },
+      { label: 'Open Simulator', href: 'https://app.keyboard-simulator.roboticela.com', external: true },
+      { label: 'Download', href: 'https://keyboard-simulator.roboticela.com/#downloads', external: true },
     ],
   },
 ];

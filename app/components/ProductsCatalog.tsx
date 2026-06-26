@@ -51,7 +51,7 @@ function ProductCard({ product }: { product: Product }) {
     <motion.div
       variants={itemAnimation}
       whileHover={{ y: -8, transition: { duration: 0.3 } }}
-      className="group bg-card/60 backdrop-blur-sm rounded-3xl p-8 border border-border/40 hover:border-primary/40 transition-all duration-300"
+      className="group flex flex-col h-full bg-card/60 backdrop-blur-sm rounded-3xl p-8 border border-border/40 hover:border-primary/40 transition-all duration-300"
     >
       <ProductLogo name={product.name} logo={product.logo} />
       {category && (
@@ -60,8 +60,8 @@ function ProductCard({ product }: { product: Product }) {
         </span>
       )}
       <h4 className="text-2xl font-semibold text-foreground mb-4">{product.name}</h4>
-      <p className="text-foreground/70 leading-relaxed mb-6">{product.description}</p>
-      <div className="flex flex-wrap gap-3">
+      <p className="text-foreground/70 leading-relaxed flex-1">{product.description}</p>
+      <div className="flex flex-wrap gap-3 mt-6">
         {product.links.map((link, linkIndex) =>
           link.external ? (
             <a
@@ -96,7 +96,7 @@ function PlaceholderCard() {
   return (
     <motion.div
       variants={itemAnimation}
-      className="relative bg-card/60 backdrop-blur-sm rounded-3xl p-8 border border-border/40 overflow-hidden select-none"
+      className="relative flex flex-col h-full bg-card/60 backdrop-blur-sm rounded-3xl p-8 border border-border/40 overflow-hidden select-none"
     >
       <div className="blur-sm pointer-events-none">
         <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
